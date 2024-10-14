@@ -8,14 +8,14 @@
 
 project = 'Example'
 copyright = 'workshop participant'
-author = 'workshop participant'
+author = 'Mariano Ruz'
 release = '0.1'
 
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['myst_parser','sphinx_simplepdf','sphinx_pdf_generate']
+extensions = ['myst_parser','sphinx_pdf_generate']
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
