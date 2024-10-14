@@ -19,7 +19,7 @@ jobs:
         run: |
           sphinx-build doc _build
           #sphinx-build -M simplepdf  doc _build
-          sphinx-pdf-generate doc _build
+          sphinx-pdf-generate doc _build/html
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
