@@ -15,7 +15,6 @@ jobs:
               python-version: "3.10"
       - name: Install dependencies
         run: |
-          pip install setuptools
           pip install sphinx sphinx_rtd_theme myst_parser  sphinx-simplepdf
       - name: Sphinx build
         run: |
