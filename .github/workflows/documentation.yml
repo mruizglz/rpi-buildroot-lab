@@ -15,12 +15,12 @@ jobs:
             python-version: '3.8'
       - name: Install dependencies
         run: |
-          pip install sphinx sphinx_rtd_theme myst_parser sphinx-pdf-generate
+          pip install sphinx sphinx_rtd_theme myst_parser sphinx-simplepdf
       - name: Sphinx build
         run: |
           sphinx-build doc _build
-          #sphinx-build -M simplepdf  doc _build
-          sphinx-pdf-generate doc _build/html
+          sphinx-build -M simplepdf  doc _build
+          #sphinx-pdf-generate doc _build/html
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
