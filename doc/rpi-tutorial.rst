@@ -427,11 +427,11 @@ displayed can differ. If an item of buildroot configuration does not
 appear in the Table I leaves it with its default value.
 
 +-------+--------------------------------------------------------------+
-|    | **[Help]:** The Buildroot configuration is an iterative      |
-|  | process. In order to set up your embedded Linux system, you  |
+|       | **[Help]:** The Buildroot configuration is an iterative      |
+|       | process. In order to set up your embedded Linux system, you  |
 |       | will need to execute the configuration several times.        |
 +=======+==============================================================+
-+-------+--------------------------------------------------------------+
+
 
 +---------+-------------+-------------------------+-------------------+
 | **Main  | **Subitem** | **Value**               | **Comments**      |
@@ -519,16 +519,16 @@ appear in the Table I leaves it with its default value.
 |         | debugger    |                         |                   |
 |         | version     |                         |                   |
 +---------+-------------+-------------------------+-------------------+
-| **Build |             | Default values          | How Buildroot     |
+| Build   |             | Default values          | How Buildroot     |
 | op      |             |                         | will build the    |
-| tions** |             |                         | code. Leave       |
+| tions   |             |                         | code. Leave       |
 |         |             |                         | default values.   |
 +---------+-------------+-------------------------+-------------------+
-| *       |             |                         |                   |
-| *System |             |                         |                   |
+|         |             |                         |                   |
+| System  |             |                         |                   |
 | C       |             |                         |                   |
 | onfigur |             |                         |                   |
-| ation** |             |                         |                   |
+| ation   |             |                         |                   |
 +---------+-------------+-------------------------+-------------------+
 |         | Root        | Default target skeleton | Linux folder      |
 |         | filesystem  |                         | organization for  |
@@ -662,10 +662,10 @@ appear in the Table I leaves it with its default value.
 |         | Kernel      |                         |                   |
 |         | Tools       |                         |                   |
 +---------+-------------+-------------------------+-------------------+
-| *       |             |                         |                   |
-| *Target |             |                         |                   |
+|         |             |                         |                   |
+|  Target |             |                         |                   |
 | Pac     |             |                         |                   |
-| kages** |             |                         |                   |
+| kages   |             |                         |                   |
 +---------+-------------+-------------------------+-------------------+
 |         | Busybox     | yes                     |                   |
 +---------+-------------+-------------------------+-------------------+
@@ -793,21 +793,21 @@ appear in the Table I leaves it with its default value.
 |         | enviro      |                         |                   |
 |         | nment-setup |                         |                   |
 +---------+-------------+-------------------------+-------------------+
-| *       |             | Default values          |                   |
-| *Legacy |             |                         |                   |
+|         |             | Default values          |                   |
+|  Legacy |             |                         |                   |
 | config  |             |                         |                   |
 | op      |             |                         |                   |
-| tions** |             |                         |                   |
+| tions   |             |                         |                   |
 +---------+-------------+-------------------------+-------------------+
 
 Once you have configured all the menus, you need to exit, saving the
 values (File->Quit).
 
 +-------+--------------------------------------------------------------+
-|    | **[Help]:** The **Buildroot** configuration is stored in a   |
-| | file named “.config”. You should have a backup of this file. |
-+=======+==============================================================+
-+-------+--------------------------------------------------------------+
+|       | **[Help]:** The **Buildroot** configuration is stored in a   |
+|       | file named “.config”. You should have a backup of this file. |
++---------+-------------+-------------------------+--------------------+
+
 
 Compiling buildroot
 -------------------
