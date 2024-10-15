@@ -590,8 +590,8 @@ appear in the Table I leaves it with its default value.
 |         | unwanted    |                         |                   |
 |         | locales     |                         |                   |
 +---------+-------------+-------------------------+-------------------+
-|         | Custom      | <path                   | <                 |
-|         | scripts to  | buidlroot>/board/raspbe |     to_buidlroot> |
+|         | Custom      | path                    |                   |
+|         | scripts to  | buidlroot /board/raspbe | to_buidlroot      |
 |         | run before  | rrypi3-64/post-build.sh | path where        |
 |         | creating    |                         | buildroot source  |
 |         | filesystem  |                         | is                |
@@ -615,22 +615,22 @@ appear in the Table I leaves it with its default value.
 | K       |             |                         |                   |
 | ernel** |             |                         |                   |
 +---------+-------------+-------------------------+-------------------+
-|         | Kernel      | **Custom tarball**      |                   |
+|         | Kernel      | Custom tarball          |                   |
 |         | Version     |                         |                   |
 +---------+-------------+-------------------------+-------------------+
-|         | URL of      | **$(call                |                   |
+|         | URL of      | $(call                  |                   |
 |         | custom      | github,                 |                   |
 |         | kernel      | raspberrypi,linux,0b54d |                   |
 |         | tarball     | bda3cca2beb51e236a25738 |                   |
 |         |             | 784e90853b64)/linux-0b5 |                   |
 |         |             | 4dbda3cca2beb51e236a257 |                   |
-|         |             | 38784e90853b64.tar.gz** |                   |
+|         |             | 38784e90853b64.tar.gz   |                   |
 +---------+-------------+-------------------------+-------------------+
 |         | Kernel      | Using and in-tree       |                   |
 |         | co          | defconfig file          |                   |
 |         | nfiguration |                         |                   |
 +---------+-------------+-------------------------+-------------------+
-|         | Defconfig   | **bcmrpi3**             |                   |
+|         | Defconfig   | bcmrpi3                 |                   |
 |         | name        |                         |                   |
 +---------+-------------+-------------------------+-------------------+
 |         | Kernel      | Image                   |                   |
@@ -670,8 +670,8 @@ appear in the Table I leaves it with its default value.
 +---------+-------------+-------------------------+-------------------+
 |         | Busybox     | yes                     |                   |
 +---------+-------------+-------------------------+-------------------+
-|         | Busybox     | **package/b             |                   |
-|         | co          | usybox/busybox.config** |                   |
+|         | Busybox     | package/b               |                   |
+|         | co          | usybox/busybox.config   |                   |
 |         | nfiguration |                         |                   |
 |         | file to use |                         |                   |
 +---------+-------------+-------------------------+-------------------+
