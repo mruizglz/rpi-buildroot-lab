@@ -430,7 +430,8 @@ appear in the Table I leaves it with its default value.
 |       | **[Help]:** The Buildroot configuration is an iterative      |
 |       | process. In order to set up your embedded Linux system, you  |
 |       | will need to execute the configuration several times.        |
-+=======+==============================================================+
++-------+--------------------------------------------------------------+
+
 
 
 +---------+-------------+-------------------------+-------------------+
@@ -800,6 +801,7 @@ appear in the Table I leaves it with its default value.
 | tions   |             |                         |                   |
 +---------+-------------+-------------------------+-------------------+
 
+
 Once you have configured all the menus, you need to exit, saving the
 values (File->Quit).
 
@@ -825,7 +827,6 @@ represented in Fig. 8.
 |       | Depending on your internet speed access and the              |
 |       | configuration chosen, this step could take up to **one hour  |
 |       | and a half**.                                                |
-+=======+==============================================================+
 +-------+--------------------------------------------------------------+
 
 +-------+--------------------------------------------------------------+
@@ -833,7 +834,6 @@ represented in Fig. 8.
 |  | you could obtain errors in this compilation phase. Check     |
 |       | your configuration correctly. Use “make clean” to clean up   |
 |       | your partial compilation.                                    |
-+=======+==============================================================+
 +-------+--------------------------------------------------------------+
 
 +-------+--------------------------------------------------------------+
@@ -842,7 +842,6 @@ represented in Fig. 8.
 |       | move your buildroot configuration from one computer to       |
 |       | another, avoiding the copy of the virtual machine, you can   |
 |       | copy this folder.                                            |
-+=======+==============================================================+
 +-------+--------------------------------------------------------------+
 
 .. image:: rpi/media/image12.png
