@@ -590,8 +590,8 @@ appear in the Table I leaves it with its default value.
 |         | unwanted    |                         |                   |
 |         | locales     |                         |                   |
 +---------+-------------+-------------------------+-------------------+
-|         | Custom      | <path_to_               | <p                |
-|         | scripts to  | buidlroot>/board/raspbe | ath_to_buidlroot> |
+|         | Custom      | <path                   | <                 |
+|         | scripts to  | buidlroot>/board/raspbe |     to_buidlroot> |
 |         | run before  | rrypi3-64/post-build.sh | path where        |
 |         | creating    |                         | buildroot source  |
 |         | filesystem  |                         | is                |
@@ -604,7 +604,7 @@ appear in the Table I leaves it with its default value.
 |         | fakeroot    |                         |                   |
 |         | environment |                         |                   |
 +---------+-------------+-------------------------+-------------------+
-|         | Custom      | <path_to_               |                   |
+|         | Custom      | <                       |                   |
 |         | scripts to  | buidlroot>/board/raspbe |                   |
 |         | run after   | rrypi3-64/post-image.sh |                   |
 |         | creating    |                         |                   |
@@ -1050,8 +1050,10 @@ Use the ping command.
 Adding WIFI support 
 ~~~~~~~~~~~~~~~~~~~~
 
+
  Adding mdev support to Embedded Linux
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 The folder <buildroot-folder>\ */package/busybox* contains two files
 named S10mdev and mdev.conf. These files have to be added to the target
@@ -1280,10 +1282,9 @@ eclipse projects created by the user. You can have as many workspaces as
 you want. Please specify a folder in your account.
 
 +-------+--------------------------------------------------------------+
-|   | **[Help]:** The figures displayed in the following           |
-|  | paragraphs can be different depending on the Eclipse version |
+|       | **[Help]:** The figures displayed in the following           |
+|       | paragraphs can be different depending on the Eclipse version |
 |       | installed.                                                   |
-+=======+==============================================================+
 +-------+--------------------------------------------------------------+
 
 .. image:: rpi/media/image23.png
