@@ -820,8 +820,8 @@ If everything is correct, you will see a final window similar to the one
 represented in Fig. 8.
 
 +-------+--------------------------------------------------------------+
-|    | **[Time for this step]:** In this step, buildroot will       |
-|  | connect, using the internet, to different repositories.      |
+|       | **[Time for this step]:** In this step, buildroot will       |
+|       | connect, using the internet, to different repositories.      |
 |       | After downloading the code, Buildroot will compile the       |
 |       | applications and generate a lot of files and folders.        |
 |       | Depending on your internet speed access and the              |
@@ -830,15 +830,15 @@ represented in Fig. 8.
 +-------+--------------------------------------------------------------+
 
 +-------+--------------------------------------------------------------+
-|    | Warning. If you have errors in the buildroot configuration,  |
-|  | you could obtain errors in this compilation phase. Check     |
+|       | Warning. If you have errors in the buildroot configuration,  |
+|       | you could obtain errors in this compilation phase. Check     |
 |       | your configuration correctly. Use “make clean” to clean up   |
 |       | your partial compilation.                                    |
 +-------+--------------------------------------------------------------+
 
 +-------+--------------------------------------------------------------+
-|    | Warning. dl subfolder in your buildroot folder contains all  |
-|  | the packages downloaded for the internet. If you want to     |
+|       | Warning. dl subfolder in your buildroot folder contains all  |
+|       | the packages downloaded for the internet. If you want to     |
 |       | move your buildroot configuration from one computer to       |
 |       | another, avoiding the copy of the virtual machine, you can   |
 |       | copy this folder.                                            |
@@ -961,25 +961,24 @@ case of putty), and then press “Open”. **Apply the power to the
 Raspberry PI,** and you will see the booting messages.
 
 +-------+--------------------------------------------------------------+
-|   | **[Serial interface identification in Linux]:** In Linux the |
-|  | serial devices are identified typically with the names       |
+|       | **[Serial interface identification in Linux]:** In Linux the |
+|       | serial devices are identified typically with the names       |
 |       | /dev/ttyS0, /dev/ttyS1, etc. In the figure, the example has  |
 |       | been checked with a serial port implemented with a USB-RS232 |
 |       | converter. This is the reason why the name is /dev/ttyUSB0.  |
 |       | In your computer, you need to find the identification of     |
 |       | your serial port. Use Linux **dmesg** command to do this.    |
-+=======+==============================================================+
 +-------+--------------------------------------------------------------+
 
+
 .. image:: rpi/media/image19.png
-   :alt: A computer screen shot of a computer Description automatically
-   generated
+   :alt: A computer screenshot of a computer Description automatically generated
    :width: 4.90093in
    :height: 4.28723in
 
 Fig. 15: Putty program main window.
 
-After some seconds, you will see a lot of messages displaying in the
+After a few seconds, you will see a lot of messages displayed on the
 terminal. Linux kernel is booting, and the operating system is running
 its configuration and initial daemons. If the system boots correctly,
 you will see an output like the one represented in Fig. 16. Introduce
@@ -992,8 +991,8 @@ the username root, and the Linux shell will be available for you.
 Fig. 16: Linux Running
 
 +-------+--------------------------------------------------------------+
-|  | **[DHCP Server]:** The DHCP server providing the IP address  |
-| | | to the RPI should be active in your network. In the UPM      |
+|       | **[DHCP Server]:** The DHCP server providing the IP address  |
+|       | to the RPI should be active in your network. In the UPM      |
 |       | ETSIST labs, there is no cabled network, only WIFI. If you   |
 |       | are using the RPI at home, the DHCP server is running in     |
 |       | your router. The method used by this should be different     |
@@ -1002,7 +1001,6 @@ Fig. 16: Linux Running
 |       | connected to the RPI or check the router status web page and |
 |       | display the table of the DHCP clients connected. Looking for |
 |       | the MAC in the list, you will obtain the IP address.         |
-+=======+==============================================================+
 +-------+--------------------------------------------------------------+
 
 Connecting the RPI to the network
@@ -1033,22 +1031,20 @@ connectivity, trying to connect to another computer in the laboratory.
 Use the ping command.
 
 +-------+--------------------------------------------------------------+
-|   | **[Help]:** If you run the ping command in the Raspberry     |
-|  | trying to connect with a computer in the laboratory, you     |
+|       | **[Help]:** If you run the ping command in the Raspberry     |
+|       | trying to connect with a computer in the laboratory, you     |
 |       | probably obtain a connection timeout. Consider that          |
 |       | computers running Windows could have the firewall activated. |
 |       | You can also try to run the ping on a windows computer or on |
 |       | Linux virtual machine. In this case, the RPI doesn’t have a  |
 |       | firewall running, and the connection should be successful.   |
-+=======+==============================================================+
 +-------+--------------------------------------------------------------+
 
 +-------+--------------------------------------------------------------+
-|   | [Question] What is the MAC address of your RPI? Is this MAC  |
-|  | the same that your instructor has given you? Use the dmesg   |
+|       | [Question] What is the MAC address of your RPI? Is this MAC  |
+|       | the same that your instructor has given you? Use the dmesg   |
 |       | command to see the kernel boot parameters and identify the   |
 |       | method used to get the MAC address from the hardware.        |
-+=======+==============================================================+
 +-------+--------------------------------------------------------------+
 
 Adding WIFI support 
@@ -1069,9 +1065,8 @@ filesystem. This step is done by adding these commands to the
    cp <buildroot-folder>/package/busybox/mdev.conf ${TARGET_DIR}/etc/mdev.conf
 
 +-------+--------------------------------------------------------------+
-|   | [mdev] mdev provides a method to add or remove hotplug       |
-|  | devices in Linux.                                            |
-+=======+==============================================================+
+|       | [mdev] mdev provides a method to add or remove hotplug       |
+|       | devices in Linux.                                            | 
 +-------+--------------------------------------------------------------+
 
 Adding the Broadcom firmware support for Wireless hardware
@@ -1407,10 +1402,9 @@ project (remove the executable and objects) with *Clean*.
 Fig. 23: Eclipse project compiled (Binaries has been generated)
 
 +-------+--------------------------------------------------------------+
-| |ima  | **[Console in Eclipse]:** Have a look at the messages        |
-| ge17| | displayed in the Console. You will see how eclipse is        |
+|       | **[Console in Eclipse]:** Have a look at the messages        |
+|       | displayed in the Console. You will see how eclipse is        |
 |       | calling the cross compiler with different parameters.        |
-+=======+==============================================================+
 +-------+--------------------------------------------------------------+
 
 Moving the binary to the target
@@ -1443,9 +1437,8 @@ connect to it).
 Fig. 25: Run test program in Raspberry Pi
 
 +-------+--------------------------------------------------------------+
-| |ima  | Warning. If you experiment problems using ssh, delete the    |
-| ge18| | .ssh folder in your home directory.                          |
-+=======+==============================================================+
+|       | Warning. If you experiment problems using ssh, delete the    |
+|       | .ssh folder in your home directory.                          |
 +-------+--------------------------------------------------------------+
 
 Automatic debugging using gdb and gdbserver
@@ -1520,9 +1513,8 @@ Installing Ubuntu 22.04 LTS as a virtual machine.
 -------------------------------------------------
 
 +-------+--------------------------------------------------------------+
-| |ima  | **[Ubuntu version]:** It is mandatory to install Ubuntu      |
-| ge19| | 22.04 version.                                               |
-+=======+==============================================================+
+|       | **[Ubuntu version]:** It is mandatory to install Ubuntu      |
+|       | 22.04 version.                                               |
 +-------+--------------------------------------------------------------+
 
 The first step is to download Ubuntu 22.04.3 (64 bit PC) from Ubuntu web
