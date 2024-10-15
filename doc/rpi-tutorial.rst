@@ -789,12 +789,7 @@ appear in the Table I leaves it with its default value.
 |         | enviro      |                         |                   |
 |         | nment-setup |                         |                   |
 +---------+-------------+-------------------------+-------------------+
-|         |             | Default values          |                   |
-|  Legacy |             |                         |                   |
-| config  |             |                         |                   |
-| op      |             |                         |                   |
-| tions   |             |                         |                   |
-+---------+-------------+-------------------------+-------------------+
+
 
 
 
@@ -802,9 +797,9 @@ Once you have configured all the menus, you need to exit, saving the
 values (File->Quit).
 
 +-------+--------------------------------------------------------------+
-|       | **[Help]:** The **Buildroot** configuration is stored in a   |
+|       |  [Help]: The Buildroot        configuration is stored in a   |
 |       | file named “.config”. You should have a backup of this file. |
-+-------+-------------.------------------------------------------------+
++-------+--------------------------------------------------------------+
 
 
 Compiling buildroot
