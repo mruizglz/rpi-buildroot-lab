@@ -1064,7 +1064,7 @@ filesystem. This step is done by adding these commands to the
 +-------+--------------------------------------------------------------+
 
 Adding the Broadcom firmware support for Wireless hardware
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==========================================================
 
 The hardware element included in the RPI-3 for the Wireless
 communication is implemented with the BCM43438 chip. It is needed to
