@@ -239,8 +239,8 @@ processor. All the software elements used have a GPL license.
 .. table:: Table I: Parameters for Buildroot configuration
 
    +-------+--------------------------------------------------------------+
-   | |im   | **[Time to complete the tutorial]:** The time necessary to   |
-   | age2| | complete all the tutorial steps is approximately 8 hours.    |
+   |       | **[Time to complete the tutorial]:** The time necessary to   |
+   |       | complete all the tutorial steps is approximately 8 hours.    |
    +=======+==============================================================+
    +-------+--------------------------------------------------------------+
 
@@ -391,16 +391,16 @@ In some seconds, a command window is displayed. Then, execute these
 commands:
 
 +-------+--------------------------------------------------------------+
-| |im   | **[Help]:** For this course, you will need to become         |
-| age3| | familiar with the Linux Terminal use. On the Moodle site of  |
+|       | **[Help]:** For this course, you will need to become         |
+|       | familiar with the Linux Terminal use. On the Moodle site of  |
 |       | this course, you can find a cheat sheet with the basic Linux |
 |       | commands.                                                    |
 +=======+==============================================================+
 +-------+--------------------------------------------------------------+
 
 +-------+--------------------------------------------------------------+
-| |im   | **[Help]:** In a Linux terminal, the “TAB” key helps you to  |
-| age4| | autocomplete the commands, folders, and file names. You can  |
+|       | **[Help]:** In a Linux terminal, the “TAB” key helps you to  |
+|       | autocomplete the commands, folders, and file names. You can  |
 |       | find a description of “make” application at this link        |
 |       | https://www.gnu.org/software/make/manual/make.pdf            |
 +=======+==============================================================+
@@ -427,8 +427,8 @@ displayed can differ. If an item of buildroot configuration does not
 appear in the Table I leaves it with its default value.
 
 +-------+--------------------------------------------------------------+
-| |im   | **[Help]:** The Buildroot configuration is an iterative      |
-| age5| | process. In order to set up your embedded Linux system, you  |
+|    | **[Help]:** The Buildroot configuration is an iterative      |
+|  | process. In order to set up your embedded Linux system, you  |
 |       | will need to execute the configuration several times.        |
 +=======+==============================================================+
 +-------+--------------------------------------------------------------+
@@ -804,8 +804,8 @@ Once you have configured all the menus, you need to exit, saving the
 values (File->Quit).
 
 +-------+--------------------------------------------------------------+
-| |im   | **[Help]:** The **Buildroot** configuration is stored in a   |
-| age6| | file named “.config”. You should have a backup of this file. |
+|    | **[Help]:** The **Buildroot** configuration is stored in a   |
+| | file named “.config”. You should have a backup of this file. |
 +=======+==============================================================+
 +-------+--------------------------------------------------------------+
 
@@ -818,8 +818,8 @@ If everything is correct, you will see a final window similar to the one
 represented in Fig. 8.
 
 +-------+--------------------------------------------------------------+
-| |im   | **[Time for this step]:** In this step, buildroot will       |
-| age7| | connect, using the internet, to different repositories.      |
+|    | **[Time for this step]:** In this step, buildroot will       |
+|  | connect, using the internet, to different repositories.      |
 |       | After downloading the code, Buildroot will compile the       |
 |       | applications and generate a lot of files and folders.        |
 |       | Depending on your internet speed access and the              |
@@ -829,16 +829,16 @@ represented in Fig. 8.
 +-------+--------------------------------------------------------------+
 
 +-------+--------------------------------------------------------------+
-| |im   | Warning. If you have errors in the buildroot configuration,  |
-| age8| | you could obtain errors in this compilation phase. Check     |
+|    | Warning. If you have errors in the buildroot configuration,  |
+|  | you could obtain errors in this compilation phase. Check     |
 |       | your configuration correctly. Use “make clean” to clean up   |
 |       | your partial compilation.                                    |
 +=======+==============================================================+
 +-------+--------------------------------------------------------------+
 
 +-------+--------------------------------------------------------------+
-| |im   | Warning. dl subfolder in your buildroot folder contains all  |
-| age9| | the packages downloaded for the internet. If you want to     |
+|    | Warning. dl subfolder in your buildroot folder contains all  |
+|  | the packages downloaded for the internet. If you want to     |
 |       | move your buildroot configuration from one computer to       |
 |       | another, avoiding the copy of the virtual machine, you can   |
 |       | copy this folder.                                            |
@@ -962,8 +962,8 @@ case of putty), and then press “Open”. **Apply the power to the
 Raspberry PI,** and you will see the booting messages.
 
 +-------+--------------------------------------------------------------+
-| |ima  | **[Serial interface identification in Linux]:** In Linux the |
-| ge11| | serial devices are identified typically with the names       |
+|   | **[Serial interface identification in Linux]:** In Linux the |
+|  | serial devices are identified typically with the names       |
 |       | /dev/ttyS0, /dev/ttyS1, etc. In the figure, the example has  |
 |       | been checked with a serial port implemented with a USB-RS232 |
 |       | converter. This is the reason why the name is /dev/ttyUSB0.  |
@@ -993,8 +993,8 @@ the username root, and the Linux shell will be available for you.
 Fig. 16: Linux Running
 
 +-------+--------------------------------------------------------------+
-| |ima  | **[DHCP Server]:** The DHCP server providing the IP address  |
-| ge12| | to the RPI should be active in your network. In the UPM      |
+|  | **[DHCP Server]:** The DHCP server providing the IP address  |
+| | | to the RPI should be active in your network. In the UPM      |
 |       | ETSIST labs, there is no cabled network, only WIFI. If you   |
 |       | are using the RPI at home, the DHCP server is running in     |
 |       | your router. The method used by this should be different     |
@@ -1034,8 +1034,8 @@ connectivity, trying to connect to another computer in the laboratory.
 Use the ping command.
 
 +-------+--------------------------------------------------------------+
-| |ima  | **[Help]:** If you run the ping command in the Raspberry     |
-| ge13| | trying to connect with a computer in the laboratory, you     |
+|   | **[Help]:** If you run the ping command in the Raspberry     |
+|  | trying to connect with a computer in the laboratory, you     |
 |       | probably obtain a connection timeout. Consider that          |
 |       | computers running Windows could have the firewall activated. |
 |       | You can also try to run the ping on a windows computer or on |
@@ -1045,8 +1045,8 @@ Use the ping command.
 +-------+--------------------------------------------------------------+
 
 +-------+--------------------------------------------------------------+
-| |ima  | [Question] What is the MAC address of your RPI? Is this MAC  |
-| ge14| | the same that your instructor has given you? Use the dmesg   |
+|   | [Question] What is the MAC address of your RPI? Is this MAC  |
+|  | the same that your instructor has given you? Use the dmesg   |
 |       | command to see the kernel boot parameters and identify the   |
 |       | method used to get the MAC address from the hardware.        |
 +=======+==============================================================+
@@ -1070,8 +1070,8 @@ filesystem. This step is done by adding these commands to the
    cp <buildroot-folder>/package/busybox/mdev.conf ${TARGET_DIR}/etc/mdev.conf
 
 +-------+--------------------------------------------------------------+
-| |ima  | [mdev] mdev provides a method to add or remove hotplug       |
-| ge15| | devices in Linux.                                            |
+|   | [mdev] mdev provides a method to add or remove hotplug       |
+|  | devices in Linux.                                            |
 +=======+==============================================================+
 +-------+--------------------------------------------------------------+
 
@@ -1286,8 +1286,8 @@ eclipse projects created by the user. You can have as many workspaces as
 you want. Please specify a folder in your account.
 
 +-------+--------------------------------------------------------------+
-| |ima  | **[Help]:** The figures displayed in the following           |
-| ge16| | paragraphs can be different depending on the Eclipse version |
+|   | **[Help]:** The figures displayed in the following           |
+|  | paragraphs can be different depending on the Eclipse version |
 |       | installed.                                                   |
 +=======+==============================================================+
 +-------+--------------------------------------------------------------+
