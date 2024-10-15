@@ -663,11 +663,6 @@ appear in the Table I leaves it with its default value.
 |         | Kernel      |                         |                   |
 |         | Tools       |                         |                   |
 +---------+-------------+-------------------------+-------------------+
-|         |             |                         |                   |
-|  Target |             |                         |                   |
-| Pac     |             |                         |                   |
-| kages   |             |                         |                   |
-+---------+-------------+-------------------------+-------------------+
 |         | Busybox     | yes                     |                   |
 +---------+-------------+-------------------------+-------------------+
 |         | Busybox     | package/b               |                   |
@@ -802,13 +797,14 @@ appear in the Table I leaves it with its default value.
 +---------+-------------+-------------------------+-------------------+
 
 
+
 Once you have configured all the menus, you need to exit, saving the
 values (File->Quit).
 
 +-------+--------------------------------------------------------------+
 |       | **[Help]:** The **Buildroot** configuration is stored in a   |
 |       | file named “.config”. You should have a backup of this file. |
-+---------+-------------+-------------------------+--------------------+
++-------+-------------.------------------------------------------------+
 
 
 Compiling buildroot
@@ -1048,17 +1044,18 @@ Use the ping command.
 +-------+--------------------------------------------------------------+
 
 Adding WIFI support 
-~~~~~~~~~~~~~~~~~~~~
+===================
 
 
- Adding mdev support to Embedded Linux
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Adding mdev support to Embedded Linux
+=====================================
 
 
 The folder <buildroot-folder>\ */package/busybox* contains two files
 named S10mdev and mdev.conf. These files have to be added to the target
 filesystem. This step is done by adding these commands to the
 *<buildroot-folder>/board/raspberrypi3-64/post-build.sh* script:
+
 
 ::
 
