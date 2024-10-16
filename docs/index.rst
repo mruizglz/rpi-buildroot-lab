@@ -10,6 +10,4 @@ Welcome to Example's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   some-feature.md
-   another-feature.md
    rpi-tutorial.rst
