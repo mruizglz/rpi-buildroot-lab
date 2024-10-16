@@ -10,22 +10,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+             fetch-depth: 0
       - uses: actions/setup-python@v3  
         with:
-            python-version: '3.8'
+            python-version: 3.11
       - name: Install dependencies
         run: |
           pip install sphinx sphinx_rtd_theme myst_parser sphinx-simplepdf
-      - name: Sphinx build
-        run: |
-          sphinx-build doc _build
-          sphinx-build -M simplepdf  doc _build
-          #sphinx-pdf-generate doc _build/html
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+      - name: Build and Commit
+        uses: iSOLveIT/sphinx-pdf-generate-action@main
         with:
-          publish_branch: gh-pages
+          config_file_path: doc/conf.py
+          target_branch: 'gh-pages'
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: _build/
-          force_orphan: true
+          branch: site
