@@ -1,27 +1,24 @@
 name: documentation
-
 on: [push, pull_request, workflow_dispatch]
-
 permissions:
   contents: write
-
 jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+      - name: Install dependencies
+        run: |
+          pip install sphinx sphinx_rtd_theme myst_parser
+      - name: Sphinx build
+        run: |
+          sphinx-build doc _build
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         with:
-             fetch-depth: 0
-      - uses: actions/setup-python@v3  
-        with:
-            python-version: 3.12
-      - name: Build and Commit
-        uses: iSOLveIT/sphinx-pdf-generate-action@main
-        with:
-          config_file_path: docs/conf.py
-          target_branch: 'gh-pages'
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
+          publish_branch: gh-pages
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: site
+          publish_dir: _build/
+          force_orphan: true
