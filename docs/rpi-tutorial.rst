@@ -137,7 +137,7 @@ executed.
 Fig. 2: Ubuntu Virtual Machine login screen.
 
 Open the **Firefox** web browser and download from
-https://buildroot.org/, the version identified as **buidlroot2023-08-3**
+https://buildroot.org/, the version identified as **buidlroot2024-08-1**
 (use the download link, see Fig. 3, and navigate searching for earlier
 releases if necessary, https://buildroot.org/downloads/ ). Save the file
 to the **Documents** folder in your account (Fig. 4).
@@ -157,7 +157,7 @@ then this Linux will be installed in the target.
 
 Fig. 4: Example of Downloading buildroot source code.
 
-Create a folder “rpi” in “Documentes”. Copy the file to the
+Create a folder “rpi” in “Documents”. Copy the file to the
 “Documents/rpi” folder and decompress the file (Fig. 5).
 
 .. image:: rpi/media/image8.png
@@ -180,6 +180,11 @@ Fig. 6: Dash home, Terminal application
 
 In some seconds, a command window is displayed. Then, execute these
 commands:
+
+..code-block:: bash 
+    $ mkdir build
+    $ cd build
+    $ make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2023.08.2/ menuconfig
 
 +-------+--------------------------------------------------------------+
 |       | **[Help]:** For this course, you will need to become         |
@@ -224,32 +229,16 @@ appear in the Table I leaves it with its default value.
 +-------+--------------------------------------------------------------+
 
 
+Target Architecture
 
-+---------+-------------+-------------------------+-------------------+
-| **Main  | **Subitem** | **Value**               | **Comments**      |
-| Item**  |             |                         |                   |
-+=========+=============+=========================+===================+
-| **T     | Target      | AArch64 (little endian) | ARM 64 bits       |
-| arget** | A           |                         |                   |
-| options | rchitecture |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Target      | Cortex-A53              |                   |
-|         | A           |                         |                   |
-|         | rchitecture |                         |                   |
-|         | Variant     |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Flo         | VFPv4                   |                   |
-|         | ating-point |                         |                   |
-|         | strategy    |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | MMU Page    | 4kB                     |                   |
-|         | Size        |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Target      | elf                     |                   |
-|         | Binary      |                         |                   |
-|         | Format      |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         |             |                         |                   |
+Target options   
+Target Architecture: AArch64 (little endian) ARM 64 bits
+Target Archtecture Variants: Cortex-A72
+Floating Point Strategy: VFPv4
+MMU  Page Size: 4KB
+Target Binary Format: ELF
+
+
 +---------+-------------+-------------------------+-------------------+
 | **Tool  |             |                         | Cross Compiler,   |
 | chain** |             |                         | linker, and       |
