@@ -2,10 +2,6 @@
 
 **Acknowledgements**
 
-This document is based on a previous work of Dr. Sergio Esquembri and
-Dr. Francisco Javier Jiménez from the Department of Telematics and
-Electronics Engineering of Madrid's Technical University using RPI Model
-B.
 
 |image1|\ Embedded Linux Systems: Using Buildroot for building Embedded
 Linux Systems on Raspberry Pi 3 Model B by Mariano Ruiz is licensed
@@ -181,7 +177,8 @@ Fig. 6: Dash home, Terminal application
 In some seconds, a command window is displayed. Then, execute these
 commands:
 
-..code-block:: bash 
+.. code-block:: bash 
+
     $ mkdir build
     $ cd build
     $ make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2023.08.2/ menuconfig
