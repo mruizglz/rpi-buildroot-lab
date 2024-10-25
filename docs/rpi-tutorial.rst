@@ -235,158 +235,78 @@ Floating Point Strategy: VFPv4
 MMU  Page Size: 4KB
 Target Binary Format: ELF
 
+Toolchain:  Cross Compiler, linker, and libraries to be  built to compile our embedded      application
+Toolchain type (Buildroot toolchain).  The Embedded system will be compiled with tools integrated  into Buildroot
+   
+Custom    buidlroot toolchain vendor name
 
-+---------+-------------+-------------------------+-------------------+
-| **Tool  |             |                         | Cross Compiler,   |
-| chain** |             |                         | linker, and       |
-|         |             |                         | libraries to be   |
-|         |             |                         | built to compile  |
-|         |             |                         | our embedded      |
-|         |             |                         | application       |
-+---------+-------------+-------------------------+-------------------+
-|         | Toolchain   | Buildroot toolchain     | The Embedded      |
-|         | Type        |                         | system will be    |
-|         |             |                         | compiled with     |
-|         |             |                         | tools integrated  |
-|         |             |                         | into Buildroot    |
-+---------+-------------+-------------------------+-------------------+
-|         | Custom      | buidlroot               |                   |
-|         | toolchain   |                         |                   |
-|         | vendor name |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | C library   | glibc                   | Library           |
-|         |             |                         | containing the    |
-|         |             |                         | typical C         |
-|         |             |                         | libraries used in |
-|         |             |                         | Linux             |
-|         |             |                         | environments      |
-|         |             |                         | (stdlib, stdio,   |
-|         |             |                         | etc)              |
-+---------+-------------+-------------------------+-------------------+
-|         | Kernel      | Same as kernel being    |                   |
-|         | Headers     | built                   |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Custom      | 5.10.x                  |                   |
-|         | Kernel      |                         |                   |
-|         | Headers     |                         |                   |
-|         | Series      |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Binutils    | binutils 2.40           | Binutils contains |
-|         | Version     |                         | tools to manage   |
-|         |             |                         | the binary files  |
-|         |             |                         | obtained in the   |
-|         |             |                         | compilation of    |
-|         |             |                         | the different     |
-|         |             |                         | applications      |
-+---------+-------------+-------------------------+-------------------+
-|         | GCC         | gcc 12.x                | GCC tools version |
-|         | compiler    |                         | to be installed   |
-|         | Version     |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Enable C++  | Yes                     | Including support |
-|         | support     |                         | for C++           |
-|         |             |                         | programming,      |
-|         |             |                         | compiling, and    |
-|         |             |                         | linking.          |
-+---------+-------------+-------------------------+-------------------+
-|         | Build cross | yes                     | Includes the      |
-|         | gdb for the |                         | support for GDB.  |
-|         | host        | Add Python support      | GCC debugger.     |
-+---------+-------------+-------------------------+-------------------+
-|         | GDB         | Gdb 11.x                |                   |
-|         | debugger    |                         |                   |
-|         | version     |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-| Build   |             | Default values          | How Buildroot     |
-| op      |             |                         | will build the    |
-| tions   |             |                         | code. Leave       |
-|         |             |                         | default values.   |
-+---------+-------------+-------------------------+-------------------+
-|         |             |                         |                   |
-| System  |             |                         |                   |
-| C       |             |                         |                   |
-| onfigur |             |                         |                   |
-| ation   |             |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Root        | Default target skeleton | Linux folder      |
-|         | filesystem  |                         | organization for  |
-|         | skeleton    |                         | the embedded      |
-|         |             |                         | system            |
-+---------+-------------+-------------------------+-------------------+
-|         | System      | **buildroot**           | Name of the       |
-|         | Hostname    |                         | embedded system   |
-+---------+-------------+-------------------------+-------------------+
-|         | System      | **Linux RPI 3**         | Banner            |
-|         | Banner      |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Passwords   | sha-256                 |                   |
-|         | encoding    |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Init System | Busybox                 |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | /dev        | Dynamic using devtmpfs  |                   |
-|         | management  | + mdev                  |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Path to     | **sy                    | Text files with   |
-|         | permissions | stem/device_table.txt** | permissions for   |
-|         | table       |                         | /dev files        |
-+---------+-------------+-------------------------+-------------------+
-|         | Enable root | Yes                     |                   |
-|         | login with  |                         |                   |
-|         | password    |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Root        | **rpi**                 |                   |
-|         | password    |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | /bin/sh     | Busybox’ default shell  |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Run a       | **tty PORT: console**   | Linux device file |
-|         | getty: Port |                         | with the port to  |
-|         | to run a    | **Keep kernel default** | run getty (login) |
-|         | getty       |                         | process.          |
-|         |             | **vt100**               |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | remount     | Yes                     |                   |
-|         | root        |                         |                   |
-|         | filesystem  |                         |                   |
-|         | read-write  |                         |                   |
-|         | during boot |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Network     | eth0                    |                   |
-|         | interface   |                         |                   |
-|         | to          |                         |                   |
-|         | configure   |                         |                   |
-|         | trough DHCP |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Set the     | /bin:/                  |                   |
-|         | system's    | sbin:/usr/bin:/usr/sbin |                   |
-|         | default     |                         |                   |
-|         | PATH        |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Purge       | Yes                     |                   |
-|         | unwanted    |                         |                   |
-|         | locales     |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Custom      | path                    |                   |
-|         | scripts to  | buidlroot /board/raspbe | to_buidlroot      |
-|         | run before  | rrypi3-64/post-build.sh | path where        |
-|         | creating    |                         | buildroot source  |
-|         | filesystem  |                         | is                |
-|         | images      |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Custom      |                         |                   |
-|         | scripts to  |                         |                   |
-|         | run inside  |                         |                   |
-|         | the         |                         |                   |
-|         | fakeroot    |                         |                   |
-|         | environment |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Custom      | <                       |                   |
-|         | scripts to  | buidlroot>/board/raspbe |                   |
-|         | run after   | rrypi3-64/post-image.sh |                   |
-|         | creating    |                         |                   |
-|         | filesystem  |                         |                   |
-|         | images      |                         |                   |
+
+C library  glibc  Library    containing the typical C     
+libraries used in  Linux    environments   (stdlib, stdio,   etc)              |
+
+Kernel Headers    Same as kernel being   built
+
+Custom Kernel Headers  Series:   6.6.x
+
+
+Binutils Version     binutils 2.41           Binutils contains  tools to manage    the binary files obtained in the   compilation of   the different     applications    
+
+ GCC  compiler Version     gcc 13.x   GCC tools version to be installed  
+
+Enable C++ support    Yes   Including support for C++ programming,      compiling, and    linking. 
+Build cross gdb for the host   yes Includes the  support for GDB.  
+Add Python support 
+
+GDB debugger version      gdb 14.x
+
+Build options. How Buidlroot will build the code. Leave the default values
+
+
+System Configuration 
+  
+Root Default target skeleton Linux folder filesystem organization for skeleton the embedded system 
+System **buildroot** Name of the Hostname embedded system 
+System **Linux RPI 3** Banner   Banner 
+Passwords sha 256 encoding 
+Init System Busybox    
+/dev Dynamic using devtmpfs 
+management mdev  
+Path to **sy Text files with permissions stem/device_table.txt** permissions for   table  /dev files   
+Enable root Yes login with password 
+Root password rpi
+/bin/sh Busybox’ default shell 
+Run a **tty PORT: console** Linux device file 
+getty: Port with the port to to run a **Keep kernel default** run getty (login) 
+getty  process.   **vt100**  
+remount root filesystem read write during boot  Yes
+Network interface to configure trough DHCP  eth0
+Set the /bin:/  system's sbin:/usr/bin:/usr/sbin default PATH 
+  Purge Yes  
+  unwanted 
+  locales 
+  
+  Custom path  
+  scripts to buidlroot /board/raspbe to_buidlroot 
+  run before rrypi3 64/post build.sh path where 
+  creating buildroot source 
+  filesystem is 
+  images 
+  
+  Custom 
+  scripts to 
+  run inside 
+  the 
+  fakeroot 
+  environment  
+  
+  Custom <  
+  scripts to buidlroot>/board/raspbe 
+  run after rrypi3 64/post image.sh 
+  creating 
+  filesystem 
+  images                                                      
+
+
 +---------+-------------+-------------------------+-------------------+
 | **Linux |             |                         |                   |
 | K       |             |                         |                   |
