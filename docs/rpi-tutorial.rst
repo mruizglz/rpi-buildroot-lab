@@ -227,6 +227,7 @@ appear in the Table I leaves it with its default value.
 
 
 Target Architecture
+^^^^^^^^^^^^^^^^^^^
 
 Target options   
 Target Architecture: AArch64 (little endian) ARM 64 bits
@@ -235,34 +236,29 @@ Floating Point Strategy: VFPv4
 MMU  Page Size: 4KB
 Target Binary Format: ELF
 
-Toolchain:  Cross Compiler, linker, and libraries to be  built to compile our embedded      application
-Toolchain type (Buildroot toolchain).  The Embedded system will be compiled with tools integrated  into Buildroot
-   
-Custom    buidlroot toolchain vendor name
+Toolchain
+^^^^^^^^^
+Cross Compiler, linker, and libraries to be  built to compile our embedded application
 
+- Toolchain type (Buildroot toolchain).  The Embedded system will be compiled with tools integrated  into Buildroot
+- Custom toolchain vendor name: buildroot
+- C library  glibc  Library    containing the typical C  libraries used in  Linux    environments   (stdlib, stdio,   etc)              |
+- Kernel Headers    Same as kernel being   built
+- Custom Kernel Headers  Series:   6.6.x
+- Binutils Version     binutils 2.41           Binutils contains  tools to manage    the binary files obtained in the   compilation of   the different     applications    
+- GCC  compiler Version     gcc 13.x   GCC tools version to be installed  
+- Enable C++ support    Yes   Including support for C++ programming,      compiling, and    linking. 
+- Build cross gdb for the host   yes Includes the  support for GDB.  
+- Add Python support 
+- GDB debugger version      gdb 14.x
 
-C library  glibc  Library    containing the typical C     
-libraries used in  Linux    environments   (stdlib, stdio,   etc)              |
-
-Kernel Headers    Same as kernel being   built
-
-Custom Kernel Headers  Series:   6.6.x
-
-
-Binutils Version     binutils 2.41           Binutils contains  tools to manage    the binary files obtained in the   compilation of   the different     applications    
-
- GCC  compiler Version     gcc 13.x   GCC tools version to be installed  
-
-Enable C++ support    Yes   Including support for C++ programming,      compiling, and    linking. 
-Build cross gdb for the host   yes Includes the  support for GDB.  
-Add Python support 
-
-GDB debugger version      gdb 14.x
-
-Build options. How Buidlroot will build the code. Leave the default values
+Build options
+^^^^^^^^^^^^^
+How Buidlroot will build the code. Leave the default values
 
 
 System Configuration 
+^^^^^^^^^^^^^^^^^^^^
   
 Root Default target skeleton Linux folder filesystem organization for skeleton the embedded system 
 System **buildroot** Name of the Hostname embedded system 
