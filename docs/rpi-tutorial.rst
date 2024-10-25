@@ -284,193 +284,149 @@ System Configuration
                                                         
 
 
-+---------+-------------+-------------------------+-------------------+
-| **Linux |             |                         |                   |
-| K       |             |                         |                   |
-| ernel** |             |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Kernel      | Custom tarball          |                   |
-|         | Version     |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | URL of      | $(call                  |                   |
-|         | custom      | github,                 |                   |
-|         | kernel      | raspberrypi,linux,0b54d |                   |
-|         | tarball     | bda3cca2beb51e236a25738 |                   |
-|         |             | 784e90853b64)/linux-0b5 |                   |
-|         |             | 4dbda3cca2beb51e236a257 |                   |
-|         |             | 38784e90853b64.tar.gz   |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Kernel      | Using and in-tree       |                   |
-|         | co          | defconfig file          |                   |
-|         | nfiguration |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Defconfig   | bcmrpi3                 |                   |
-|         | name        |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Kernel      | Image                   |                   |
-|         | binary      |                         |                   |
-|         | format      |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Kernel      | Gzip compression        |                   |
-|         | compression |                         |                   |
-|         | format      |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Build a     | yes                     |                   |
-|         | Device Tree |                         |                   |
-|         | Blob (DTB)  |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | In-tree     | b                       |                   |
-|         | Device Tree | roadcom/bcm2710-rpi-3-b |                   |
-|         | Source file | broadc                  |                   |
-|         | names       | om/bcm2710-rpi-3-b-plus |                   |
-|         |             | b                       |                   |
-|         |             | roadcom/bcm2837-rpi-3-b |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Need host   | Yes                     |                   |
-|         | OpenSSL     |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Linux       | Nothing                 |                   |
-|         | Kernel      |                         |                   |
-|         | Extensions  |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Linux       | Nothing                 |                   |
-|         | Kernel      |                         |                   |
-|         | Tools       |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Busybox     | yes                     |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Busybox     | package/b               |                   |
-|         | co          | usybox/busybox.config   |                   |
-|         | nfiguration |                         |                   |
-|         | file to use |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Audio and   | Default values          |                   |
-|         | video       |                         |                   |
-|         | a           |                         |                   |
-|         | pplications |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | C           | Default values          |                   |
-|         | ompresssors |                         |                   |
-|         | and         |                         |                   |
-|         | de          |                         |                   |
-|         | compressors |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Debugging,  | **gdb, gdbserver**      |                   |
-|         | profiling   |                         |                   |
-|         | and         |                         |                   |
-|         | benchmark   |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | D           | Default values          |                   |
-|         | evelopments |                         |                   |
-|         | tools       |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Filesystem  | Default values          |                   |
-|         | and flash   |                         |                   |
-|         | utilities   |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Games       | Default values          |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Graphic     | Default values          |                   |
-|         | libraries   |                         |                   |
-|         | and         |                         |                   |
-|         | a           |                         |                   |
-|         | pplications |                         |                   |
-|         | (gr         |                         |                   |
-|         | aphic/text) |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Hardware    | **F                     |                   |
-|         | handling    | irmware->rpi-firmware** |                   |
-|         |             |                         |                   |
-|         |             | **rpi 0/1/2/3           |                   |
-|         |             | (bootcode.bin, Default, |                   |
-|         |             | Extended)**             |                   |
-|         |             |                         |                   |
-|         |             | **Path to a file stores |                   |
-|         |             | as boot/config.txt      |                   |
-|         |             | board/raspberrypi3-     |                   |
-|         |             | 64/config_3_64bit.txt** |                   |
-|         |             |                         |                   |
-|         |             | **Path to a file stored |                   |
-|         |             | as boot/cmdline.txt     |                   |
-|         |             | board/ra                |                   |
-|         |             | spberrypi/cmdline.txt** |                   |
-|         |             |                         |                   |
-|         |             | **install DTB           |                   |
-|         |             | overlays**              |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | I           | Default values          |                   |
-|         | nterpreters |                         |                   |
-|         | language    |                         |                   |
-|         | and         |                         |                   |
-|         | scripting   |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Libraries   |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Mi          | Default                 |                   |
-|         | scellaneous |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Networking  | **ifupdown scripts**    |                   |
-|         | a           |                         |                   |
-|         | pplications | **open ssh**            |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Package     | Default                 |                   |
-|         | managers    |                         |                   |
-|         |             |                         |                   |
-|         | Real Time   |                         |                   |
-|         |             |                         |                   |
-|         | Shell and   |                         |                   |
-|         | utilities   |                         |                   |
-|         |             |                         |                   |
-|         | System      |                         |                   |
-|         | Tools       |                         |                   |
-|         |             |                         |                   |
-|         | Text        |                         |                   |
-|         | Editors and |                         |                   |
-|         | viewers     |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-| **Fil   |             |                         |                   |
-| esystem |             |                         |                   |
-| I       |             |                         |                   |
-| mages** |             |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | ext2/3/4    | ext4                    |                   |
-|         | root        |                         |                   |
-|         | filesystem  | exact size **400M**     |                   |
-|         |             |                         |                   |
-|         |             | Compression method **no |                   |
-|         |             | compression**           |                   |
-|         |             |                         |                   |
-|         |             | **Remaining values->    |                   |
-|         |             | default**               |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | tar the     | no compression          |                   |
-|         | root        |                         |                   |
-|         | filesystem  |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-| **Host  |             |                         |                   |
-| util    |             |                         |                   |
-| ities** |             |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | host        | Yes                     |                   |
-|         | genimage    |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | host        | Yes                     |                   |
-|         | dosfstools  |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | host mtools | Yes                     |                   |
-+---------+-------------+-------------------------+-------------------+
-|         | Host        | Yes                     |                   |
-|         | enviro      |                         |                   |
-|         | nment-setup |                         |                   |
-+---------+-------------+-------------------------+-------------------+
-
-
 
 
 Once you have configured all the menus, you need to exit, saving the
 values (File->Quit).
 
 
+Linux Kernel
+^^^^^^^^^^^^
+
+- Kernel Version: Custom tarball. URL of $(call custom github,kernel raspberrypi,linux,0b54dtarballbda3cca2beb51e236a25738784e90853b64)/linux0b54dbda3cca2beb51e236a25738784e90853b64.tar.gz
+- Kernel configuration: Using and intree defconfig file.
+    -Defconfigname: bcm2711
+- Kernel binary format: Image 
+- Kernel Gzip compression compression format
+- Build ayes Device Tree Blob (DTB)
+- Intreeb Device Treeroadcom/bcm2710rpi3b
+Source filebroadc namesom/bcm2710rpi3bplus broadcom/bcm2837rpi3b
+
+- Need hostYes OpenSSL 
+- LinuxNothing kernel Extensions
+-  LinuxNothing Kernel Tools 
+- Busybox: yes
+    -Busyboxpackage/bco usybox/busybox.confignfiguration file to use 
+
+Target Packages
+^^^^^^^^^^^^^^^
+Audio andDefault values 
+video 
+a 
+pplications 
+
+CDefault values 
+ompresssors 
+and 
+de
+compressors 
+
+Debugging, **gdb, gdbserver** 
+profiling 
+and 
+benchmark 
+
+DDefault values 
+evelopments 
+tools 
+
+Filesystem Default values 
+and flash 
+utilities 
+
+GamesDefault values 
+
+GraphicDefault values 
+libraries 
+and 
+a 
+pplications 
+(gr 
+aphic/text) 
+
+Hardware **F
+handling irmware>rpifirmware**
+
+ **rpi 0/1/2/3
+ (bootcode.bin, Default,
+ Extended)**
+
+ **Path to a file stores
+ as boot/config.txt 
+ board/raspberrypi3
+ 64/config_3_64bit.txt**
+
+ **Path to a file stored
+ as boot/cmdline.txt
+ board/ra 
+ spberrypi/cmdline.txt**
+
+ **install DTB
+ overlays** 
+
+IDefault values nterpreters 
+language
+and 
+scripting 
+
+Libraries 
+
+Mi Default
+scellaneous 
+
+Networking **ifupdown scripts** 
+a 
+pplications**open ssh** 
+
+PackageDefault
+managers
+
+Real Time 
+
+Shell and 
+utilities 
+
+System
+Tools 
+
+Text
+Editors and 
+viewers 
+
+ **Fil
+ esystem
+ I
+ mages**
+
+ext2/3/4 ext4 
+root
+filesystem exact size **400M**
+
+ Compression method **no
+ compression**
+
+ **Remaining values> 
+ default**
+
+tar theno compression 
+root
+filesystem
+
+ **Host 
+ util 
+ ities**
+
+host Yes
+genimage
+
+host Yes
+dosfstools
+
+host mtoolsYes
+
+Host Yes
+enviro
+nmentsetup 
 
 
 
