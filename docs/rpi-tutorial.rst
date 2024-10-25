@@ -226,15 +226,14 @@ appear in the Table I leaves it with its default value.
 +-------+--------------------------------------------------------------+
 
 
-Target Architecture
+Target Options
 ^^^^^^^^^^^^^^^^^^^
-
-Target options   
-Target Architecture: AArch64 (little endian) ARM 64 bits
-Target Archtecture Variants: Cortex-A72
-Floating Point Strategy: VFPv4
-MMU  Page Size: 4KB
-Target Binary Format: ELF
+   
+- Target Architecture: AArch64 (little endian) ARM 64 bits
+- Target Archtecture Variants: Cortex-A72
+- Floating Point Strategy: VFPv4
+- MMU  Page Size: 4KB
+- Target Binary Format: ELF
 
 Toolchain
 ^^^^^^^^^
