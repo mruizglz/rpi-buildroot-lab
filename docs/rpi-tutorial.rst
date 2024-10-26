@@ -40,7 +40,7 @@ Acronyms
 --------
 
 .. list-table:: Acronyms
-    :widths 25 25 50
+    :widths: 25 25 50
     
    * - CPU
      - Central Processing Unit 
@@ -86,7 +86,7 @@ References
 
    `www.myraspberry-pi.org/wp-content/.../Raspberry.Pi_.User_.Guide_.pdf‎ <http://www.myraspberry-pi.org/wp-content/.../Raspberry.Pi_.User_.Guide_.pdf‎>`__
 
-Building linux using buildroot
+Building Linux using buildroot
 ==============================
 
 Elements needed for the execution of these LABS
