@@ -219,13 +219,26 @@ appear in the Table I leaves it with its default value.
 
 
 Target Options
-^^^^^^^^^^^^^^^^^^^
-   
-- Target Architecture: AArch64 (little endian) ARM 64 bits
-- Target Archtecture Variants: Cortex-A72
-- Floating Point Strategy: VFPv4
-- MMU  Page Size: 4KB
-- Target Binary Format: ELF
+^^^^^^^^^^^^^^
+This is the  selection of the processor to use.
+
+.. list-table:: Target Options
+
+   * - Target Architecture
+     - AArch64 (little endian) 
+     - ARM 64 bits
+   * - Target Architecture Variants.
+     - Cortex-A72
+     - 
+   * - Floating Point Strategy
+     - VFPv4
+     - 
+   * - MMU  Page Size
+     - 4KB
+     -
+   * - Target Binary Format
+     - ELF
+     - 
 
 Toolchain
 ^^^^^^^^^
