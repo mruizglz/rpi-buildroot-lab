@@ -255,6 +255,7 @@ Cross Compiler, linker, and libraries to be  built to compile our embedded appli
      - 
    * - Custom Kernel Headers  Series
      - 6.6.x
+     - 
    * - Binutils Version
      - 2.41
      - Binutils contains  tools to manage    the binary files obtained in the   compilation of   the different     applications    
@@ -263,7 +264,7 @@ Cross Compiler, linker, and libraries to be  built to compile our embedded appli
      - GCC tools version to be installed  
    * - Enable C++ support
      - Yes. 
-     - Including support for C++ programming,      compiling, and    linking. 
+     - Including support for C++ programming, compiling, and    linking. 
    * - Build cross gdb for the host
      - Yes. 
      - Includes the  support for GDB.  
