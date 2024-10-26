@@ -23,16 +23,11 @@ system using the Raspberry PI board. The document has been specifically
 written to use a Raspberry PI development system based on the BCM2837
 processor. All the software elements used have a GPL license.
 
-.. table:: Table I: Parameters for Buildroot configuration
-
-   +-------+--------------------------------------------------------------+
-   |       | **[Time to complete the tutorial]:** The time necessary to   |
-   |       | complete all the tutorial steps is approximately 8 hours.    |
-   +=======+==============================================================+
-   +-------+--------------------------------------------------------------+
+.. note:: 
+   The time necessary to  complete all the tutorial steps is approximately 8 hours.    
 
 Read all the instructions carefully before executing the practical part;
-otherwise, you will find errors and probably unpredicted errors. In
+Otherwise, you will find errors, which are probably unpredicted. In
 parallel, you need to review the slides available at the Moodle site or
 at [RD1]
 
@@ -72,10 +67,7 @@ REFERENCED DOCUMENTS
 References
 ----------
 
-1. Embedded Linux system development.
-
-   Slides at
-   https://moodle.upm.es/titulaciones/oficiales/course/view.php?id=<yourcourse>
+1. Embedded Linux system development. `Slides <https://moodle.upm.es/titulaciones/oficiales/course/view.php?id=<yourcourse>`_
 
 2. https://bootlin.com/training/embedded-linux/
 
