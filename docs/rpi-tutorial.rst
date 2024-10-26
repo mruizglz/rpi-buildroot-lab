@@ -289,6 +289,7 @@ System Configuration
 ^^^^^^^^^^^^^^^^^^^^
   
 .. list-tables:: System configuration
+
    * - Root FS skeleton
      - Default target skeleton. 
      - Linux folder filesystem organization for skeleton the embedded system 
@@ -316,10 +317,12 @@ System Configuration
    * - Root password 
      - rpi
      -
-       - /bin/sh Busybox’ default shell 
+   * - Busybox’ default shell 
+     -  /bin/sh
+     -
    * - Run a getty after boot
      - tty PORT: **console**. Baudrate: keep kernel default. TERM environment variable: vt100
-    - 
+     - 
    * - remount root filesystem read write during boot
      - Yes
      -
