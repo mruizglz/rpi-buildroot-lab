@@ -39,32 +39,32 @@ at [RD1]
 Acronyms
 --------
 
-.. table:: Table 2: Makefile and files for cross-compilation
+.. list-table:: Acronyms
+    :widths 25 25 50
+    
+   * - CPU
+     - Central Processing Unit 
+   * - EABI
+     - Extended Application Binary Interface
+   * - EHCI     
+     - Enhanced Host Controller Interface   
+   * - I/O 
+     - Input and Output
+   * - MMC 
+     - Multimedia card 
+   * - NANDFlash 
+     - memory type for fast sequential read and write
+   * - PCI 
+     - Peripheral Component Interconnect – computer bus standard
+   * - PCI Express
+     - Peripheral Component Interconnect Express 
+   * - OS
+     - Operating system
+   * - UART
+     - Universal Asynchronous Receiver Transmitter 
+   * - USB 
+     - Universal Serial Bus
 
-   +----------+-----------------------------------------------------------+
-   | CPU      | Central Processing Unit                                   |
-   +==========+===========================================================+
-   | EABI     | Extended Application Binary Interface                     |
-   +----------+-----------------------------------------------------------+
-   | EHCI     | Enhanced Host Controller Interface                        |
-   +----------+-----------------------------------------------------------+
-   | I/O      | Input and Output                                          |
-   +----------+-----------------------------------------------------------+
-   | MMC      | Multimedia card                                           |
-   +----------+-----------------------------------------------------------+
-   | NAND     | Flash memory type for fast sequential read and write      |
-   +----------+-----------------------------------------------------------+
-   | PCI      | Peripheral Component Interconnect – computer bus standard |
-   +----------+-----------------------------------------------------------+
-   | PCI      | Peripheral Component Interconnect Express                 |
-   | Express  |                                                           |
-   +----------+-----------------------------------------------------------+
-   | OS       | Operating system                                          |
-   +----------+-----------------------------------------------------------+
-   | UART     | Universal Asynchronous Receiver Transmitter               |
-   +----------+-----------------------------------------------------------+
-   | USB      | Universal Serial Bus                                      |
-   +----------+-----------------------------------------------------------+
 
 REFERENCED DOCUMENTS
 ====================
