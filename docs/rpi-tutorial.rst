@@ -288,7 +288,7 @@ How Buidlroot will build the code. Leave the default values
 System Configuration 
 ^^^^^^^^^^^^^^^^^^^^
   
-.. list-tables:: System configuration
+.. list-table:: System configuration
 
    * - Root FS skeleton
      - Default target skeleton. 
