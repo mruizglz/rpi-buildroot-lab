@@ -288,32 +288,62 @@ How Buidlroot will build the code. Leave the default values
 System Configuration 
 ^^^^^^^^^^^^^^^^^^^^
   
-- Root FS skeleton: Default target skeleton. Linux folder filesystem organization for skeleton the embedded system 
-- System hostname: **buildroot**.   Name of the embedded system:  
-- System Banner: **Linux RPI 4**. Banner.
-- Passwords encoding: sha 256  
-- Init System: Busybox    
-    - /dev Dynamic using devtmpfs only
-- Path to permissions for table  /dev files: **system/device_table.txt**   
-- Enable root login with password: yes
-- Root password rpi
-    - /bin/sh Busybox’ default shell 
-- Run a getty after boot
-    - tty PORT: **console** 
-    - Baudrate: keep kernel default
-    - TERM environment variable: vt100
-- remount root filesystem read write during boot:  Yes
-- Network interface to configure trough DHCP: eth0
-- Set the system's default PATH: /bin/sbin:/usr/bin:/usr/sbin  
-- Purge unwanted locales: yes
-- Leave the default values for all others
-- Custom scripts to run path **before** creatating filesystem images: board/raspberrypi4-64/post build.sh  
-- Custom scripts to run inside the fakeroot environment  
-- Custom scripts to run **after** creating filesystem images: board/raspberrypi4_64/post image.sh 
-                                                        
-
-
-
+.. list-tables:: System configuration
+   * - Root FS skeleton
+     - Default target skeleton. 
+     - Linux folder filesystem organization for skeleton the embedded system 
+   * - System hostname
+     - **buildroot**.   
+     - Name of the embedded system
+   * - System Banner
+     - **Linux RPI 4**
+     - Banner.
+   * - Passwords encoding
+     - sha 256 
+     -
+   * - Init System
+     - Busybox
+     -
+   * - /dev management
+     - Dynamic using devtmpfs only
+     - 
+   * - Path to permissions for table  
+     - **system/device_table.txt**  
+     -
+   * - Enable root login with password
+     - yes
+     - 
+   * - Root password 
+     - rpi
+     -
+       - /bin/sh Busybox’ default shell 
+   * - Run a getty after boot
+     - tty PORT: **console**. Baudrate: keep kernel default. TERM environment variable: vt100
+    - 
+   * - remount root filesystem read write during boot
+     - Yes
+     -
+   * - Network interface to configure through DHCP
+     - eth0
+     -
+   * - Set the system's default PATH
+     - /bin/sbin:/usr/bin:/usr/sbin  
+     -
+   * - Purge unwanted locales
+     - yes
+     -
+   * - Leave the default values for all others
+     - 
+     -
+   * - Custom scripts to run path **before** creatating filesystem images
+     - board/raspberrypi4-64/post build.sh 
+     -
+   * - Custom scripts to run inside the fakeroot environment 
+     - 
+     -
+   * - Custom scripts to run **after** creating filesystem images
+     - board/raspberrypi4_64/post image.sh 
+     -                                                        
 
 Once you have configured all the menus, you need to exit, saving the
 values (File->Quit).
