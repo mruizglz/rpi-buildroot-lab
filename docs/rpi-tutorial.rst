@@ -239,17 +239,40 @@ Toolchain
 ^^^^^^^^^
 Cross Compiler, linker, and libraries to be  built to compile our embedded application
 
-- Toolchain type (Buildroot toolchain): The Embedded Linux System will be compiled with tools integrated  into Buildroot
-- Custom toolchain vendor name: buildroot
-- C library  glibc  Library    containing the typical C  libraries used in  Linux    environments   (stdlib, stdio,   etc)              |
-- Kernel Headers: same as kernel being built
-- Custom Kernel Headers  Series:   6.6.x
-- Binutils Version: 2.41 .Binutils contains  tools to manage    the binary files obtained in the   compilation of   the different     applications    
-- GCC  compiler Version:gcc 13.x   GCC tools version to be installed  
-- Enable C++ support:    Yes. Including support for C++ programming,      compiling, and    linking. 
-- Build cross gdb for the host: Yes. Includes the  support for GDB.  
-- Add Python support 
-- GDB debugger version: gdb 14.x
+.. list-table:: Toolchain
+
+   * - Toolchain type
+     - Buildroot toolchain
+     - The Embedded Linux System will be compiled with tools integrated  into Buildroot
+   * - Custom toolchain vendor name.
+     - buildroot
+     -
+   * - C library
+     - Library    containing the typical C  libraries used in  Linux    environments   (stdlib, stdio,   etc)
+     - glib
+   * - Kernel Headers
+     - same as kernel being built
+     - 
+   * - Custom Kernel Headers  Series
+     - 6.6.x
+   * - Binutils Version
+     - 2.41
+     - Binutils contains  tools to manage    the binary files obtained in the   compilation of   the different     applications    
+   * - GCC  compiler Version
+     - gcc 13.x   
+     - GCC tools version to be installed  
+   * - Enable C++ support
+     - Yes. 
+     - Including support for C++ programming,      compiling, and    linking. 
+   * - Build cross gdb for the host
+     - Yes. 
+     - Includes the  support for GDB.  
+   * - Add Python support 
+     - 
+     -
+   * - GDB debugger version
+     - gdb 14.x
+     -
 
 Build options
 ^^^^^^^^^^^^^
