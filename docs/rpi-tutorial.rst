@@ -1,19 +1,21 @@
 .. image:: rpi/media/image1.jpeg
 
-**Acknowledgements**
+
 
 
 |image1|\ Embedded Linux Systems: Using Buildroot for building Embedded
-Linux Systems on Raspberry Pi 3 Model B by Mariano Ruiz is licensed
+Linux Systems on Raspberry Pi 4 and 3 Model B by Mariano Ruiz is licensed
 under a `Creative Commons Attribution-ShareAlike 4.0 International
 License <http://creativecommons.org/licenses/by-sa/4.0/>`__.
 
+.. |image1| image:: rpi/media/image2.png
+   :width: 0.91667in
+   :height: 0.32292in
 
 
-SCOPE
+Scope
 =====
 
-T
 
 Document Overview
 -----------------
@@ -61,13 +63,10 @@ Acronyms
      - Universal Serial Bus
 
 
-REFERENCED DOCUMENTS
-====================
-
 References
-----------
+==========
 
-1. Embedded Linux system development. `Slides <https://moodle.upm.es/titulaciones/oficiales/course/view.php?id=<yourcourse>`_
+1. Embedded Linux system development. `Slides <https://moodle.upm.es/titulaciones/oficiales/course/view.php?id=1969>`_
 
 2. https://bootlin.com/training/embedded-linux/
 
@@ -86,12 +85,12 @@ Elements needed for the execution of these LABS
 
 In order to execute this lab properly, you need the following elements:
 
-1. The VMware player software version 16.0 or above. Available at
-   `www.wmware.com <http://www.wmware.com>`__ (free download and use).
+1. The VMware player software version 17.6.1 or above. Available at
+   `Broadcom website <https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware+Workstation+Pro>`__ (free download and use but you need to register).
    This software has already been installed on the laboratory desktop
    computer.
 
-2. A VMWare virtual machine with Ubuntu 22.04 and all the software
+2. A VMWare virtual machine with Ubuntu 24.04 and all the software
    packages installed is already available on the Desktop. This virtual
    machine is available for your personal use. If you want to set up
    your virtual machine by yourself, follow the instructions provided in
@@ -130,7 +129,7 @@ https://buildroot.org/, the version identified as **buidlroot2024-08-1**
 releases if necessary, https://buildroot.org/downloads/ ). Save the file
 to the **Documents** folder in your account (Fig. 4).
 
-.. image:: rpi/media/image6.png
+.. image:: rpi/media/buildrootweb.png
    :width: 5.97015in
    :height: 4.03801in
 
@@ -139,7 +138,7 @@ Fig. 3 Buildroot home page.
 Buildroot is a tool to generate embedded Linux systems in our PC, and
 then this Linux will be installed in the target.
 
-.. image:: rpi/media/image7.png
+.. image:: rpi/media/buildrootdownload.png
    :width: 5.25472in
    :height: 3.28499in
 
@@ -148,10 +147,10 @@ Fig. 4: Example of Downloading buildroot source code.
 Create a folder “rpi” in “Documents”. Copy the file to the
 “Documents/rpi” folder and decompress the file (Fig. 5).
 
-.. image:: rpi/media/image8.png
+.. image:: rpi/media/documentsfolder.png
    :alt: A screenshot of a computer Description automatically generated
    :width: 6.69375in
-   :height: 3.43958in
+   :height: 1.5in
 
 Fig. 5: Buildroot folder (the folder name depends on the version
 downloaded).
@@ -160,11 +159,11 @@ Right-click in the window and execute “Open in Terminal” or execute the
 Terminal application from Dash home as shown in Fig. 6 (if “Open in
 Terminal” is not available, search how to install it in Ubuntu).
 
-.. image:: rpi/media/image9.png
+.. image:: rpi/media/openaterminal.png
    :width: 4.20139in
-   :height: 3.25347in
+   :height: 2.0in
 
-Fig. 6: Dash home, Terminal application
+Fig. 6: Terminal application
 
 In some seconds, a command window is displayed. Then, execute these
 commands:
@@ -175,21 +174,14 @@ commands:
     $ cd build
     $ make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2023.08.2/ menuconfig
 
-+-------+--------------------------------------------------------------+
-|       | **[Help]:** For this course, you will need to become         |
-|       | familiar with the Linux Terminal use. On the Moodle site of  |
-|       | this course, you can find a cheat sheet with the basic Linux |
-|       | commands.                                                    |
-+=======+==============================================================+
-+-------+--------------------------------------------------------------+
 
-+-------+--------------------------------------------------------------+
-|       | **[Help]:** In a Linux terminal, the “TAB” key helps you to  |
-|       | autocomplete the commands, folders, and file names. You can  |
-|       | find a description of “make” application at this link        |
-|       | https://www.gnu.org/software/make/manual/make.pdf            |
-+=======+==============================================================+
-+-------+--------------------------------------------------------------+
+.. important::
+    
+    For this course, you will need to become familiar with the Linux Terminal use. On the Moodle site of this course, you can find a cheat sheet with the basic Linux commands. 
+
+.. tip::
+    
+    In a Linux terminal, the “TAB” key helps you to  autocomplete the commands, folders, and file names. 
 
 In some seconds, you will see a new window similar to Fig. 7.
 
@@ -211,11 +203,10 @@ Depending on the downloaded version, the organization and the items
 displayed can differ. If an item of buildroot configuration does not
 appear in the Table I leaves it with its default value.
 
-+-------+--------------------------------------------------------------+
-|       | **[Help]:** The Buildroot configuration is an iterative      |
-|       | process. In order to set up your embedded Linux system, you  |
-|       | will need to execute the configuration several times.        |
-+-------+--------------------------------------------------------------+
+
+.. important::
+
+    The Buildroot configuration is an iterative process. In order to set up your embedded Linux system, you  will need to execute the configuration several times.      
 
 
 Target Options
@@ -242,7 +233,7 @@ This is the  selection of the processor to use.
 
 Toolchain
 ^^^^^^^^^
-Cross Compiler, linker, and libraries to be  built to compile our embedded application
+Cross Compiler, linker, and libraries to be  built to compile our embedded application. Select the options shown in the following table. 
 
 .. list-table:: Toolchain
 
@@ -282,7 +273,7 @@ Cross Compiler, linker, and libraries to be  built to compile our embedded appli
 
 Build options
 ^^^^^^^^^^^^^
-How Buidlroot will build the code. Leave the default values
+How Buidlroot will build the code. Leave the default values.
 
 
 System Configuration 
@@ -348,147 +339,151 @@ System Configuration
      - board/raspberrypi4_64/post image.sh 
      -                                                        
 
-Once you have configured all the menus, you need to exit, saving the
-values (File->Quit).
-
 
 Linux Kernel
 ^^^^^^^^^^^^
 
-- Kernel Version: Custom tarball. URL of $(call custom github,kernel raspberrypi,linux,0b54dtarballbda3cca2beb51e236a25738784e90853b64)/linux0b54dbda3cca2beb51e236a25738784e90853b64.tar.gz
-- Kernel configuration: Using and intree defconfig file.
-    -Defconfigname: bcm2711
-- Kernel binary format: Image 
-- Kernel Gzip compression compression format
-- Build ayes Device Tree Blob (DTB)
-- Intreeb Device Treeroadcom/bcm2710rpi3b
-Source filebroadc namesom/bcm2710rpi3bplus broadcom/bcm2837rpi3b
+.. list-table:: kernel 
 
-- Need hostYes OpenSSL 
-- LinuxNothing kernel Extensions
--  LinuxNothing Kernel Tools 
-- Busybox: yes
-    -Busyboxpackage/bco usybox/busybox.confignfiguration file to use 
-
+	* - Kernel Version
+	  - Custom tarball. URL
+	  - $(call github,raspberrypi,linux,576cc10e1ed50a9eacffc7a05c796051d7343ea4)/linux-576cc10e1ed50a9eacffc7a05c796051d7343ea4.tar.gz  
+	* - Kernel configuration 
+	  - Using and intree defconfig file
+	  -
+	* - Defconfigname
+	  - bcm2711
+	  - This file containst the specific configuration of the kernel for the RPI
+	* - Kernel binary format
+	  - Image 
+	  -
+	* - Kernel  compression format
+	  - Gzip compression
+	  -
+	* - Build aDevice Tree Blob (DTB)
+	  - Yes
+	  -
+	* - Intree Device Tree Source file name 
+	  - broadcom/bcm2711-rpi-4-b broadcom/bcm2711-rpi-400 broadcom/bcm2711-rpi-cm4 broadcom/bcm2711-rpi-cm4s
+	  - 
+        * - Need host OpenSSL 
+          - Yes
+          -
+        * - Linux kernel Extensions
+          - Nothing
+          - 
+	* -  Linux Kernel Tools 
+	  - Nothing
+	  - 
+	  
 Target Packages
 ^^^^^^^^^^^^^^^
-Audio andDefault values 
-video 
-a 
-pplications 
 
-CDefault values 
-ompresssors 
-and 
-de
-compressors 
+.. list-table:: Busybox and target packages	
 
-Debugging, **gdb, gdbserver** 
-profiling 
-and 
-benchmark 
+	* - Busybox
+	  - yes
+	  - 
+	* - Busybox configuration file to use
+	  - package/busybox/busybox.config
+	  - 
+	* - Audio and video applications
+	  - Default values
+	  - 
+	* - Compresssors and decompressors
+	  - Default values
+	  - 
+	* - Debugging, profiling and benchmark
+	  - **gdb, gdbserver, full debugger** 
+	  - 
+	* - Developments tools
+	  - Default values
+	  -  
+	* - Filesystem  and flash utilities 
+	  - Default values
+	  - 
+	* - Games
+	  - Default values 
+	  - 
+	* - Graphic libraries and applications (graphic/text) 
+	  - Default values 
+	  - 
+	* - Hardware handling 
+	  - **Firmware>rpifirmware** **rpi4 (default)**	
+	  - **Path to a file stores as boot/config.txt board/raspberrypi4_64/config_4_64bit.txt** 
+	* - Hardware handling 
+	  - **Firmware>rpifirmware**	  
+	  - **Path to a file stored as boot/cmdline.txt board/raspberrypi/cmdline.txt** 
+	* - Hardware handling 
+	  - **Firmware>rpifirmware** 
+	  - **install DTB  overlays**
+	* - Interpreters language and  scripting Libraries 
+	  - Python3
+	  - 
+	* - Miscellaneous
+	  - Default Values
+	  -
+	* - Libraries
+	  - Default Values
+	  - 
+	* - Networking applications 
+	  - **ifupdown scripts** **open ssh**
+	  - 
+	* - Package Managers
+	  - Default values
+	  - 
+	* - Real Time, Shell and  utilities
+	  - Default Values
+	  -  
+	* - System Tools, Text Editor and Viewers
+	  - Default Values
+	  - 
 
-DDefault values 
-evelopments 
-tools 
+File System Images
+^^^^^^^^^^^^^^^^^^
 
-Filesystem Default values 
-and flash 
-utilities 
+.. list-table:: Filesystem images	
 
-GamesDefault values 
+	* - ext2/3/4 root filesystem 
+	  - ext4
+	  -
+	* - filesystem label
+	  - rootfs
+	  -
+	* - exact size 
+	  - **400M** Leave the other default values
+	  - Update this value with your specific needs
+        * - Compression method 
+          - No compression
+          - 
+    
+Bootloaders
+^^^^^^^^^^^
 
-GraphicDefault values 
-libraries 
-and 
-a 
-pplications 
-(gr 
-aphic/text) 
+      
+Host Utilities
+^^^^^^^^^^^^^^      
 
-Hardware **F
-handling irmware>rpifirmware**
+.. list-table:: Host utilities	
 
- **rpi 0/1/2/3
- (bootcode.bin, Default,
- Extended)**
+    * - host environment setup
+      - Yes
+      -
+    * - host genimage
+      - Yes
+      -
+    * - host dosfstools
+      - Yes
+      -
+    * - host kmod
+      - Yes, support xz-compressed modules
+      - 
+    * - host mtools
+      - Yes
+      -
 
- **Path to a file stores
- as boot/config.txt 
- board/raspberrypi3
- 64/config_3_64bit.txt**
-
- **Path to a file stored
- as boot/cmdline.txt
- board/ra 
- spberrypi/cmdline.txt**
-
- **install DTB
- overlays** 
-
-IDefault values nterpreters 
-language
-and 
-scripting 
-
-Libraries 
-
-Mi Default
-scellaneous 
-
-Networking **ifupdown scripts** 
-a 
-pplications**open ssh** 
-
-PackageDefault
-managers
-
-Real Time 
-
-Shell and 
-utilities 
-
-System
-Tools 
-
-Text
-Editors and 
-viewers 
-
- **Fil
- esystem
- I
- mages**
-
-ext2/3/4 ext4 
-root
-filesystem exact size **400M**
-
- Compression method **no
- compression**
-
- **Remaining values> 
- default**
-
-tar theno compression 
-root
-filesystem
-
- **Host 
- util 
- ities**
-
-host Yes
-genimage
-
-host Yes
-dosfstools
-
-host mtoolsYes
-
-Host Yes
-enviro
-nmentsetup 
+Once you have configured all the menus, you need to exit, saving the
+values (File->Quit).
 
 
 
@@ -497,35 +492,24 @@ Compiling buildroot
 
 In the Terminal Window executes the following command:
 
+.. code-block:: bash 
+
+    $ make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2023.08.2/ 
+
 If everything is correct, you will see a final window similar to the one
 represented in Fig. 8.
 
-+-------+--------------------------------------------------------------+
-|       | **[Time for this step]:** In this step, buildroot will       |
-|       | connect, using the internet, to different repositories.      |
-|       | After downloading the code, Buildroot will compile the       |
-|       | applications and generate a lot of files and folders.        |
-|       | Depending on your internet speed access and the              |
-|       | configuration chosen, this step could take up to **one hour  |
-|       | and a half**.                                                |
-+-------+--------------------------------------------------------------+
+.. warning::
 
-+-------+--------------------------------------------------------------+
-|       | Warning. If you have errors in the buildroot configuration,  |
-|       | you could obtain errors in this compilation phase. Check     |
-|       | your configuration correctly. Use “make clean” to clean up   |
-|       | your partial compilation.                                    |
-+-------+--------------------------------------------------------------+
+    In this step, buildroot will connect, using the internet, to different repositories. After downloading the code, Buildroot will compile the applications and generate a lot of files and folders. Depending on your internet speed access and the   configuration chosen, this step could take up to **one hour  and a half**. If you have errors in the buildroot configuration,  you could obtain errors in this compilation phase. Check your configuration correctly. Use “make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2023.08.2/ clean” to clean up  your partial compilation.
 
-+-------+--------------------------------------------------------------+
-|       | Warning. dl subfolder in your buildroot folder contains all  |
-|       | the packages downloaded for the internet. If you want to     |
-|       | move your buildroot configuration from one computer to       |
-|       | another, avoiding the copy of the virtual machine, you can   |
-|       | copy this folder.                                            |
-+-------+--------------------------------------------------------------+
 
-.. image:: rpi/media/image12.png
+.. note::
+
+    dl subfolder in your buildroot folder contains all  the packages downloaded for the internet. If you want to  move your buildroot configuration from one computer to another, avoiding the copy of the virtual machine, you can copy this folder.                                            |
+
+
+.. image:: rpi/media/buildrootok.png
    :width: 6.68125in
    :height: 4.46389in
 
@@ -539,13 +523,14 @@ Buildroot Output.
 -----------------
 
 The main output files of the execution of the previous steps can be
-located in the folder “./images”. Fig. 9 summarizes the use of
+located in the folder “build/images”. Fig. 9 summarizes the use of
 **Buildroot**. Buildroot generates a bootloader, a kernel image, and a
 file system.
 
-.. image:: rpi/media/image13.emf
-   :width: 5.77292in
-   :height: 1.81806in
+.. image:: rpi/media/buildroot.png
+   :alt: Buildroot tool basic operation
+   :width: 5.98081in
+   :height: 2.5in
 
 Fig. 9: Schematic representation of the Buildroot tool. Buildroot
 generates the root file system, the kernel image, the bootloader, and
@@ -554,10 +539,10 @@ the toolchain. Figure copied from “Bootlin” training materials
 
 In our specific case, the folder content is shown in Fig. 10
 
-.. image:: rpi/media/image14.png
-   :alt: A screenshot of a computer Description automatically generated
+.. image:: rpi/media/buildimages.png
+   :alt: Output generated for the RaspberryPi Embedded Linux
    :width: 5.98081in
-   :height: 3.1266in
+   :height: 4.0in
 
 Fig. 10: The images folder contains the binary files for our embedded
 system.
@@ -566,7 +551,7 @@ Copy the sdcard.img file to your SDcard using this Linux command in the
 Buildroot folder (sdb is typically the device assigned to the sdcard,
 unless you have other removable devices connected to the system):
 
-::
+.. code-block:: bash
 
    $ sudo dd if=./images/sdcard.img of=/dev/sd<x> bs=10M //<x> is the identification used by Linux for your microSD card, tipically “b” or “c”, never use “a” because this is the operating system hardisk
 
@@ -586,32 +571,49 @@ a) To connect a USB to RS232 adapter (provided) to the raspberry-pi
    serial line interface as a console in the Linux host operating
    system.
 
+
+.. list-table:: FDTI Terminals
+    :widths: 25 25
+    :header-rows: 1
+ 
+    * - RPI connector
+      - FDTI Terminal
+    * - RXD UART (GPIO16)
+      - Pin 4
+    * - TXD UART (GPIO15)
+      - Pin 5
+    * - GND (Pin 6)
+      - Pin 1  
+
+
 b) To connect the power supply with the micro-USB connector provided (5
    v).
 
 c) To connect the Ethernet cable to the RJ45 port if it is available
    (not the case of UPM Lab).
 
-.. image:: rpi/media/image15.png
+.. image:: rpi/media/rpi4b.png
    :width: 4.41667in
    :height: 2.94167in
 
-Fig. 11: RaspBerry-Pi 3 Model B+ hardware with main elements identified.
+Fig. 11: RaspBerry-Pi 4 Model B hardware with main elements identified.
 
-|image10|\ iwc
+.. image:: rpi/media/rpiconnector.png
+   :width: 4.0in
+   :height: 10.0in
 
-Fig. 12: Raspberry-PI 3 header terminal identification. The figure
-displays a PI 3 B model.
 
-.. image:: rpi/media/image17.emf
-   :width: 6.68819in
-   :height: 2.38333in
+Fig. 12: Raspberry-PI 4 header terminal identification.
+
+.. image:: rpi/media/fdticable.png
+   :width: 3.50in
+   :height: 6.0in
 
 Fig. 13: Identification of the terminals in the USB-RS232 adapter
 
-The booting process of the Raspberry Pi BCM2837B0 processor is depicted
+The booting process of the Raspberry Pi BCM2711 `BCM2711 <https://www.raspberrypi.com/documentation/computers/processors.html#bcm2711>`_ processor is depicted
 in Fig. 14. Take into account that this System On Chip (SoC), the
-BCM2837B0, contains two different processors: a GPU and an ARM
+BCM2711, contains two different processors: a GPU and an ARM
 processor. The programs *bootcode.bin* and *start.elf* are written
 explicitly for the GPU, and the source code is unavailable. Broadcom
 only provides details of this to customers who sign a commercial
@@ -619,9 +621,9 @@ agreement. The last executable (*start.elf*) boots the ARM processor and
 allows the execution of ARM programs such as Linux OS kernel or other
 binaries such as u-boot bootloader.
 
-.. image:: rpi/media/image18.emf
 
-Fig. 14: Booting process for BCM2837 processor in the raspberry-pi.
+
+Fig. 14: Booting process for BCM2711 processor in the raspberry-pi.
 
 The config.txt file contains essential information to boot the Linux OS
 and perform the configuration of different hardware elements (look at
@@ -641,15 +643,8 @@ parameters using the information displayed in Fig. 15 (for the specific
 case of putty), and then press “Open”. **Apply the power to the
 Raspberry PI,** and you will see the booting messages.
 
-+-------+--------------------------------------------------------------+
-|       | **[Serial interface identification in Linux]:** In Linux the |
-|       | serial devices are identified typically with the names       |
-|       | /dev/ttyS0, /dev/ttyS1, etc. In the figure, the example has  |
-|       | been checked with a serial port implemented with a USB-RS232 |
-|       | converter. This is the reason why the name is /dev/ttyUSB0.  |
-|       | In your computer, you need to find the identification of     |
-|       | your serial port. Use Linux **dmesg** command to do this.    |
-+-------+--------------------------------------------------------------+
+.. tip::
+    **[Serial interface identification in Linux]:** In Linux the  serial devices are identified typically with the names       /dev/ttyS0, /dev/ttyS1, etc. In the figure, the example has   been checked with a serial port implemented with a USB-RS232 converter. This is the reason why the name is **/dev/ttyUSB0**.   In your computer, you need to find the identification of   your serial port. Use Linux **dmesg** command to do this.    
 
 
 .. image:: rpi/media/image19.png
@@ -671,30 +666,21 @@ the username root, and the Linux shell will be available for you.
 
 Fig. 16: Linux Running
 
-+-------+--------------------------------------------------------------+
-|       | **[DHCP Server]:** The DHCP server providing the IP address  |
-|       | to the RPI should be active in your network. In the UPM      |
-|       | ETSIST labs, there is no cabled network, only WIFI. If you   |
-|       | are using the RPI at home, the DHCP server is running in     |
-|       | your router. The method used by this should be different     |
-|       | from one manufactures to others. If you want to know the IP  |
-|       | address assigned, you have two options: use a serial cable   |
-|       | connected to the RPI or check the router status web page and |
-|       | display the table of the DHCP clients connected. Looking for |
-|       | the MAC in the list, you will obtain the IP address.         |
-+-------+--------------------------------------------------------------+
+.. tip::
 
-Connecting the RPI to the network
----------------------------------
+    **[DHCP Server]:** The DHCP server providing the IP address  to the RPI should be active in your network. In the UPM ETSIST labs, there is no cabled network, only WIFI. If you are using the RPI at home, the DHCP server is running in your router. The method used to assing IP addresses is different from one manufactures to others. If you want to know the IP address assigned, you have two options: use a serial cable connected to the RPI (ifconfig command) or check the router status web page and display the table of the DHCP clients connected. Looking for the MAC in the list, you will obtain the IP address.         
+
+
+Connecting the RPI to the cabled ethernet network
+-------------------------------------------------
 
 Inspecting the configuration of the network interface generated automatically by Buildroot
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Inspect the content of /etc/network/interfaces and
-/etc/init.d/S40network. You will see content similar to this in the
+Inspect the content of */etc/network/interfaces* and */etc/init.d/S40network*. You will see content similar to this in the
 interfaces file:
 
-::
+.. code-block:: bash
 
    # interface file auto-generated by buildroot
 
@@ -711,22 +697,14 @@ This configuration activates the use of eth0 with DHCP support. Test the
 connectivity, trying to connect to another computer in the laboratory.
 Use the ping command.
 
-+-------+--------------------------------------------------------------+
-|       | **[Help]:** If you run the ping command in the Raspberry     |
-|       | trying to connect with a computer in the laboratory, you     |
-|       | probably obtain a connection timeout. Consider that          |
-|       | computers running Windows could have the firewall activated. |
-|       | You can also try to run the ping on a windows computer or on |
-|       | Linux virtual machine. In this case, the RPI doesn’t have a  |
-|       | firewall running, and the connection should be successful.   |
-+-------+--------------------------------------------------------------+
 
-+-------+--------------------------------------------------------------+
-|       | [Question] What is the MAC address of your RPI? Is this MAC  |
-|       | the same that your instructor has given you? Use the dmesg   |
-|       | command to see the kernel boot parameters and identify the   |
-|       | method used to get the MAC address from the hardware.        |
-+-------+--------------------------------------------------------------+
+.. note::
+
+    **[Help]:** If you run the ping command in the Raspberry   trying to connect with a computer in the laboratory, you      probably obtain a connection timeout. Consider that   computers running Windows could have the firewall activated. You can also try to run the ping on a windows computer or on Linux virtual machine. In this case, the RPI does not have a  firewall running, and the connection should be successful.   
+
+.. admonition:: Question
+
+    What is the MAC address of your RPI interface? Use the dmesg command to see the kernel boot parameters and identify the method used to get the MAC address from the hardware.        
 
 Adding WIFI support 
 ===================
@@ -742,16 +720,16 @@ filesystem. This step is done by adding these commands to the
 *<buildroot-folder>/board/raspberrypi3-64/post-build.sh* script:
 
 
-::
+.. code-block:: bash
 
    cp <buildroot-folder>/package/busybox/S10mdev ${TARGET_DIR}/etc/init.d/S10mdev
    chmod 755 ${TARGET_DIR}/etc/init.d/S10mdev
    cp <buildroot-folder>/package/busybox/mdev.conf ${TARGET_DIR}/etc/mdev.conf
 
-+-------+--------------------------------------------------------------+
-|       | [mdev] mdev provides a method to add or remove hotplug       |
-|       | devices in Linux.                                            | 
-+-------+--------------------------------------------------------------+
+.. note::
+
+    [mdev] mdev provides a method to add or remove hotplug devices in Linux.  
+
 
 Adding the Broadcom firmware support for Wireless hardware
 ==========================================================
@@ -852,9 +830,7 @@ How will a program be compiled? Remember that we are developing cross
 applications. We are developing and compiling the code in a Linux x86_64
 machine, and we are executing it on an ARM architecture (see Fig. 17).
 
-.. image:: rpi/media/image21.emf
-   :width: 4.98681in
-   :height: 2.79236in
+
 
 Fig. 17: Summary of the different configurations for developing
 applications for embedded systems. Figure copied from “Free Electrons”
@@ -1264,58 +1240,5 @@ You need to install:
 
 -  eclipse-cdt-launch-remote (eclipse for remote debugging)
 
-.. |image1| image:: rpi/media/image2.png
-   :width: 0.91667in
-   :height: 0.32292in
-.. |image2| image:: rpi/media/image3.png
-   :width: 0.59722in
-   :height: 0.59722in
-.. |image3| image:: rpi/media/image3.png
-   :width: 0.59722in
-   :height: 0.59722in
-.. |image4| image:: rpi/media/image3.png
-   :width: 0.59722in
-   :height: 0.59722in
-.. |image5| image:: rpi/media/image3.png
-   :width: 0.59722in
-   :height: 0.59722in
-.. |image6| image:: rpi/media/image3.png
-   :width: 0.59722in
-   :height: 0.59722in
-.. |image7| image:: rpi/media/image3.png
-   :width: 0.59722in
-   :height: 0.59722in
-.. |image8| image:: rpi/media/image11.png
-   :width: 0.59722in
-   :height: 0.59722in
-.. |image9| image:: rpi/media/image11.png
-   :width: 0.59722in
-   :height: 0.59722in
-.. |image10| image:: rpi/media/image16.emf
-.. |image11| image:: rpi/media/image3.png
-   :width: 0.59722in
-   :height: 0.59722in
-.. |image12| image:: rpi/media/image3.png
-   :width: 0.59722in
-   :height: 0.59722in
-.. |image13| image:: rpi/media/image3.png
-   :width: 0.59722in
-   :height: 0.59722in
-.. |image14| image:: rpi/media/image3.png
-   :width: 0.59722in
-   :height: 0.59722in
-.. |image15| image:: rpi/media/image3.png
-   :width: 0.59722in
-   :height: 0.59722in
-.. |image16| image:: rpi/media/image3.png
-   :width: 0.59722in
-   :height: 0.59722in
-.. |image17| image:: rpi/media/image3.png
-   :width: 0.59722in
-   :height: 0.59722in
-.. |image18| image:: rpi/media/image11.png
-   :width: 0.59722in
-   :height: 0.59722in
-.. |image19| image:: rpi/media/image3.png
-   :width: 0.59722in
-   :height: 0.59722in
+
+
