@@ -1,13 +1,20 @@
-.. Example documentation master file, created by
-   sphinx-quickstart on Sat Sep 23 20:35:12 2023.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. Documentation for the UPM Design of Embedded Systems using RPI
 
-Welcome to Example's documentation!
-===================================
+Building Embedded Linux for RaspberryPI
+=======================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
+   :numbered:
 
-   rpi-tutorial.rst
+   rpi-tutorial
+   eclipse
+   virtualmachine
+   
+   genindex
+   
+Indices and tables
+==================
+
+* :ref:`genindex`

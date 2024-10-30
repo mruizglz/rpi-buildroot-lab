@@ -36,31 +36,45 @@ at [RD1]
 Acronyms
 --------
 
-.. list-table:: Acronyms
-    :widths: 25 25 50
-    
-   * - CPU
-     - Central Processing Unit 
-   * - EABI
-     - Extended Application Binary Interface
-   * - EHCI     
-     - Enhanced Host Controller Interface   
-   * - I/O 
-     - Input and Output
-   * - MMC 
-     - Multimedia card 
-   * - NANDFlash 
-     - memory type for fast sequential read and write
-   * - PCI 
-     - Peripheral Component Interconnect – computer bus standard
-   * - PCI Express
-     - Peripheral Component Interconnect Express 
-   * - OS
-     - Operating system
-   * - UART
-     - Universal Asynchronous Receiver Transmitter 
-   * - USB 
-     - Universal Serial Bus
+
+.. glossary::
+   :sorted:
+   
+   CPU
+       Central Processing Unit     
+   
+   GPU
+       Graphical Processing Unit 
+
+   EABI
+       Extended Application Binary Interface
+   
+   EHCI     
+       Enhanced Host Controller Interface   
+   
+   I/O 
+       Input and Output
+   
+   MMC 
+       Multimedia card 
+   
+   NANDFlash 
+       memory type for fast sequential read and write
+   
+   PCI 
+      Peripheral Component Interconnect – computer bus standard
+   
+   PCI Express
+     Peripheral Component Interconnect Express 
+   
+   OS
+      Operating system
+   
+   UART
+      Universal Asynchronous Receiver Transmitter 
+   
+   USB 
+      Universal Serial Bus
 
 
 References
@@ -105,65 +119,73 @@ Starting the VMware
 -------------------
 
 Start VMware Player and open the RPI Virtual Machine. Wait until the
-welcome screen is displayed (see Fig. 1 and Fig. 2). Login as
+welcome screen is displayed (see :numref:`vmplayer` and :numref:`vmplayer-ubuntu`). Login as
 “\ *ubuntu”* user using the password “ubuntu”.
 
-.. image:: rpi/media/image4.png
-   :alt: A screenshot of a computer Description automatically generated
-   :width: 4.92027in
-   :height: 3.97031in
+.. figure:: rpi/media/image4.png
+   :name: vmplayer
+   :width: 10cm
+   :height: 8cm
+   :align: center
 
-Fig. 1: Main screen of VMware player with some VM available to be
-executed.
-
-.. image:: rpi/media/image5.png
-   :alt: A screenshot of a computer Description automatically generated
-   :width: 6.69375in
-   :height: 3.69514in
-
-Fig. 2: Ubuntu Virtual Machine login screen.
+   Main screen of VMware player with some VM available to be executed
+    
+    
+.. figure:: rpi/media/image5.png
+   :name: vmplayer-ubuntu
+   :width: 15cm
+   :height: 10cm
+   :align: center
+   
+   Ubuntu Virtual Machine login screen.
 
 Open the **Firefox** web browser and download from
 https://buildroot.org/, the version identified as **buidlroot2024-08-1**
-(use the download link, see Fig. 3, and navigate searching for earlier
+(use the download link, see :numref:`webbuildroot`, and navigate searching for earlier
 releases if necessary, https://buildroot.org/downloads/ ). Save the file
-to the **Documents** folder in your account (Fig. 4).
+to the **Documents** folder in your account (:numref:`download`).
 
-.. image:: rpi/media/buildrootweb.png
-   :width: 5.97015in
-   :height: 4.03801in
-
-Fig. 3 Buildroot home page.
+.. figure:: rpi/media/buildrootweb.png
+   :name: webbuildroot
+   :width: 10cm
+   :height: 7cm
+   :align: center
+   
+   Buildroot home page.
 
 Buildroot is a tool to generate embedded Linux systems in our PC, and
 then this Linux will be installed in the target.
 
-.. image:: rpi/media/buildrootdownload.png
-   :width: 5.25472in
-   :height: 3.28499in
-
-Fig. 4: Example of Downloading buildroot source code.
+.. figure:: rpi/media/buildrootdownload.png
+   :name: download
+   :width: 10cm
+   :height: 7cm
+   :align: center
+   
+   Example of Downloading Buildroot source code.
 
 Create a folder “rpi” in “Documents”. Copy the file to the
-“Documents/rpi” folder and decompress the file (Fig. 5).
+“Documents/rpi” folder and decompress the file (:numref:`docfolder`).
 
-.. image:: rpi/media/documentsfolder.png
-   :alt: A screenshot of a computer Description automatically generated
+.. figure:: rpi/media/documentsfolder.png
+   :name: docfolder
    :width: 6.69375in
    :height: 1.5in
-
-Fig. 5: Buildroot folder (the folder name depends on the version
-downloaded).
+   :align: center
+   
+   Buildroot folder (the folder name depends on the version downloaded).
 
 Right-click in the window and execute “Open in Terminal” or execute the
-Terminal application from Dash home as shown in Fig. 6 (if “Open in
+Terminal application from Dash home as shown in :numref:`terminal` (if “Open in
 Terminal” is not available, search how to install it in Ubuntu).
 
-.. image:: rpi/media/openaterminal.png
+.. figure:: rpi/media/openaterminal.png
+   :name: terminal
    :width: 4.20139in
    :height: 2.0in
-
-Fig. 6: Terminal application
+   :align: center
+   
+   Terminal application
 
 In some seconds, a command window is displayed. Then, execute these
 commands:
@@ -183,14 +205,15 @@ commands:
     
     In a Linux terminal, the “TAB” key helps you to  autocomplete the commands, folders, and file names. 
 
-In some seconds, you will see a new window similar to Fig. 7.
+In some seconds, you will see a new window similar to :numref:`buildrootsetup`.
 
-.. image:: rpi/media/image10.png
-   :alt: A screenshot of a computer Description automatically generated
+.. figure:: rpi/media/image10.png
+   :name: buildrootsetup
    :width: 6.69375in
    :height: 3.20208in
-
-Fig. 7: Buildroot setup screen.
+   :align: center
+   
+   Buildroot setup screen.
 
 Configuring Buildroot for RPI4
 ------------------------------
@@ -206,14 +229,19 @@ appear in the Table I leaves it with its default value.
 
 .. important::
 
-    The Buildroot configuration is an iterative process. In order to set up your embedded Linux system, you  will need to execute the configuration several times.      
+    The Buildroot configuration is an iterative process. In order to set up your embedded Linux system, you  will need to execute the configuration several times. 
+    
+.. warning::
+
+   The tables have three colums. Check that you understnad all the content shown.
 
 
 Target Options
 ^^^^^^^^^^^^^^
-This is the  selection of the processor to use.
+This is the  selection of the processor to use (:numref:`target-options`).
 
 .. list-table:: Target Options
+   :name: target-options
 
    * - Target Architecture
      - AArch64 (little endian) 
@@ -233,10 +261,12 @@ This is the  selection of the processor to use.
 
 Toolchain
 ^^^^^^^^^
-Cross Compiler, linker, and libraries to be  built to compile our embedded application. Select the options shown in the following table. 
+Cross Compiler, linker, and libraries to be  built to compile our embedded application. Select the options shown in the following table (:numref:`toolchain`). 
 
 .. list-table:: Toolchain
-
+   :name: toolchain
+   :widths: 5 5 5
+   
    * - Toolchain type
      - Buildroot toolchain
      - The Embedded Linux System will be compiled with tools integrated  into Buildroot
@@ -278,8 +308,10 @@ How Buidlroot will build the code. Leave the default values.
 
 System Configuration 
 ^^^^^^^^^^^^^^^^^^^^
-  
-.. list-table:: System configuration
+Here you can define the basic configuration of the embedded Linux to generate and specific scripts to add additional functionality ( :numref:`sysconf`).
+
+.. list-table:: System-configuration
+   :name: sysconf
 
    * - Root FS skeleton
      - Default target skeleton. 
@@ -297,7 +329,7 @@ System Configuration
      - Busybox
      -
    * - /dev management
-     - Dynamic using devtmpfs only
+     - Dynamic using devtmpfs + mdev
      - 
    * - Path to permissions for table  
      - **system/device_table.txt**  
@@ -330,57 +362,65 @@ System Configuration
      - 
      -
    * - Custom scripts to run path **before** creatating filesystem images
-     - board/raspberrypi4-64/post build.sh 
+     - **your path**/buildroot-2024.08.1/board/raspberrypi4-64/post-build.sh 
      -
    * - Custom scripts to run inside the fakeroot environment 
      - 
      -
    * - Custom scripts to run **after** creating filesystem images
-     - board/raspberrypi4_64/post image.sh 
+     - **your path**/buildroot-2024.08.1/board/raspberrypi4-64/post-image.sh 
      -                                                        
 
 
 Linux Kernel
 ^^^^^^^^^^^^
 
-.. list-table:: kernel 
+This is the configuration of the Linux kernel. The specific location and version is specified among other parameters (:numref:`kernel`).
 
-	* - Kernel Version
-	  - Custom tarball. URL
-	  - $(call github,raspberrypi,linux,576cc10e1ed50a9eacffc7a05c796051d7343ea4)/linux-576cc10e1ed50a9eacffc7a05c796051d7343ea4.tar.gz  
-	* - Kernel configuration 
-	  - Using and intree defconfig file
-	  -
-	* - Defconfigname
-	  - bcm2711
-	  - This file containst the specific configuration of the kernel for the RPI
-	* - Kernel binary format
-	  - Image 
-	  -
-	* - Kernel  compression format
-	  - Gzip compression
-	  -
-	* - Build aDevice Tree Blob (DTB)
-	  - Yes
-	  -
-	* - Intree Device Tree Source file name 
-	  - broadcom/bcm2711-rpi-4-b broadcom/bcm2711-rpi-400 broadcom/bcm2711-rpi-cm4 broadcom/bcm2711-rpi-cm4s
-	  - 
-        * - Need host OpenSSL 
-          - Yes
-          -
-        * - Linux kernel Extensions
-          - Nothing
-          - 
-	* -  Linux Kernel Tools 
-	  - Nothing
-	  - 
+
+.. list-table:: kernel-configuration
+    :name: kernel
+    
+    * - Kernel Version
+      - Custom tarball. 
+      - $(call github,raspberrypi,linux,576cc10e1ed50a9eacffc7a05c796051d7343ea4)/linux-576cc10e1ed50a9eacffc7a05c796051d7343ea4.tar.gz  
+    * - Kernel configuration 
+      - Using and intree defconfig file
+      -
+    * - Defconfigname
+      - bcm2711
+      - This file containst the specific configuration of the kernel for the RPI
+    * - Kernel binary format
+      - Image 
+      -
+    * - Kernel  compression format
+      - Gzip compression
+      -
+    * - Build aDevice Tree Blob (DTB)
+      - Yes
+      -
+    * - Intree Device Tree Source file name 
+      - broadcom/bcm2711-rpi-4-b broadcom/bcm2711-rpi-400 broadcom/bcm2711-rpi-cm4 broadcom/bcm2711-rpi-cm4s
+      - 
+    * - Need host OpenSSL 
+      - Yes
+      -
+    * - Linux kernel Extensions
+      - Nothing
+      - 
+    * -  Linux Kernel Tools 
+      - Nothing
+      - 
 	  
 Target Packages
 ^^^^^^^^^^^^^^^
 
-.. list-table:: Busybox and target packages	
+Target packages option allows to select the software elements that will be installed in the filesystem of the embedded Linux. Additionaly, this option install the busybox package that contains the basic Linux commands (:numref:`busybox`). Buildroot creates the filesystem hierarchy following the Linux standard organization.
 
+
+.. list-table:: Busybox and target packages	
+        :name: busybox
+        
 	* - Busybox
 	  - yes
 	  - 
@@ -410,10 +450,10 @@ Target Packages
 	  - 
 	* - Hardware handling 
 	  - **Firmware>rpifirmware** **rpi4 (default)**	
-	  - **Path to a file stores as boot/config.txt board/raspberrypi4_64/config_4_64bit.txt** 
+	  - Path to a file stores as boot/config.txt **path**/board/raspberrypi4-64/config_4_64bit.txt
 	* - Hardware handling 
 	  - **Firmware>rpifirmware**	  
-	  - **Path to a file stored as boot/cmdline.txt board/raspberrypi/cmdline.txt** 
+	  - Path to a file stored as boot/cmdline.txt **path**/board/raspberrypi4-64/cmdline.txt
 	* - Hardware handling 
 	  - **Firmware>rpifirmware** 
 	  - **install DTB  overlays**
@@ -427,7 +467,7 @@ Target Packages
 	  - Default Values
 	  - 
 	* - Networking applications 
-	  - **ifupdown scripts** **open ssh**
+	  - **ifupdown scripts** **openssh**
 	  - 
 	* - Package Managers
 	  - Default values
@@ -442,29 +482,36 @@ Target Packages
 File System Images
 ^^^^^^^^^^^^^^^^^^
 
-.. list-table:: Filesystem images	
+This option selects the format of the root filesystem and the size (:numref:`filesystemimage`).
 
-	* - ext2/3/4 root filesystem 
-	  - ext4
-	  -
-	* - filesystem label
-	  - rootfs
-	  -
-	* - exact size 
-	  - **400M** Leave the other default values
-	  - Update this value with your specific needs
-        * - Compression method 
-          - No compression
-          - 
+.. list-table:: Filesystem images
+    :name: filesystemimage
+
+    * - ext2/3/4 root filesystem 
+      - ext4
+      -
+    * - filesystem label
+      - rootfs
+      -
+    * - exact size 
+      - **400M** Leave the other default values
+      - Update this value with your specific needs
+    * - Compression method 
+      - No compression
+      - 
     
-Bootloaders
-^^^^^^^^^^^
+Boot-loaders
+^^^^^^^^^^^^
+
+The RaspberryPI does not need an specific bootloader becuase it is incorporated in the firmware provided by Broadcom.
 
       
 Host Utilities
 ^^^^^^^^^^^^^^      
+Additional tools needed for ubuntu to create all the embedded images (:numref:`hostutils`).
 
 .. list-table:: Host utilities	
+    :name: hostutils
 
     * - host environment setup
       - Yes
@@ -490,14 +537,16 @@ values (File->Quit).
 Compiling buildroot
 -------------------
 
-In the Terminal Window executes the following command:
+In the Terminal Window executes the following command (:numref:`buildbuildroot`):
 
-.. code-block:: bash 
+.. code-block:: bash
+   :caption: Build Buildroot
+   :name: buildbuildroot
 
     $ make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2023.08.2/ 
 
 If everything is correct, you will see a final window similar to the one
-represented in Fig. 8.
+represented in :numref:`buildrootok`.
 
 .. warning::
 
@@ -506,14 +555,28 @@ represented in Fig. 8.
 
 .. note::
 
-    dl subfolder in your buildroot folder contains all  the packages downloaded for the internet. If you want to  move your buildroot configuration from one computer to another, avoiding the copy of the virtual machine, you can copy this folder.                                            |
+    `dl` subfolder in your buildroot folder contains all  the packages downloaded for the internet. If you want to  move your buildroot configuration from one computer to another, avoiding the copy of the virtual machine, you can copy this folder.                                            |
 
+.. warning::
 
-.. image:: rpi/media/buildrootok.png
+   If your building process fails different reasons could be the origin. consider to use the following actions. Make a copy of your `.config` file (hidden file in Linux) to save your configuration.
+   
+   .. list-table:: actions
+   
+       * - make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2023.08.2/ clean
+         - Build again buildroot
+       * - make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2023.08.2/ distclean
+         - configure and build again buildroot
+   
+   
+
+.. figure:: rpi/media/buildrootok.png
    :width: 6.68125in
    :height: 4.46389in
+   :name: buildrootok
+   :align: center
 
-Fig. 8: Successful compilation and installation of Buildroot
+   Successful compilation and installation of Buildroot
 
 **Buildroot** has generated some folders with different files and
 subfolders containing the tools for generating your Embedded Linux
@@ -523,98 +586,116 @@ Buildroot Output.
 -----------------
 
 The main output files of the execution of the previous steps can be
-located in the folder “build/images”. Fig. 9 summarizes the use of
+located in the folder “build/images”. :numref:`operations` summarizes the use of
 **Buildroot**. Buildroot generates a bootloader, a kernel image, and a
 file system.
 
-.. image:: rpi/media/buildroot.png
+.. figure:: rpi/media/buildroot.png
    :alt: Buildroot tool basic operation
    :width: 5.98081in
    :height: 2.5in
+   :name: operations
+   :align: center
 
-Fig. 9: Schematic representation of the Buildroot tool. Buildroot
-generates the root file system, the kernel image, the bootloader, and
-the toolchain. Figure copied from “Bootlin” training materials
-(`http://bootlin.com/training/ <http://bootlins.com/training/>`__)
+   Schematic representation of the Buildroot tool. Buildroot generates the root file system, the kernel image, the bootloader, and
+   the toolchain. Figure copied from “Bootlin” training materials
+   (`http://bootlin.com/training/ <http://bootlins.com/training/>`__)
 
-In our specific case, the folder content is shown in Fig. 10
+In our specific case, the folder content is shown in :numref:`outbuidlroot`
 
-.. image:: rpi/media/buildimages.png
+.. figure:: rpi/media/buildimages.png
    :alt: Output generated for the RaspberryPi Embedded Linux
    :width: 5.98081in
    :height: 4.0in
+   :name: outbuidlroot
+   :align: center
 
-Fig. 10: The images folder contains the binary files for our embedded
-system.
+   The images folder contains the binary files for our embedded system.
 
-Copy the sdcard.img file to your SDcard using this Linux command in the
-Buildroot folder (sdb is typically the device assigned to the sdcard,
+Copy the `sdcard.img` file to your SDcard using this Linux command in the
+Buildroot folder (`sdb` is typically the device assigned to the sdcard,
 unless you have other removable devices connected to the system):
 
 .. code-block:: bash
 
-   $ sudo dd if=./images/sdcard.img of=/dev/sd<x> bs=10M //<x> is the identification used by Linux for your microSD card, tipically “b” or “c”, never use “a” because this is the operating system hardisk
+   $ sudo dd if=./images/sdcard.img of=/dev/sd<x> bs=10M 
+   
+.. warning::   
+   <x> is the identification used by Linux for your microSD card,
+   tipically “b” or “c”.  **Never** use “a” because this is the operating system hardisk
 
-Remember to format again the microSDcard if you need to repeat this
-process (linux gparted is an excellent tool to partition and format the
-SD card).
+
+Remember to format again the microSDcard if you need to repeat this process otherwise you will have errors when Linux in booting.
+
+.. seealso::
+    
+    Linux `gparted` is an excellent tool for partitioning and formatting the SD card.
 
 Booting the Raspberry Pi.
 -------------------------
 
-Fig. 11 displays a Raspberry Pi. The description of this card, its
+:numref:`rpi4b` displays a Raspberry Pi. The description of this card, its
 functionalities, interfaces, and connectors are explained in the ref
 [RD2]. The fundamental connection requires:
 
 a) To connect a USB to RS232 adapter (provided) to the raspberry-pi
-   expansion header (see Fig. 12 and Fig. 13). This adapter provides the
+   expansion header (see  :numref:`conn`, and :numref:`fdti`). This adapter provides the
    serial line interface as a console in the Linux host operating
    system.
-
-
-.. list-table:: FDTI Terminals
-    :widths: 25 25
-    :header-rows: 1
- 
-    * - RPI connector
-      - FDTI Terminal
-    * - RXD UART (GPIO16)
-      - Pin 4
-    * - TXD UART (GPIO15)
-      - Pin 5
-    * - GND (Pin 6)
-      - Pin 1  
-
 
 b) To connect the power supply with the micro-USB connector provided (5
    v).
 
 c) To connect the Ethernet cable to the RJ45 port if it is available
-   (not the case of UPM Lab).
+   (at home, not the case of UPM's Lab).
 
-.. image:: rpi/media/rpi4b.png
-   :width: 4.41667in
-   :height: 2.94167in
-
-Fig. 11: RaspBerry-Pi 4 Model B hardware with main elements identified.
-
-.. image:: rpi/media/rpiconnector.png
-   :width: 4.0in
-   :height: 10.0in
+.. figure:: rpi/media/rpi4b.png
+   :width: 7.0cm
+   :height: 5.0cm
+   :name: rpi4b
+   :align: center
+   
+   RaspBerry-Pi 4 Model B hardware with main elements identified
 
 
-Fig. 12: Raspberry-PI 4 header terminal identification.
+.. figure:: rpi/media/rpiconnector.png
+   :width: 3.0cm
+   :height: 10.0cm
+   :name: conn
+   :align: center
 
-.. image:: rpi/media/fdticable.png
-   :width: 3.50in
-   :height: 6.0in
+   Raspberry-PI 4 header terminal identification.
 
-Fig. 13: Identification of the terminals in the USB-RS232 adapter
+.. figure:: rpi/media/fdticable.png
+   :width: 5cm
+   :height: 10.0cm
+   :align: center
+   :name: fdti
+   
+   Identification of the terminals in the USB-RS232 adapter
+   
+   
+.. list-table:: FDTI Terminals
+    :widths: 25 25
+    :header-rows: 1
+    :align: center
+    
+    * - RPI connector
+      - FDTI Terminal
+    * - RXD UART (GPIO16) Pin 10
+      - Terminal 4 (Yellow)
+    * - TXD UART (GPIO15) Pin 8
+      - Terminal 5 (Orange)
+    * - Ground (GND) Pin 6
+      - Pin 1
+
+
+
 
 The booting process of the Raspberry Pi BCM2711 `BCM2711 <https://www.raspberrypi.com/documentation/computers/processors.html#bcm2711>`_ processor is depicted
 in Fig. 14. Take into account that this System On Chip (SoC), the
-BCM2711, contains two different processors: a GPU and an ARM
-processor. The programs *bootcode.bin* and *start.elf* are written
+BCM2711, contains two different processors: a :term:`GPU` and an ARM
+CPU. The programs *bootcode.bin* and *start.elf* are written
 explicitly for the GPU, and the source code is unavailable. Broadcom
 only provides details of this to customers who sign a commercial
 agreement. The last executable (*start.elf*) boots the ARM processor and
@@ -629,46 +710,92 @@ The config.txt file contains essential information to boot the Linux OS
 and perform the configuration of different hardware elements (look at
 http://elinux.org/RPiconfig and check the meaning of the different
 configuration parameters). Verify the content of the config.txt file
-generated by buildroot and complete it as depicted below.
+generated by buildroot and complete it as depicted below ( :numref:`aa` ).
+
+
+.. code-block:: bash
+    :caption: config.txt file
+    :name: aa
+   
+    # Please note that this is only a sample, we recommend you to change it to fit
+    # your needs.# You should override this file using BR2_PACKAGE_RPI_FIRMWARE_CONFIG_FILE.
+    # See http://buildroot.org/manual.html#rootfs-custom
+    # and http://elinux.org/RPiconfig for a description of config.txt syntax
+    
+    start_file=start4.elf
+    fixup_file=fixup4.dat
+    
+    kernel=**Image**
+    
+    # To use an external initramfs file
+    #initramfs rootfs.cpio.gz
+    # Disable overscan assuming the display supports displaying the full resolution
+    # If the text shown on the screen disappears off the edge, comment this out
+    
+    disable_overscan=1
+    
+    # How much memory in MB to assign to the GPU on Pi models having
+    # 256, 512 or 1024 MB total memory
+    gpu_mem_256=100
+    gpu_mem_512=100
+    gpu_mem_1024=100
+    
+    # Enable UART0 for serial console on ttyAMA0
+    dtoverlay=miniuart-bt
+    
+    # enable autoprobing of Bluetooth driver without need of hciattach/btattach
+    dtparam=krnbt=on	
+
 
 In this example, once the ARM is released from reset, it executes the
 Image application. This binary application is the Linux Kernel in Image
 format. The parameters passed to the application specified in the
-kernel=<….> are detailed in the cmdline.txt file. For instance, by
-default, Buildroot generates this one:
+`kernel=<….>` are detailed in the `cmdline.txt` file. For instance, by
+default, Buildroot generates this one (:numref:`cmdline`):
 
-In the Linux machine, open a Terminal and execute the program putty with
-sudo rights (sudo putty), in a second a window appears. Configure the
-parameters using the information displayed in Fig. 15 (for the specific
-case of putty), and then press “Open”. **Apply the power to the
+
+.. code-block:: bash
+    :caption: cmdline.txt file
+    :name: cmdline
+    
+    root=/dev/mmcblk0p2 rootwait console=tty1 console=ttyAMA0,115200
+
+In the Linux machine, open a Terminal and execute the program `sudo putty` with
+**sudo rights** (sudo putty), in a second a window appears. Configure the
+parameters using the information displayed in :numref:`putty` (for the specific
+case of `putty`), and then press “Open”. **Apply the power to the
 Raspberry PI,** and you will see the booting messages.
 
 .. tip::
     **[Serial interface identification in Linux]:** In Linux the  serial devices are identified typically with the names       /dev/ttyS0, /dev/ttyS1, etc. In the figure, the example has   been checked with a serial port implemented with a USB-RS232 converter. This is the reason why the name is **/dev/ttyUSB0**.   In your computer, you need to find the identification of   your serial port. Use Linux **dmesg** command to do this.    
 
 
-.. image:: rpi/media/image19.png
-   :alt: A computer screenshot of a computer Description automatically generated
+.. figure:: rpi/media/image19.png
+   :alt: Putty serial line
    :width: 4.90093in
    :height: 4.28723in
+   :name: putty
+   :align: center
 
-Fig. 15: Putty program main window.
+   Putty program main window.
 
 After a few seconds, you will see a lot of messages displayed on the
 terminal. Linux kernel is booting, and the operating system is running
 its configuration and initial daemons. If the system boots correctly,
-you will see an output like the one represented in Fig. 16. Introduce
-the username root, and the Linux shell will be available for you.
+you will see an output like the one represented in :numref:`linuxboot`. Introduce
+the username *root* (password in case you have configured it), and the Linux shell will be available for you.
 
-.. image:: rpi/media/image20.png
+.. figure:: rpi/media/image20.png
    :width: 6.69514in
    :height: 2.58472in
-
-Fig. 16: Linux Running
+   :name: linuxboot
+   :align: center
+   
+   Linux Running in the RaspBerryPi
 
 .. tip::
 
-    **[DHCP Server]:** The DHCP server providing the IP address  to the RPI should be active in your network. In the UPM ETSIST labs, there is no cabled network, only WIFI. If you are using the RPI at home, the DHCP server is running in your router. The method used to assing IP addresses is different from one manufactures to others. If you want to know the IP address assigned, you have two options: use a serial cable connected to the RPI (ifconfig command) or check the router status web page and display the table of the DHCP clients connected. Looking for the MAC in the list, you will obtain the IP address.         
+    **[DHCP Server]:** The DHCP server providing the IP address  to the RPI should be active in your network. In the UPM ETSIST labs, there is no cabled network, only WIFI. If you are using the RPI at home, the DHCP server is running in your router. The method used to assing IP addresses is different from one manufactures to others. If you want to know the IP address assigned, you have two options: use a serial cable connected to the RPI (`ifconfig` command) or check the router status web page and display the table of the DHCP clients connected. Looking for the MAC in the list, you will obtain the IP address.         
 
 
 Connecting the RPI to the cabled ethernet network
@@ -677,8 +804,8 @@ Connecting the RPI to the cabled ethernet network
 Inspecting the configuration of the network interface generated automatically by Buildroot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Inspect the content of */etc/network/interfaces* and */etc/init.d/S40network*. You will see content similar to this in the
-interfaces file:
+Inspect the content of `/etc/network/interfaces` and `/etc/init.d/S40network`. You will see content similar to this in the
+`interfaces` file:
 
 .. code-block:: bash
 
@@ -704,20 +831,20 @@ Use the ping command.
 
 .. admonition:: Question
 
-    What is the MAC address of your RPI interface? Use the dmesg command to see the kernel boot parameters and identify the method used to get the MAC address from the hardware.        
+    What is the MAC address of your RPI interface? Use the `dmesg` command to see the kernel boot parameters and identify the method used to get the MAC address from the hardware. 
+
 
 Adding WIFI support 
-===================
-
+-------------------
 
 Adding mdev support to Embedded Linux
-=====================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 The folder <buildroot-folder>\ */package/busybox* contains two files
 named S10mdev and mdev.conf. These files have to be added to the target
 filesystem. This step is done by adding these commands to the
-*<buildroot-folder>/board/raspberrypi3-64/post-build.sh* script:
+*<buildroot-folder>/board/raspberrypi4-64/post-build.sh* script:
 
 
 .. code-block:: bash
@@ -732,7 +859,7 @@ filesystem. This step is done by adding these commands to the
 
 
 Adding the Broadcom firmware support for Wireless hardware
-==========================================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The hardware element included in the RPI-3 for the Wireless
 communication is implemented with the BCM43438 chip. It is needed to
@@ -772,16 +899,17 @@ utilities.
 
    b. Add these lines to ./board/rapsberrypi3-64/post-build.sh.
 
-::
+.. code-block:: bash
 
-   cp <buildroot-folder>/board/raspberrypi3/interfaces ${TARGET_DIR}/etc/network/interfaces
-   cp <buildroot-folder>/board/raspberrypi3/wpa_supplicant.conf ${TARGET_DIR}/etc/wpa_supplicant.conf
+   cp <buildroot-folder>/board/raspberrypi4-64/interfaces ${TARGET_DIR}/etc/network/interfaces
+   cp <buildroot-folder>/board/raspberrypi4-64/wpa_supplicant.conf ${TARGET_DIR}/etc/wpa_supplicant.conf
 
-c. Create the file *<buildroot-folder>*/board/raspberrypi3/interfaces
-   with this new content:
+c. Create the file `*<buildroot-folder>*/board/raspberrypi4-64/interfaces`
+   with the highlighted content:
 
-::
-
+.. code-block:: bash
+   :emphasize-lines: 10,11,12,13,14
+   
    auto lo
    iface lo inet loopback
 
@@ -798,447 +926,19 @@ c. Create the file *<buildroot-folder>*/board/raspberrypi3/interfaces
           wait-delay 15
 
 d. Create the file
-   *<buildroot-folder>*/board/raspberrypi3/wpa_supplicant.conf with this
+   `*<buildroot-folder>*/board/raspberrypi4-64/wpa_supplicant.conf` with this
    content (ask professors about the values to be provided as SSID and
-   Key-passwd). You can as many WIFIs as you want.
+   Key-passwd). You can define as many WIFIs as you want.
 
-::
+.. code-block:: bash
 
    network={
-   ssid="SSID"
-   key_mgmt=WPA-PSK
-   psk="PASSWORD"
-   priority=9
+       ssid="SSID"
+       key_mgmt=WPA-PSK
+       psk="PASSWORD"
+       priority=9
    }
 
-3. Perform a *make* and burn the new image in the SDcard. Boot the
+3. Perform a `*make*` and burn again the new image in the micro SDcard. Boot the
    Raspberry and check that you can connect to the wireless network.
-
-Using the integrated development environment Eclipse/CDT
-========================================================
-
-Eclipse IDE for C/C++ developers
---------------------------------
-
-The Eclipse IDE CDT is installed in the virtual machine. You can execute
-it running eclipse in a window terminal.
-
-Cross-Compiling applications using Eclipse
-------------------------------------------
-
-How will a program be compiled? Remember that we are developing cross
-applications. We are developing and compiling the code in a Linux x86_64
-machine, and we are executing it on an ARM architecture (see Fig. 17).
-
-
-
-Fig. 17: Summary of the different configurations for developing
-applications for embedded systems. Figure copied from “Free Electrons”
-training materials (http://free-electrons.com/training/)
-
-The first question is where the cross-compiler and other cross-tools are
-located. The answer is this: in the folder “build/host/usr/bin”. If you
-inspect this folder's content, you can see the entire compiling,
-linking, and debugging tools (see Fig. 18). These programs are executed
-in your x86_64 computer, but they generate code for the ARM processor.
-
-.. image:: rpi/media/image22.png
-   :width: 5.90168in
-   :height: 3.83333in
-
-Fig. 18: Cross-compiling tools installed in the host computer
-
-In a Terminal window execute the following commands:
-
-::
-
-   $ cd build/host
-   $ source environment-setup
-   $ eclipse &
-
-The *environment-setup* file contains the code listed below.
-
-::
-
-   cat <<'EOF'
-    _           _ _     _                 _
-   | |__  _   _(_) | __| |_ __ ___   ___ | |_
-   | '_ \| | | | | |/ _` | '__/ _ \ / _ \| __|
-   | |_) | |_| | | | (_| | | | (_) | (_) | |_
-   |_.__/ \__,_|_|_|\__,_|_|  \___/ \___/ \__|
-
-          Making embedded Linux easy!
-
-   Some tips:
-   * PATH now contains the SDK utilities
-   * Standard autotools variables (CC, LD, CFLAGS) are exported
-   * Kernel compilation variables (ARCH, CROSS_COMPILE, KERNELDIR) are exported
-   * To configure do "./configure $CONFIGURE_FLAGS" or use
-     the "configure" alias
-   * To build CMake-based projects, use the "cmake" alias
-
-   EOF
-   if [ x"$BASH_VERSION" != x"" ] ; then
-   	SDK_PATH=$(dirname $(realpath "${BASH_SOURCE[0]}"))
-   elif [ x"$ZSH_VERSION" != x"" ] ; then
-   	SDK_PATH=$(dirname $(realpath $0))
-   else
-   	echo "unsupported shell"
-   fi
-   export "AR=aarch64-buildroot-linux-gnu-gcc-ar"
-   export "AS=aarch64-buildroot-linux-gnu-as"
-   export "LD=aarch64-buildroot-linux-gnu-ld"
-   export "NM=aarch64-buildroot-linux-gnu-gcc-nm"
-   export "CC=aarch64-buildroot-linux-gnu-gcc"
-   export "GCC=aarch64-buildroot-linux-gnu-gcc"
-   export "CPP=aarch64-buildroot-linux-gnu-cpp"
-   export "CXX=aarch64-buildroot-linux-gnu-g++"
-   export "FC=aarch64-buildroot-linux-gnu-gfortran"
-   export "F77=aarch64-buildroot-linux-gnu-gfortran"
-   export "RANLIB=aarch64-buildroot-linux-gnu-gcc-ranlib"
-   export "READELF=aarch64-buildroot-linux-gnu-readelf"
-   export "STRIP=aarch64-buildroot-linux-gnu-strip"
-   export "OBJCOPY=aarch64-buildroot-linux-gnu-objcopy"
-   export "OBJDUMP=aarch64-buildroot-linux-gnu-objdump"
-   export "AR_FOR_BUILD=/usr/bin/ar"
-   export "AS_FOR_BUILD=/usr/bin/as"
-   export "CC_FOR_BUILD=/usr/bin/gcc"
-   export "GCC_FOR_BUILD=/usr/bin/gcc"
-   export "CXX_FOR_BUILD=/usr/bin/g++"
-   export "LD_FOR_BUILD=/usr/bin/ld"
-   export "CPPFLAGS_FOR_BUILD=-I$SDK_PATH/include"
-   export "CFLAGS_FOR_BUILD=-O2 -I$SDK_PATH/include"
-   export "CXXFLAGS_FOR_BUILD=-O2 -I$SDK_PATH/include"
-   export "LDFLAGS_FOR_BUILD=-L$SDK_PATH/lib -Wl,-rpath,$SDK_PATH/lib"
-   export "FCFLAGS_FOR_BUILD="
-   export "DEFAULT_ASSEMBLER=aarch64-buildroot-linux-gnu-as"
-   export "DEFAULT_LINKER=aarch64-buildroot-linux-gnu-ld"
-   export "CPPFLAGS=-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64"
-   export "CFLAGS=-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -Os -g0 -D_FORTIFY_SOURCE=1"
-   export "CXXFLAGS=-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -Os -g0 -D_FORTIFY_SOURCE=1"
-   export "LDFLAGS="
-   export "FCFLAGS= -Os -g0"
-   export "FFLAGS= -Os -g0"
-   export "PKG_CONFIG=pkg-config"
-   export "STAGING_DIR=$SDK_PATH/aarch64-buildroot-linux-gnu/sysroot"
-   export "INTLTOOL_PERL=/usr/bin/perl"
-   export "ARCH=arm64"
-   export "CROSS_COMPILE=aarch64-buildroot-linux-gnu-"
-   export "CONFIGURE_FLAGS=--target=aarch64-buildroot-linux-gnu --host=aarch64-buildroot-linux-gnu --build=x86_64-pc-linux-gnu --prefix=/usr --exec-prefix=/usr --sysconfdir=/etc --localstatedir=/var --program-prefix="
-   alias configure="./configure ${CONFIGURE_FLAGS}"
-   alias cmake="cmake -DCMAKE_TOOLCHAIN_FILE=$SDK_PATH/share/buildroot/toolchainfile.cmake -DCMAKE_INSTALL_PREFIX=/usr"
-   export "PATH=$SDK_PATH/bin:$SDK_PATH/sbin:$PATH"
-   export "KERNELDIR=/home/ubuntu/Documents/rpi/build/build/linux-custom/"
-
-This script when is source in a terminal window sets all the environment
-variables needed to use the cross-compilation tools and add the folder
-of cross-tools to the PATH linux variable.
-
-The execution of eclipse popups a window inviting you to enter the
-workspace (see Fig. 19). The workspace is the folder that contain
-eclipse projects created by the user. You can have as many workspaces as
-you want. Please specify a folder in your account.
-
-+-------+--------------------------------------------------------------+
-|       | **[Help]:** The figures displayed in the following           |
-|       | paragraphs can be different depending on the Eclipse version |
-|       | installed.                                                   |
-+-------+--------------------------------------------------------------+
-
-.. image:: rpi/media/image23.png
-   :width: 5.19182in
-   :height: 2.66458in
-
-Fig. 19: Selection of the workspace for Eclipse. Use a folder in your
-account.
-
-Select Ok, and the welcome window of Eclipse will be shown (Fig. 20).
-Next, close the welcome window and the main eclipse window will be
-displayed (Fig. 21).
-
-.. image:: rpi/media/image24.png
-   :width: 5.17708in
-   :height: 4.13683in
-
-Fig. 20: Eclipse welcome window.
-
-.. image:: rpi/media/image25.png
-   :width: 5.78753in
-   :height: 4.35417in
-
-Fig. 21: Eclipse main window.
-
-In a terminal window create an empty folder. In this folder create the
-following files with the content described in the Table 2. The Makefile
-uses the environment variables that are defined in the environment where
-the makefile is run.
-
-+----------------+-----------------------------------------------------+
-| Filename       | Content                                             |
-+================+=====================================================+
-| Makefile       | LIBS= -lpthread -lm #Libraries used if needed       |
-|                |                                                     |
-|                | SRCS= main.cpp func.cpp                             |
-|                |                                                     |
-|                | BIN=app                                             |
-|                |                                                     |
-|                | CFLAGS+= -g -O0                                     |
-|                |                                                     |
-|                | OBJS=$(subst .cpp,.o,$(SRCS))                       |
-|                |                                                     |
-|                | all : $(BIN)                                        |
-|                |                                                     |
-|                | $(BIN): $(OBJS)                                     |
-|                |                                                     |
-|                | @echo [link] $@                                     |
-|                |                                                     |
-|                | $(CXX) -o $@ $(OBJS) $(LDFLAGS) $(LIBS)             |
-|                |                                                     |
-|                | %.o: %.cpp                                          |
-|                |                                                     |
-|                | @echo [Compile] $<                                  |
-|                |                                                     |
-|                | $(CXX) -c $(CFLAGS) $< -o $@                        |
-|                |                                                     |
-|                | clean:                                              |
-|                |                                                     |
-|                | @rm -f $(OBJS) $(BIN)                               |
-+----------------+-----------------------------------------------------+
-| main.cpp       | #include "func.h"                                   |
-|                |                                                     |
-|                | #include <iostream>                                 |
-|                |                                                     |
-|                | int main(void){                                     |
-|                |                                                     |
-|                | int b=2;                                            |
-|                |                                                     |
-|                | std::cout<<"A is: "<< fun(b) << std::endl;          |
-|                |                                                     |
-|                | }                                                   |
-+----------------+-----------------------------------------------------+
-| func.h         | #ifndef \__FUNC_H                                   |
-|                |                                                     |
-|                | #define \__FUNC_H                                   |
-|                |                                                     |
-|                | int fun(int);                                       |
-|                |                                                     |
-|                | #endif                                              |
-+----------------+-----------------------------------------------------+
-| func.cpp       | int fun(int b){                                     |
-|                |                                                     |
-|                | int a=b*2;                                          |
-|                |                                                     |
-|                | return a;                                           |
-|                |                                                     |
-|                | }                                                   |
-+----------------+-----------------------------------------------------+
-
-In Eclipse select in the left part of the windows Import *projects*. A
-new window is popup, select then *C/C++* and the option *Existing Code
-as Makefile Project*. The window shown in Fig. 22 is displayed. Complete
-the name of the project, select the folder with the code and check
-*Cross GCC in Toolchain for Indexer Settings*.
-
-.. image:: rpi/media/image26.png
-   :width: 4.45148in
-   :height: 4.95833in
-
-Fig. 22: Selecting the code.
-
-Building a project
-------------------
-
-Once you have configured the cross-chain in Eclipse you can build your
-project using Project->Build Project. If everything is correct, you will
-see the eclipse project as represented in Fig. 29. You can clean the
-project (remove the executable and objects) with *Clean*.
-
-.. image:: rpi/media/image27.png
-   :alt: A screenshot of a computer Description automatically generated
-   :width: 6.69375in
-   :height: 4.17014in
-
-Fig. 23: Eclipse project compiled (Binaries has been generated)
-
-+-------+--------------------------------------------------------------+
-|       | **[Console in Eclipse]:** Have a look at the messages        |
-|       | displayed in the Console. You will see how eclipse is        |
-|       | calling the cross compiler with different parameters.        |
-+-------+--------------------------------------------------------------+
-
-Moving the binary to the target
--------------------------------
-
-In order to copy the executable to the target, you have different
-options. You can use the Linux application called “scp” or other similar
-applications. In our case, we are going to use the “Other Locations….”
-utility included in the nautilus explorer. Specify in Server Address
-ssh://<ip address>
-
-.. image:: rpi/media/image28.png
-   :width: 5.57399in
-   :height: 2.93365in
-
-Fig. 24: “Connect to Server” option in Nautilus explorer
-
-Executing the application
--------------------------
-
-You can run the Raspberry PI program using putty (remember that once you
-have a network connection available in the RPI you can also use putty to
-connect to it).
-
-.. image:: rpi/media/image29.png
-   :alt: A screenshot of a computer Description automatically generated
-   :width: 4.45in
-   :height: 2.90434in
-
-Fig. 25: Run test program in Raspberry Pi
-
-+-------+--------------------------------------------------------------+
-|       | Warning. If you experiment problems using ssh, delete the    |
-|       | .ssh folder in your home directory.                          |
-+-------+--------------------------------------------------------------+
-
-Automatic debugging using gdb and gdbserver
--------------------------------------------
-
-You can directly debug the program running in the RPI using Eclipse.
-There are two methods to do it: manually and automatically. In the
-manual method, firstly, you need to copy the executable program to the
-RPI, change the file permissions to “executable” and execute the program
-to be debugged using *gdbserver* utility. Of course, this is a
-time-consuming process and very inefficient. The alternative solution is
-to use automatic debugging. In order to debug your applications, we need
-to define a debug session and configure it. Firstly, *Select Run->Debug
-Configurations* and generate a new configuration under *C/C++ Remote
-Application*. You need to complete the different tabs available in this
-window. The first one is the main tab (see Fig. 33). You need to
-configure here the path to the C/C++ application to be debugged, the
-project name, the connection with the target (you will need to create a
-new one using the IP address of your RPI), the remote path where your
-executable file will be downloaded, and the mode for the debugging
-(Automatic Remote Debugging Launcher). Secondly, in the argument tab,
-you can specify the arguments of your executable program. It is very
-important here that you can also specify the working directory path
-where the executable will be copied and launched (you need to have
-rights in this folder).
-
-.. image:: rpi/media/image30.png
-   :alt: A screenshot of a computer Description automatically generated
-   :width: 6.69375in
-   :height: 3.94931in
-
-Fig. 26: Creating a Debug Configuration
-
-In the debugger window you need to configure the path of your cross gdb
-application. Remember that we are working with a cross-compiler, cross
-debugging. Therefore, you need to provide here the correct path of your
-gdb. The GDB command file (.gdbinit) must be specified, providing a path
-with an empty file. In the Gdbserver settings tab, you need to provide
-the path to the gdbserver in the target and the TCP/IP port used (by
-default 2345).
-
-.. image:: rpi/media/image30.png
-   :alt: A screenshot of a computer Description automatically generated
-   :width: 6.03905in
-   :height: 3.56303in
-
-Fig. 27: Debug configuration, including the path to locate the cross gdb
-tool.
-
-Now, press Debug in Eclipse window, and you can debug your application
-remotely.
-
-.. image:: rpi/media/image31.png
-   :alt: A screenshot of a computer Description automatically generated
-   :width: 5.89423in
-   :height: 3.67021in
-
-Fig. 28: Debugging session on the RPI remotely
-
-Preparing the linux virtual machine.
-====================================
-
-Download VMware Workstation Player.
------------------------------------
-
-The link https://www.vmware.com/support/pubs/player_pubs.html contains
-documentation describing the installation and basic use of VMware
-Workstation Player. Follow the instructions to set up the application on
-your computer.
-
-Installing Ubuntu 22.04 LTS as a virtual machine.
--------------------------------------------------
-
-+-------+--------------------------------------------------------------+
-|       | **[Ubuntu version]:** It is mandatory to install Ubuntu      |
-|       | 22.04 version.                                               |
-+-------+--------------------------------------------------------------+
-
-The first step is to download Ubuntu 22.04.3 (64 bit PC) from Ubuntu web
-site using this link: http://releases.ubuntu.com/ . You will download an
-ISO image with this Linux operating System.Run WMware player and install
-Ubuntu using the VMWare player instructions. Consider the following when
-creating the virtual machine: you need at least 150Gbytes of hard disk
-space (in multiple files), 3GByte of RAM, and, if possible 4 processors.
-The installation time will be half an hour, more or less, depending on
-your computer. Moving a virtual machine from one computer to another is
-a time-consuming task; therefore, take this into account to minimize the
-development time.
-
-Installing synaptic
--------------------
-
-If you need to install software packages, you can do it using the linux
-terminal command apt-get. Another alternative process is the use of the
-synaptic utility. In order to use it, you need to install it using this
-command:
-
-::
-
-   $ sudo apt-get install synaptic
-
-Once installed, you can search and execute the synaptic program. When
-you click two times over the package, it will show all the dependent
-packages that would be installed.
-
-.. image:: rpi/media/image32.png
-   :alt: A screenshot of a computer Description automatically generated
-   :width: 6.69375in
-   :height: 3.32431in
-
-Fig. 30: Synaptic window
-
-Installing putty
-----------------
-
-You need to execute:
-
--  sudo apt-get install putty
-
-Installing packages for supporting Buildroot.
----------------------------------------------
-
-Using buildroot requires some software packages that have to be
-installed in the VM. These are listed in this link
-http://buildroot.uclibc.org/downloads/manual/manual.html#requirement.
-You need to install at least:
-
--  g++
-
--  git
-
-Installing packages supporting Eclipse
---------------------------------------
-
-You need to install:
-
--  eclipse-cdt (eclipse C/C++ programming)
-
--  eclipse-rse (eclipse remote explorer)
-
--  eclipse-cdt-launch-remote (eclipse for remote debugging)
-
-
 
