@@ -49,15 +49,13 @@ players, video editing and playing, games, development tools, etc.
 
 Follow the steps below to install the Raspbian Operating System:
 
-1) Download Raspberry Pi Imager tool from
-   https://www.raspberrypi.org/software/
+1) Download the `Raspberry PI Imager <https://www.raspberrypi.com/software/>`_ tool for your specific OS.
 
-2) Execute the Raspberry PI Imager 
-   (https://downloads.raspberrypi.org/imager/imager_latest.exe , see :numref:`imagermain`). First choose
-   the Raspberry PI hardware and then, choose the Operating System (CHOOSE
-   OS) and Storage options (CHOOSE STORAGE) to burn an SD card with the
+2) Execute the application, and a window will be displayed (see :numref:`imagermain`). First choose
+   the Raspberry PI hardware (see :numref:`imagerhw`) and then, choose the Operating System (see :numref:`imageros`) 
+   and Storage options (CHOOSE STORAGE) to burn an SD card with the
    Raspberry PI OS 32 bits version. Click on the NEXT button and you
-   will have the options to apply your specific customization (**enable
+   will have the options (see :numref:`imagersettings`, :numref:`imagergeneral`, :numref:`imagerservices`, :numref:`imageroptions`) to apply your specific customization (**enable
    SSH**, Username (rpi-student) and Password (rpi) , WIFI SSID and passkey, and your
    keyboard language configuration). Save the configuration and continue to write
    the micro SD Card.
@@ -94,7 +92,7 @@ Follow the steps below to install the Raspbian Operating System:
    :height: 6cm
    :align: center
 
-   Raspberry Pi Imager Settings
+   Raspberry Pi Imager Settings (`more info from RPI official documentation <https://www.raspberrypi.com/documentation/computers/getting-started.html#install-using-imager>`_ )
 
 .. figure:: rpi/media/imagergeneral.png
    :name: imagergeneral
@@ -121,11 +119,6 @@ Follow the steps below to install the Raspbian Operating System:
    Raspberry Pi Imager OS Options
 
 
-Fig. : Menu with settings options. Enable the SSH connection and
-configure the WIFI (see
-https://www.raspberrypi.com/documentation/computers/getting-started.html#install-using-imager
-for details)
-
 .. warning::
 
    **[VERY IMPORTANT]:** Be careful in the destination device    where the image is burned because this information is not    recoverable 
@@ -150,15 +143,19 @@ in this document. There are three ways to establish this interaction:
    is known as headless start (use the `rpi-student` login).
 
 -  Use the serial USB-TTL cable that you need to connect to the GPIO
-   expansion connector. This **requires first to enable the serial line in
-   the Raspberry PI OS using the raspi-config** tool
-   (https://www.raspberrypi.com/documentation/computers/configuration.html#list-of-options).
-   The connection of the USB -TTL cable is depicted in Fig. 4.
+   expansion connector. This requires first to enable the serial line in
+   the Raspberry PI OS using the `raspi-config <https://www.raspberrypi.com/documentation/computers/configuration.html#list-of-options>`_ tool.
+   The connection of the USB-TTL cable is depicted in :numref:`rpiwithconnector`.
 
 
+.. figure:: rpi/media/rpi3withconnector.png
+   :name: rpiwithconnector
+   :width: 8cm
+   :height: 8cm
+   :align: center
 
-Fig. : Detail of expansion connector highlighting the USB-TTL RS232
-connection
+   Detail of expansion connector highlighting the USB-TTL RS232
+
 
 .. note..
 
@@ -170,7 +167,7 @@ Reviewing the SD card content
 
 1) Plug in the SD card into the computer.
 
-2) You should now see one new drive in the System Explorer (Windows)
+2) You should now see one new drive in the System Explorer (Windows)/Nautilus (Ubuntu)
    named "boot". In Linux you will see two partitions mounted in your
    system. Open the partition/unit identified as "boot".
 
@@ -181,15 +178,16 @@ Reviewing the SD card content
 
 
 3) List the content of the boot partition (FAT32) and identify the files
-   as in Fig. 4 (Windows) or Fig. 5 (Ubuntu Linux).
+   as in :numref:`usdcardfat` (Ubuntu Linux).
 
+.. figure:: rpi/media/usdcardfat.png
+   :name: usdcardfat
+   :width: 15cm
+   :height: 10cm
+   :align: center
 
+   Files available in the FAT32 partition
 
-Fig. : List of some of files in boot partition
-
-
-
-Fig. : Content of boot partition
 
 Booting the RPI
 ^^^^^^^^^^^^^^^
@@ -202,83 +200,32 @@ category) until the RPI is completely booted.
 
 .. note::
 
-    **[Security]:** Having the default user and password supposes  a security issue, more if the SSH sessions are enabled. You    can always change the password by executing the command passwd once logged in.  
+    **[Security]:** Having the default user and password supposes a security issue, more if the SSH sessions are enabled. You can always change the password by executing the command passwd once logged in.  
 
 Discovering the RPI IP address
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To open an SSH session from your computer to the Raspberry Pi you need
-to know it's IP address. There are multiple ways to discover the
+to know its IP address. There are multiple ways to discover the
 Raspberry Pi IP address:
 
-a) If you know your Raspberry Pi MAC address, you can set the DHCP
-   server to assign a static IP to the Raspberry Pi Mac. This is
+a) Use an `IP Scanner utility <https://www.softperfect.com/products/networkscanner>`_, 
+   and scan in the range of your network. For example, you can quickly identify a
+   Raspberry Pi as they use the hostname "raspberrypi.local" by default.
+   This tool cannot be used at the UPM lab.
+   
+b) If you know your Raspberry Pi MAC address, you can set the DHCP
+   server to assign a static IP to the Raspberry Pi MAC. This is
    typically done in the router configuration. Please, consider that
    Ethernet and WiFi ports have different MAC addresses. In the
    laboratory, your Raspberry can have only a dynamically assigned IP in
    the WIFI network with SSID RPI (ask your instructor to verify the
-   configuration). You can now insert the SD card in the Raspberry Pi
-   and power it on.
+   configuration). 
 
-b) You could open an RS232 serial connection in the Raspberry Pi GPIO
-   ports and use the command line (ifconfig command) to obtain the IP or
+c) You could open an RS232 serial connection in the Raspberry Pi GPIO
+   ports and use the command line (`ifconfig` command) to obtain the IP or
    set the desired IP and netmask.
 
-c) Use an IP Scanner utility
-   (https://www.softperfect.com/products/networkscanner/), and scan in
-   the range of your network. For example, you can quickly identify a
-   Raspberry Pi as they use the hostname "raspberrypi.local" by default.
-   This tool cannot be used at the UPM lab.
-
-Connecting to the Raspberry-Pi using SSH and a graphical X client
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Once we enabled the SSH session and determined the IP of our Raspberry,
-we can establish the connection using the SSH protocol. We can establish
-a remote connection with a graphical interface using the X-Window
-protocol. For instance, we can use a client-server protocol where the PC
-is the client, and the server is Raspberry Pi. The Raspberry PI OS
-distribution includes the X Windows server. Therefore, you only need to
-install a PC client application. This will allow us to handle the
-Raspberry Pi remotely, viewing the Raspberry PI OS graphics interface.
-Many PC Client X windows software tools are available on the internet.
-In this document we explain the use of MobaXterm.
-
-Using MobaXterm Software
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-This software application is downloadable from
-http://mobaxterm.mobatek.net/download-home-edition.html. Download and
-install it. Configure a new session, writing the Raspberry-Pi IP
-address. In Advanced Settings, select LXDE desktop in the Remote
-environment (see Fig. 3) to establish the graphic interface mode
-session.
-
-
-
-Fig. MobaXterm settings for remote connection with Raspberry Pi
-
-Open the session you just created, and you will be requested to type the
-password.
-
-.. note::
-
-    **[Optional]:** Working with a terminal is most of the time    faster than working with a graphical interface, and it will   also free the Raspberry CPU from the load of the OS GUI. Once | used with the Linux terminal commands, you can set your       remote environment as "Interactive shell". Then, in case you  run any application with a GUI, such as nautilus (the file explorer) or firefox, a window with the GUI of the program    will be opened.                                               |
-
-
-Now you are ready to start working with your Raspberry Pi OS. You can
-open the Programs bar in the bottom left corner of the screen (see Fig.
-4).
-
-
-
-Fig. Program menu location in Raspberry Pi OS with remote LXDE desktop
-
-Spend some minutes inspecting the Raspberry Pi OS environment. Also,
-open the LX Terminal and get used to the Linux terminal commands. One
-useful command is raspi-config. It allows us to set up different
-Raspberry Pi configurations. Inspect the various menus and options but
-do not change anything by the moment.
 
 Raspberry Pi OS Update
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -289,13 +236,14 @@ require some time. You can update the OS by running the following
 commands:
 
 .. code-block:: bash
-
+    :caption: RPI OS update
+    
     $ sudo apt update
     $ sudo apt upgrade
     
     
 
-integration of a 3-axis accelerometer with Raspberry-Pi 
+Integration of a 3-axis accelerometer with Raspberry-Pi 
 -------------------------------------------------------
 
 Specifications
@@ -317,7 +265,6 @@ Suggested Improvements
 
 -  Get stop the program if "CRTL-C" is typed.
 
-All improvements added by students will be taken into account.
 
 Optional: Python Script
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -332,11 +279,11 @@ Compiling & linking C program in Linux
 In Linux, C/c++ programs are compiled and linked using the "make"
 command. This command searches a "Makefile". A "Makefile" is a text file
 with the necessary information to compile and link and must be in the
-same directory of "*myprogram.c"*. The result will be *myprogram.o* and
+same directory of *myprogram.c*. The result will be *myprogram.o* and
 *myprogram* (executable).
 
-::
-
+.. code-block:: Makefile
+   :caption: Detail Makefile
 
    DEBUG= -O2 #Debugging Level
 
@@ -347,7 +294,7 @@ same directory of "*myprogram.c"*. The result will be *myprogram.o* and
 
    LIBS= -lpthread -lm #Libraries used if needed
 
-   SRC = tcs34725.c
+   SRC = myprogram.c
 
    OBJ 	= $(SRC:.c=.o)
    BIN 	= $(SRC:.c=)
@@ -362,24 +309,21 @@ same directory of "*myprogram.c"*. The result will be *myprogram.o* and
    clean:
    	@rm -f $(OBJ) $(BIN)
 
-Fig. : Detail of source code of Makefile highlighting the “tabs” instead
-of spaces
-
 Questions to be reported to instructors
 -------------------------------------------------
 
-1. Explain the content of the config.txt file in your RPI
+1. Explain the content of the `config.txt` file in the FAT32 partition of the uSDCARD of your RPI
 
 2. How the I2C interface is enabled? Is there any change in the
-   config.txt file
+   config.txt file?
 
 3. Could you describe the commands used to compile a C/C++ program in
    Linux?
 
 4. What is a library? What is the difference between a static and a
-   dynamic library?
+   shared library?
 
-5. Summarize the utility of the makefile file and the make command.
+5. Summarize the utility of the `makefile` file and the make command.
 
 6. What is the preferred utility to debug a C program in Linux?
 
