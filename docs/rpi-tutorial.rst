@@ -13,8 +13,8 @@ License <http://creativecommons.org/licenses/by-sa/4.0/>`__.
    :height: 0.32292in
 
 
-Scope
-=====
+Embedded Linux With RPI
+=======================
 
 
 Document Overview
@@ -33,52 +33,9 @@ Otherwise, you will find errors, which are probably unpredicted. In
 parallel, you need to review the slides available at the Moodle site or
 at [RD1]
 
-Acronyms
---------
-
-
-.. glossary::
-   :sorted:
-   
-   CPU
-       Central Processing Unit     
-   
-   GPU
-       Graphical Processing Unit 
-
-   EABI
-       Extended Application Binary Interface
-   
-   EHCI     
-       Enhanced Host Controller Interface   
-   
-   I/O 
-       Input and Output
-   
-   MMC 
-       Multimedia card 
-   
-   NANDFlash 
-       memory type for fast sequential read and write
-   
-   PCI 
-      Peripheral Component Interconnect – computer bus standard
-   
-   PCI Express
-     Peripheral Component Interconnect Express 
-   
-   OS
-      Operating system
-   
-   UART
-      Universal Asynchronous Receiver Transmitter 
-   
-   USB 
-      Universal Serial Bus
-
 
 References
-==========
+----------
 
 1. Embedded Linux system development. `Slides <https://moodle.upm.es/titulaciones/oficiales/course/view.php?id=1969>`_
 
@@ -92,10 +49,10 @@ References
    `www.myraspberry-pi.org/wp-content/.../Raspberry.Pi_.User_.Guide_.pdf‎ <http://www.myraspberry-pi.org/wp-content/.../Raspberry.Pi_.User_.Guide_.pdf‎>`__
 
 Building Linux using buildroot
-==============================
+------------------------------
 
 Elements needed for the execution of these LABS
------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order to execute this lab properly, you need the following elements:
 
@@ -506,7 +463,7 @@ This option selects the format of the root filesystem and the size (:numref:`fil
 Boot-loaders
 ^^^^^^^^^^^^
 
-The RaspberryPI does not need an specific bootloader becuase it is incorporated in the firmware provided by Broadcom.
+The Raspberry PI does not need an specific bootloader becuase it is incorporated in the firmware provided by Broadcom.
 
       
 Host Utilities
@@ -607,7 +564,6 @@ file system.
 In our specific case, the folder content is shown in :numref:`outbuidlroot`
 
 .. figure:: rpi/media/buildimages.png
-   :alt: Output generated for the RaspberryPi Embedded Linux
    :width: 5.98081in
    :height: 4.0in
    :name: outbuidlroot
@@ -794,7 +750,7 @@ the username *root* (password in case you have configured it), and the Linux she
    :name: linuxboot
    :align: center
    
-   Linux Running in the RaspBerryPi
+   Linux Running in the RaspBerry Pi
 
 .. tip::
 
