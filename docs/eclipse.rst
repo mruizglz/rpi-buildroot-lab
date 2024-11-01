@@ -10,9 +10,9 @@ it running eclipse in a window terminal.
 Cross-Compiling applications using Eclipse
 ------------------------------------------
 
-How will a program be compiled? Remember that we are developing cross
+How will a program be compiled and linked? Remember that we are developing cross
 applications. We are developing and compiling the code in a Linux x86_64
-machine, and we are executing it on an ARM architecture (see Fig. 17).
+architecture, and we are executing it on an ARM one (see Fig. 17).
 
 
 
@@ -21,28 +21,33 @@ applications for embedded systems. Figure copied from “Free Electrons”
 training materials (http://free-electrons.com/training/)
 
 The first question is where the cross-compiler and other cross-tools are
-located. The answer is this: in the folder “build/host/usr/bin”. If you
+located. The answer is this: in the folder `build/host/usr/bin`. If you
 inspect this folder's content, you can see the entire compiling,
-linking, and debugging tools (see Fig. 18). These programs are executed
+linking, and debugging tools (see :numref:`crosstools`). These programs are executed
 in your x86_64 computer, but they generate code for the ARM processor.
 
-.. image:: rpi/media/image22.png
+.. figure:: rpi/media/crosstools.png
    :width: 5.90168in
    :height: 3.83333in
+   :name: crosstools
+   :align: center
 
-Fig. 18: Cross-compiling tools installed in the host computer
+   Cross-compiling tools installed in the host computer
 
 In a Terminal window execute the following commands:
 
-::
+.. code-block:: bash
 
-   $ cd build/host
+   # change the directory to the folder where `build` directory is 
+   $ cd ./build/host
    $ source environment-setup
-   $ eclipse &
+   # run eclipse in the same terminal. In this case eclipse is available in your ubuntu user folder
+   $ /home/ubuntu/eclipse/cpp-2024-09/eclipseeclipse &
+   
 
-The *environment-setup* file contains the code listed below.
+The **environment-setup** file contains the code listed below.
 
-::
+.. code-block:: bash
 
    cat <<'EOF'
     _           _ _     _                 _
@@ -114,156 +119,158 @@ The *environment-setup* file contains the code listed below.
    export "PATH=$SDK_PATH/bin:$SDK_PATH/sbin:$PATH"
    export "KERNELDIR=/home/ubuntu/Documents/rpi/build/build/linux-custom/"
 
-This script when is source in a terminal window sets all the environment
-variables needed to use the cross-compilation tools and add the folder
-of cross-tools to the PATH linux variable.
+This script when is sourced in a terminal window sets all the environment
+variables needed to use the cross-compilation tools and adds the folder
+of cross-tools to the Linux `PATH` variable.
 
 The execution of eclipse popups a window inviting you to enter the
-workspace (see Fig. 19). The workspace is the folder that contain
+workspace (see :numref:`eclipsews`). The workspace is the folder that contain
 eclipse projects created by the user. You can have as many workspaces as
 you want. Please specify a folder in your account.
 
-+-------+--------------------------------------------------------------+
-|       | **[Help]:** The figures displayed in the following           |
-|       | paragraphs can be different depending on the Eclipse version |
-|       | installed.                                                   |
-+-------+--------------------------------------------------------------+
 
-.. image:: rpi/media/image23.png
+.. tip::
+
+    The figures displayed in the following  paragraphs can be different depending on the Eclipse version  installed
+
+.. figure:: rpi/media/eclipsews.png
    :width: 5.19182in
    :height: 2.66458in
+   :name: eclipsews
+   :align: center
 
-Fig. 19: Selection of the workspace for Eclipse. Use a folder in your
-account.
+   Selection of the workspace for Eclipse. Use a folder in your account.
 
-Select Ok, and the welcome window of Eclipse will be shown (Fig. 20).
-Next, close the welcome window and the main eclipse window will be
-displayed (Fig. 21).
+Select Ok, and the welcome window of Eclipse will be shown ( see :numref:`welcome` ).Next, close the welcome window and the main eclipse window will be displayed ( see :numref:`main` ).
 
-.. image:: rpi/media/image24.png
-   :width: 5.17708in
-   :height: 4.13683in
 
-Fig. 20: Eclipse welcome window.
+.. figure:: rpi/media/eclipsewelcome.png
+    :width: 5.17708in
+    :height: 4.13683in
+    :name: welcome
+    :align: center
 
-.. image:: rpi/media/image25.png
-   :width: 5.78753in
-   :height: 4.35417in
+    Eclipse welcome window.
 
-Fig. 21: Eclipse main window.
+
+.. figure:: rpi/media/eclipsemainw.png
+    :width: 5.78753in
+    :height: 4.35417in
+    :name: main
+    :align: center
+
+    Eclipse main window.
+
 
 In a terminal window create an empty folder. In this folder create the
-following files with the content described in the Table 2. The Makefile
-uses the environment variables that are defined in the environment where
-the makefile is run.
+following files with the content described in :numref:`Makefile`, :numref:`maincpp` , :numref:`funch`, and :numref:`funccpp`. The Makefile
+uses the environment variables that are defined in the environment where the `makefile` is run.
 
-+----------------+-----------------------------------------------------+
-| Filename       | Content                                             |
-+================+=====================================================+
-| Makefile       | LIBS= -lpthread -lm #Libraries used if needed       |
-|                |                                                     |
-|                | SRCS= main.cpp func.cpp                             |
-|                |                                                     |
-|                | BIN=app                                             |
-|                |                                                     |
-|                | CFLAGS+= -g -O0                                     |
-|                |                                                     |
-|                | OBJS=$(subst .cpp,.o,$(SRCS))                       |
-|                |                                                     |
-|                | all : $(BIN)                                        |
-|                |                                                     |
-|                | $(BIN): $(OBJS)                                     |
-|                |                                                     |
-|                | @echo [link] $@                                     |
-|                |                                                     |
-|                | $(CXX) -o $@ $(OBJS) $(LDFLAGS) $(LIBS)             |
-|                |                                                     |
-|                | %.o: %.cpp                                          |
-|                |                                                     |
-|                | @echo [Compile] $<                                  |
-|                |                                                     |
-|                | $(CXX) -c $(CFLAGS) $< -o $@                        |
-|                |                                                     |
-|                | clean:                                              |
-|                |                                                     |
-|                | @rm -f $(OBJS) $(BIN)                               |
-+----------------+-----------------------------------------------------+
-| main.cpp       | #include "func.h"                                   |
-|                |                                                     |
-|                | #include <iostream>                                 |
-|                |                                                     |
-|                | int main(void){                                     |
-|                |                                                     |
-|                | int b=2;                                            |
-|                |                                                     |
-|                | std::cout<<"A is: "<< fun(b) << std::endl;          |
-|                |                                                     |
-|                | }                                                   |
-+----------------+-----------------------------------------------------+
-| func.h         | #ifndef \__FUNC_H                                   |
-|                |                                                     |
-|                | #define \__FUNC_H                                   |
-|                |                                                     |
-|                | int fun(int);                                       |
-|                |                                                     |
-|                | #endif                                              |
-+----------------+-----------------------------------------------------+
-| func.cpp       | int fun(int b){                                     |
-|                |                                                     |
-|                | int a=b*2;                                          |
-|                |                                                     |
-|                | return a;                                           |
-|                |                                                     |
-|                | }                                                   |
-+----------------+-----------------------------------------------------+
+.. code-block:: Makefile
+    :caption: Makefile
+    :linenos:
+    :name: Makefile
+    
+    LIBS= -lpthread -lm #Libraries used if needed
+    SRCS= main.cpp func.cpp   
+    BIN=app                                           
+    CFLAGS+= -g -O0                                                                                    
+    OBJS=$(subst .cpp,.o,$(SRCS))                       
+    all : $(BIN)                                        
+    $(BIN): $(OBJS)                                     
+        @echo [link] $@                                    
+        $(CXX) -o $@ $(OBJS) $(LDFLAGS) $(LIBS)             
+    %.o: %.cpp                                          
+        @echo [Compile] $<                                  
+        $(CXX) -c $(CFLAGS) $< -o $@                                                                          
+    clean:                                              
+        @rm -f $(OBJS) $(BIN)  
 
-In Eclipse select in the left part of the windows Import *projects*. A
+.. code-block:: cpp
+    :linenos:
+    :name: maincpp
+    :caption: mainc.cpp
+
+    
+    #include "func.h"                                   
+    #include <iostream>                                              
+    int main(void){                                     
+        int b=2;                                            
+        std::cout<<"A is: "<< fun(b) << std::endl;                                                     
+    }          
+
+
+.. code-block:: cpp
+    :linenos:
+    :name: funch
+    :caption: func.h
+   
+  
+    #ifndef __FUNC_H                                                   
+    #define __FUNC_H                                                  
+        int fun(int);                                                                                    
+    #endif
+    
+.. code-block:: cpp
+    :linenos:
+    :name: funccpp
+    :caption: func.cpp 
+    
+    int fun(int b){  
+        int a=b*2;
+        return a;
+    }
+
+
+In Eclipse select in the left part of the windows `Import projects`. A
 new window is popup, select then *C/C++* and the option *Existing Code
-as Makefile Project*. The window shown in Fig. 22 is displayed. Complete
+as Makefile Project*. The window shown in :numref:`import` is displayed. Complete
 the name of the project, select the folder with the code and check
 *Cross GCC in Toolchain for Indexer Settings*.
 
-.. image:: rpi/media/image26.png
+.. figure:: rpi/media/import.png
    :width: 4.45148in
    :height: 4.95833in
-
-Fig. 22: Selecting the code.
+   :name: import
+   :align: center
+   
+   Importing the code.
 
 Building a project
 ------------------
 
 Once you have configured the cross-chain in Eclipse you can build your
 project using Project->Build Project. If everything is correct, you will
-see the eclipse project as represented in Fig. 29. You can clean the
+see the eclipse project as represented in :numref:`buildeclipse` . You can clean the
 project (remove the executable and objects) with *Clean*.
 
-.. image:: rpi/media/image27.png
-   :alt: A screenshot of a computer Description automatically generated
+.. figure:: rpi/media/eclipsebuild.png
    :width: 6.69375in
    :height: 4.17014in
+   :name: buildeclipse
+   :align: center
 
-Fig. 23: Eclipse project compiled (Binaries has been generated)
+   Eclipse project compiled (Binaries has been generated)
 
-+-------+--------------------------------------------------------------+
-|       | **[Console in Eclipse]:** Have a look at the messages        |
-|       | displayed in the Console. You will see how eclipse is        |
-|       | calling the cross compiler with different parameters.        |
-+-------+--------------------------------------------------------------+
+.. note::
+
+   **[Console in Eclipse]:** Have a look at the messages displayed in the Console. You will see how eclipse is calling the cross compiler with different parameters.      
 
 Moving the binary to the target
 -------------------------------
 
 In order to copy the executable to the target, you have different
-options. You can use the Linux application called “scp” or other similar
+options. You can use the Linux application called `scp` or other similar
 applications. In our case, we are going to use the “Other Locations….”
-utility included in the nautilus explorer. Specify in Server Address
-ssh://<ip address>
+utility included in the nautilus explorer ( :numref:`scp` ). Specify in Server Address `ssh://<ip address>`
 
-.. image:: rpi/media/image28.png
+.. figure:: rpi/media/nautilesssh.png
    :width: 5.57399in
    :height: 2.93365in
+   :name: scp
+   :align: center
 
-Fig. 24: “Connect to Server” option in Nautilus explorer
+   Connect to Server” option in Nautilus explorer
 
 Executing the application
 -------------------------
@@ -272,17 +279,19 @@ You can run the Raspberry PI program using putty (remember that once you
 have a network connection available in the RPI you can also use putty to
 connect to it).
 
-.. image:: rpi/media/image29.png
-   :alt: A screenshot of a computer Description automatically generated
+.. figure:: rpi/media/image29.png
    :width: 4.45in
    :height: 2.90434in
+   :name: putty
+   :align: center
 
-Fig. 25: Run test program in Raspberry Pi
+   Run test program in Raspberry Pi
 
-+-------+--------------------------------------------------------------+
-|       | Warning. If you experiment problems using ssh, delete the    |
-|       | .ssh folder in your home directory.                          |
-+-------+--------------------------------------------------------------+
+
+.. warning::
+
+   Warning. If you experiment problems using ssh, delete the `.ssh` folder in your home directory.  
+
 
 Automatic debugging using gdb and gdbserver
 -------------------------------------------
@@ -308,12 +317,12 @@ important here that you can also specify the working directory path
 where the executable will be copied and launched (you need to have
 rights in this folder).
 
-.. image:: rpi/media/image30.png
-   :alt: A screenshot of a computer Description automatically generated
+.. figure:: rpi/media/image30.png
    :width: 6.69375in
    :height: 3.94931in
+   :align: center
 
-Fig. 26: Creating a Debug Configuration
+   Creating a Debug Configuration
 
 In the debugger window you need to configure the path of your cross gdb
 application. Remember that we are working with a cross-compiler, cross
@@ -323,22 +332,21 @@ with an empty file. In the Gdbserver settings tab, you need to provide
 the path to the gdbserver in the target and the TCP/IP port used (by
 default 2345).
 
-.. image:: rpi/media/image30.png
-   :alt: A screenshot of a computer Description automatically generated
+.. figure:: rpi/media/image30.png
    :width: 6.03905in
    :height: 3.56303in
+   :align: center
 
-Fig. 27: Debug configuration, including the path to locate the cross gdb
-tool.
+   Debug configuration, including the path to locate the cross gdb tool.
 
 Now, press Debug in Eclipse window, and you can debug your application
 remotely.
 
-.. image:: rpi/media/image31.png
-   :alt: A screenshot of a computer Description automatically generated
+.. figure:: rpi/media/image31.png
    :width: 5.89423in
    :height: 3.67021in
+   :align: center
 
-Fig. 28: Debugging session on the RPI remotely
+   Debugging session on the RPI remotely
 
 

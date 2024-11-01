@@ -276,11 +276,8 @@ Cross Compiler, linker, and libraries to be  built to compile our embedded appli
    * - C library
      - Library    containing the typical C  libraries used in  Linux    environments   (stdlib, stdio,   etc)
      - glib
-   * - Kernel Headers
-     - same as kernel being built
-     - 
-   * - Custom Kernel Headers  Series
-     - 6.6.x
+   * - Kernel Header Options
+     - 6.6.x kernel headers
      - 
    * - Binutils Version
      - 2.41
@@ -394,7 +391,7 @@ This is the configuration of the Linux kernel. The specific location and version
       - Image 
       -
     * - Kernel  compression format
-      - Gzip compression
+      - gzip compression
       -
     * - Build aDevice Tree Blob (DTB)
       - Yes
@@ -427,11 +424,14 @@ Target packages option allows to select the software elements that will be insta
 	* - Busybox configuration file to use
 	  - package/busybox/busybox.config
 	  - 
+	* - Show packages that are also provided by busybox
+	  - Yes
+	  -
 	* - Audio and video applications
 	  - Default values
 	  - 
 	* - Compresssors and decompressors
-	  - Default values
+	  - xz-utils
 	  - 
 	* - Debugging, profiling and benchmark
 	  - **gdb, gdbserver, full debugger** 
@@ -464,7 +464,7 @@ Target packages option allows to select the software elements that will be insta
 	  - Default Values
 	  -
 	* - Libraries
-	  - Default Values
+	  - Default Values	
 	  - 
 	* - Networking applications 
 	  - **ifupdown scripts** **openssh**
@@ -475,7 +475,10 @@ Target packages option allows to select the software elements that will be insta
 	* - Real Time, Shell and  utilities
 	  - Default Values
 	  -  
-	* - System Tools, Text Editor and Viewers
+	* - System Tools
+	  - kmod, kmod utilities
+	  - 
+	* - Text Editor and Viewers
 	  - Default Values
 	  - 
 
@@ -523,7 +526,7 @@ Additional tools needed for ubuntu to create all the embedded images (:numref:`h
       - Yes
       -
     * - host kmod
-      - Yes, support xz-compressed modules
+      - Yes, support **xz-compressed modules**
       - 
     * - host mtools
       - Yes
