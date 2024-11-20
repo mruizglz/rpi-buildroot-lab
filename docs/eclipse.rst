@@ -42,7 +42,7 @@ In a Terminal window execute the following commands:
    $ cd ./build/host
    $ source environment-setup
    # run eclipse in the same terminal. In this case eclipse is available in your ubuntu user folder
-   $ /home/ubuntu/eclipse/cpp-2024-09/eclipseeclipse &
+   $ /home/ubuntu/eclipse/cpp-2024-09/eclipse &
    
 
 The **environment-setup** file contains the code listed below.
