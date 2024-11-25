@@ -1,4 +1,4 @@
-# Documentation example
+# Universidad Politécnica de Madrid
+Documentation for the Embedded Systems Design using Raspberry PI
+https://mruizglz.github.io/rpi-buildroot-lab/
 
-We use this example in the lesson
-[How to document your research software](https://coderefinery.github.io/documentation/).
