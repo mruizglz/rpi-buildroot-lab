@@ -1,28 +1,24 @@
-Preparing the linux virtual machine.
-====================================
+Preparing the VMware Ubuntu Virtual Machine.
+============================================
 
 Download VMware Workstation Player.
 -----------------------------------
 
-The link https://www.vmware.com/support/pubs/player_pubs.html contains
-documentation describing the installation and basic use of VMware
-Workstation Player. Follow the instructions to set up the application on
-your computer.
+The software can be downloaded from this `link <https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware+Workstation+Pro>`_. Follow the instructions to set up the application on your computer.
 
-Installing Ubuntu 22.04 LTS as a virtual machine.
+Installing Ubuntu 24.04.01 LTS as a virtual machine.
 -------------------------------------------------
 
-+-------+--------------------------------------------------------------+
-|       | **[Ubuntu version]:** It is mandatory to install Ubuntu      |
-|       | 22.04 version.                                               |
-+-------+--------------------------------------------------------------+
+.. note::
+   It is mandatory to install Ubuntu 24.04.01 LTS version. Use this link to download it
+   `http://ftp.rediris.es/sites/releases.ubuntu.com/noble <http://ftp.rediris.es/sites/releases.ubuntu.com/noble>`_ 
+   
 
-The first step is to download Ubuntu 22.04.3 (64 bit PC) from Ubuntu web
-site using this link: http://releases.ubuntu.com/ . You will download an
-ISO image with this Linux operating System.Run WMware player and install
-Ubuntu using the VMWare player instructions. Consider the following when
-creating the virtual machine: you need at least 150Gbytes of hard disk
-space (in multiple files), 3GByte of RAM, and, if possible 4 processors.
+The first step is to download Ubuntu. You will download an
+ISO image with this Linux operating System. Run WMware player and install
+Ubuntu using the VMWare player instructions. Select the *Typical* configuration and 
+reserve at least 100G/150G for the hard disk.
+In the hardware configuration select 8GByte of RAM, if possible 4 processors, and the USB 3.1 support.
 The installation time will be half an hour, more or less, depending on
 your computer. Moving a virtual machine from one computer to another is
 a time-consuming task; therefore, take this into account to minimize the
@@ -32,24 +28,25 @@ Installing synaptic
 -------------------
 
 If you need to install software packages, you can do it using the linux
-terminal command apt-get. Another alternative process is the use of the
+terminal command *apt-get*. Another alternative process is the use of the
 synaptic utility. In order to use it, you need to install it using this
 command:
 
-::
+.. code-block:: bash
 
    $ sudo apt-get install synaptic
 
 Once installed, you can search and execute the synaptic program. When
 you click two times over the package, it will show all the dependent
-packages that would be installed.
+packages that would be installed (see :numref:`synaptic`).
 
-.. image:: rpi/media/image32.png
-   :alt: A screenshot of a computer Description automatically generated
+.. figure:: rpi/media/image32.png
    :width: 6.69375in
    :height: 3.32431in
+   :align: center
+   :name: synaptic
 
-Fig. 30: Synaptic window
+   Synaptic window
 
 Installing putty
 ----------------
@@ -66,17 +63,12 @@ installed in the VM. These are listed in this link
 http://buildroot.uclibc.org/downloads/manual/manual.html#requirement.
 You need to install at least:
 
--  g++
-
--  git
+- build-essential
+- git
+- libncurses-dev
 
 Installing packages supporting Eclipse
 --------------------------------------
 
-You need to install:
-
--  eclipse-cdt (eclipse C/C++ programming)
-
--  eclipse-rse (eclipse remote explorer)
-
--  eclipse-cdt-launch-remote (eclipse for remote debugging)
+Follow the instructions of this `link <https://ubuntuhandbook.org/index.php/2021/05/install-eclipse-ide-ubuntu-21-04-20-04/>`_ to install Eclipse.
+Use the Eclipse C/C++ or the Eclipse for Embedded C/C++ developers. 
