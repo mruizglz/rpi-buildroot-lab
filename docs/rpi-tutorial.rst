@@ -307,7 +307,7 @@ Here you can define the basic configuration of the embedded Linux to generate an
      - eth0
      -
    * - Set the system's default PATH
-     - /bin/sbin:/usr/bin:/usr/sbin  
+     - /bin:/sbin:/usr/bin:/usr/sbin  
      -
    * - Purge unwanted locales
      - yes
