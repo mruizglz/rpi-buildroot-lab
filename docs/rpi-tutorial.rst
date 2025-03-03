@@ -271,7 +271,7 @@ Here you can define the basic configuration of the embedded Linux to generate an
      - Default target skeleton. 
      - Linux folder filesystem organization for skeleton the embedded system 
    * - System hostname
-     - **buildroot**.   
+     - **buildroot**   
      - Name of the embedded system
    * - System Banner
      - **Linux RPI 4**
