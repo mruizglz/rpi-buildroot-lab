@@ -151,7 +151,7 @@ commands:
 
     $ mkdir build
     $ cd build
-    $ make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2023.08.2/ menuconfig
+    $ make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2024.08.1/ menuconfig
 
 
 .. important::
@@ -503,14 +503,14 @@ In the Terminal Window executes the following command (:numref:`buildbuildroot`)
    :caption: Build Buildroot
    :name: buildbuildroot
 
-    $ make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2023.08.2/ 
+    $ make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2024.08.1/ 
 
 If everything is correct, you will see a final window similar to the one
 represented in :numref:`buildrootok`.
 
 .. warning::
 
-    In this step, buildroot will connect, using the internet, to different repositories. After downloading the code, Buildroot will compile the applications and generate a lot of files and folders. Depending on your internet speed access and the   configuration chosen, this step could take up to **one hour  and a half**. If you have errors in the buildroot configuration,  you could obtain errors in this compilation phase. Check your configuration correctly. Use “make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2023.08.2/ clean” to clean up  your partial compilation.
+    In this step, buildroot will connect, using the internet, to different repositories. After downloading the code, Buildroot will compile the applications and generate a lot of files and folders. Depending on your internet speed access and the   configuration chosen, this step could take up to **one hour  and a half**. If you have errors in the buildroot configuration,  you could obtain errors in this compilation phase. Check your configuration correctly. Use “make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2024.08.1/ clean” to clean up  your partial compilation.
 
 
 .. note::
@@ -523,9 +523,9 @@ represented in :numref:`buildrootok`.
    
    .. list-table:: actions
    
-       * - make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2023.08.2/ clean
+       * - make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2024.08.1/ clean
          - Build again buildroot
-       * - make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2023.08.2/ distclean
+       * - make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2024.08.1/ distclean
          - configure and build again buildroot
    
    
