@@ -231,8 +231,8 @@ Cross Compiler, linker, and libraries to be  built to compile our embedded appli
      - buildroot
      -
    * - C library
-     - Library    containing the typical C  libraries used in  Linux    environments   (stdlib, stdio,   etc)
      - glib
+     - Library    containing the typical C  libraries used in  Linux    environments   (stdlib, stdio,   etc)
    * - Kernel Header Options
      - 6.6.x kernel headers
      - 
