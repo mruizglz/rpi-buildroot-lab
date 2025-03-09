@@ -407,10 +407,10 @@ Target packages option allows to select the software elements that will be insta
 	  - 
 	* - Hardware handling 
 	  - **Firmware>rpifirmware** **rpi4 (default)**	
-	  - Path to a file stores as boot/config.txt **path**/board/raspberrypi4-64/config_4_64bit.txt
+	  - Path to a file stores as boot/config.txt: **your path**/board/raspberrypi4-64/config_4_64bit.txt
 	* - Hardware handling 
 	  - **Firmware>rpifirmware**	  
-	  - Path to a file stored as boot/cmdline.txt **path**/board/raspberrypi4-64/cmdline.txt
+	  - Path to a file stored as boot/cmdline.txt: **your path path**/board/raspberrypi4-64/cmdline.txt
 	* - Hardware handling 
 	  - **Firmware>rpifirmware** 
 	  - **install DTB  overlays**
@@ -424,7 +424,7 @@ Target packages option allows to select the software elements that will be insta
 	  - Default Values	
 	  - 
 	* - Networking applications 
-	  - **ifupdown scripts** **openssh**
+	  - **ifupdown scripts**, **openssh**
 	  - 
 	* - Package Managers
 	  - Default values
