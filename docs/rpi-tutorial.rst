@@ -652,7 +652,7 @@ c) To connect the Ethernet cable to the RJ45 port if it is available
 
 
 The booting process of the Raspberry Pi BCM2711 `BCM2711 <https://www.raspberrypi.com/documentation/computers/processors.html#bcm2711>`_ processor is depicted
-in Fig. 14. Take into account that this System On Chip (SoC), the
+in :numref:`RPIBoot`. Take into account that this System On Chip (SoC), the
 BCM2711, contains two different processors: a :term:`GPU` and an ARM
 CPU. The programs *bootcode.bin* and *start.elf* are written
 explicitly for the GPU, and the source code is unavailable. Broadcom
@@ -663,7 +663,14 @@ binaries such as u-boot bootloader.
 
 
 
-Fig. 14: Booting process for BCM2711 processor in the raspberry-pi.
+.. figure:: rpi/media/bcm2711boting.png
+   :alt: RPI booting process
+   :width: 4.90093in
+   :height: 4.28723in
+   :name: RPIBoot
+   :align: center
+
+   Booting process for BCM2711 processor in the raspberry-pi.
 
 The config.txt file contains essential information to boot the Linux OS
 and perform the configuration of different hardware elements (look at
