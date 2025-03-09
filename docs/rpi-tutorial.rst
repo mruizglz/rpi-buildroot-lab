@@ -900,4 +900,28 @@ d. Create the file
 
 3. Perform a `*make*` and burn again the new image in the micro SDcard. Boot the
    Raspberry and check that you can connect to the wireless network.
+   
+   
+Customizing the Linux kernel
+----------------------------
 
+Kernel configuration
+^^^^^^^^^^^^^^^^^^^^
+
+Execute the following command to configure the Linux Kernel in Buildroot
+
+.. code-block:: bash
+   
+   $ make  O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2024.08.1/ linux-menuconfig
+   
+Using the different menus you can configure specific kernel features, add support for specific device drivers and multiple additional functionalities. The compilation of the Linux kernel package is done with this command:
+
+.. code-block:: bash
+   
+   $ make  O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2024.08.1/ linux-rebuild
+
+In order to get the new sdcard.img file execute:
+
+ .. code-block:: bash
+   
+   $ make  O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2024.08.1/  
