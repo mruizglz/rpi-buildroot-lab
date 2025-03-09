@@ -151,7 +151,7 @@ commands:
 
     $ mkdir build
     $ cd build
-    $ make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2023.08.2/ menuconfig
+    $ make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2024.08.1/ menuconfig
 
 
 .. important::
@@ -231,8 +231,8 @@ Cross Compiler, linker, and libraries to be  built to compile our embedded appli
      - buildroot
      -
    * - C library
-     - Library    containing the typical C  libraries used in  Linux    environments   (stdlib, stdio,   etc)
      - glib
+     - Library    containing the typical C  libraries used in  Linux    environments   (stdlib, stdio,   etc)
    * - Kernel Header Options
      - 6.6.x kernel headers
      - 
@@ -271,7 +271,7 @@ Here you can define the basic configuration of the embedded Linux to generate an
      - Default target skeleton. 
      - Linux folder filesystem organization for skeleton the embedded system 
    * - System hostname
-     - **buildroot**.   
+     - **buildroot**   
      - Name of the embedded system
    * - System Banner
      - **Linux RPI 4**
@@ -307,7 +307,7 @@ Here you can define the basic configuration of the embedded Linux to generate an
      - eth0
      -
    * - Set the system's default PATH
-     - /bin/sbin:/usr/bin:/usr/sbin  
+     - /bin:/sbin:/usr/bin:/usr/sbin  
      -
    * - Purge unwanted locales
      - yes
@@ -329,7 +329,7 @@ Here you can define the basic configuration of the embedded Linux to generate an
 Linux Kernel
 ^^^^^^^^^^^^
 
-This is the configuration of the Linux kernel. The specific location and version is specified among other parameters (:numref:`kernel`).
+This is the configuration of the Linux kernel. The specific location and version is specified among other parameters (:numref:`kernel`). See thrird column for details of git repor to use.
 
 
 .. list-table:: kernel-configuration
@@ -343,7 +343,7 @@ This is the configuration of the Linux kernel. The specific location and version
       -
     * - Defconfigname
       - bcm2711
-      - This file containst the specific configuration of the kernel for the RPI
+      - This file contains the specific configuration of the kernel for the RPI
     * - Kernel binary format
       - Image 
       -
@@ -407,10 +407,10 @@ Target packages option allows to select the software elements that will be insta
 	  - 
 	* - Hardware handling 
 	  - **Firmware>rpifirmware** **rpi4 (default)**	
-	  - Path to a file stores as boot/config.txt **path**/board/raspberrypi4-64/config_4_64bit.txt
+	  - Path to a file stores as boot/config.txt: **your path**/board/raspberrypi4-64/config_4_64bit.txt
 	* - Hardware handling 
 	  - **Firmware>rpifirmware**	  
-	  - Path to a file stored as boot/cmdline.txt **path**/board/raspberrypi4-64/cmdline.txt
+	  - Path to a file stored as boot/cmdline.txt: **your path**/board/raspberrypi4-64/cmdline.txt
 	* - Hardware handling 
 	  - **Firmware>rpifirmware** 
 	  - **install DTB  overlays**
@@ -424,7 +424,7 @@ Target packages option allows to select the software elements that will be insta
 	  - Default Values	
 	  - 
 	* - Networking applications 
-	  - **ifupdown scripts** **openssh**
+	  - **ifupdown scripts**, **openssh**
 	  - 
 	* - Package Managers
 	  - Default values
@@ -503,14 +503,14 @@ In the Terminal Window executes the following command (:numref:`buildbuildroot`)
    :caption: Build Buildroot
    :name: buildbuildroot
 
-    $ make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2023.08.2/ 
+    $ make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2024.08.1/ 
 
 If everything is correct, you will see a final window similar to the one
 represented in :numref:`buildrootok`.
 
 .. warning::
 
-    In this step, buildroot will connect, using the internet, to different repositories. After downloading the code, Buildroot will compile the applications and generate a lot of files and folders. Depending on your internet speed access and the   configuration chosen, this step could take up to **one hour  and a half**. If you have errors in the buildroot configuration,  you could obtain errors in this compilation phase. Check your configuration correctly. Use “make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2023.08.2/ clean” to clean up  your partial compilation.
+    In this step, buildroot will connect, using the internet, to different repositories. After downloading the code, Buildroot will compile the applications and generate a lot of files and folders. Depending on your internet speed access and the   configuration chosen, this step could take up to **one hour  and a half**. If you have errors in the buildroot configuration,  you could obtain errors in this compilation phase. Check your configuration correctly. Use “make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2024.08.1/ clean” to clean up  your partial compilation.
 
 
 .. note::
@@ -523,9 +523,9 @@ represented in :numref:`buildrootok`.
    
    .. list-table:: actions
    
-       * - make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2023.08.2/ clean
+       * - make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2024.08.1/ clean
          - Build again buildroot
-       * - make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2023.08.2/ distclean
+       * - make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2024.08.1/ distclean
          - configure and build again buildroot
    
    
