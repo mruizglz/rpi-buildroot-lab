@@ -329,7 +329,7 @@ Here you can define the basic configuration of the embedded Linux to generate an
 Linux Kernel
 ^^^^^^^^^^^^
 
-This is the configuration of the Linux kernel. The specific location and version is specified among other parameters (:numref:`kernel`).
+This is the configuration of the Linux kernel. The specific location and version is specified among other parameters (:numref:`kernel`). See thrird column for details of git repor to use.
 
 
 .. list-table:: kernel-configuration
@@ -343,7 +343,7 @@ This is the configuration of the Linux kernel. The specific location and version
       -
     * - Defconfigname
       - bcm2711
-      - This file containst the specific configuration of the kernel for the RPI
+      - This file contains the specific configuration of the kernel for the RPI
     * - Kernel binary format
       - Image 
       -
