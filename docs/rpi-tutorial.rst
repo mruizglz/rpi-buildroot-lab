@@ -642,9 +642,9 @@ c) To connect the Ethernet cable to the RJ45 port if it is available
     * - RPI connector
       - FDTI Terminal
     * - RXD UART (GPIO16) Pin 10
-      - Terminal 5 (Yellow)
-    * - TXD UART (GPIO15) Pin 8
       - Terminal 4 (Orange)
+    * - TXD UART (GPIO15) Pin 8
+      - Terminal 5 (Yellow)
     * - Ground (GND) Pin 6
       - Pin 1
 
