@@ -12,7 +12,7 @@ Cross-Compiling applications using Eclipse
 
 How will a program be compiled and linked? Remember that we are developing cross
 applications. We are developing and compiling the code in a Linux x86_64
-architecture, and we are executing it on an ARM one (see numref:`crosstoolschain`).
+architecture, and we are executing it on an ARM one (see :numref:`crosstoolschain`).
 
 
 .. figure:: rpi/media/cross-toolchain.jpg
