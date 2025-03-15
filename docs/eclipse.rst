@@ -332,7 +332,7 @@ with an empty file. In the Gdbserver settings tab, you need to provide
 the path to the gdbserver in the target and the TCP/IP port used (by
 default 2345).
 
-.. figure:: rpi/media/image30.png
+.. figure:: rpi/media/eclipsedebug.png
    :width: 6.03905in
    :height: 3.56303in
    :align: center
