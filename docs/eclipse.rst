@@ -12,13 +12,16 @@ Cross-Compiling applications using Eclipse
 
 How will a program be compiled and linked? Remember that we are developing cross
 applications. We are developing and compiling the code in a Linux x86_64
-architecture, and we are executing it on an ARM one (see Fig. 17).
+architecture, and we are executing it on an ARM one (see numref:`crosstoolschain`).
 
 
+.. figure:: rpi/media/cross-toolchain.jpg
+   :width: 5.90168in
+   :height: 3.83333in
+   :name: crosstoolschain
+   :align: center
 
-Fig. 17: Summary of the different configurations for developing
-applications for embedded systems. Figure copied from “Free Electrons”
-training materials (http://free-electrons.com/training/)
+   Cross Toolchain. Figure copied from “Free Electrons” training materials (http://free-electrons.com/training/)
 
 The first question is where the cross-compiler and other cross-tools are
 located. The answer is this: in the folder `build/host/usr/bin`. If you
