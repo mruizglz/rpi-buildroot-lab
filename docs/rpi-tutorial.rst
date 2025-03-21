@@ -827,7 +827,7 @@ filesystem. This step is done by adding these commands to the
 Adding the Broadcom firmware support for Wireless hardware
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The hardware element included in the RPI-3 for the Wireless
+The hardware element included in the RPI-4 for the Wireless
 communication is implemented with the BCM43438 chip. It is needed to
 include the software packages with the firmware’s chip and the wireless
 utilities.
@@ -863,7 +863,7 @@ utilities.
 
          5. “Instal wpa_passphrase binary”
 
-   b. Add these lines to ./board/rapsberrypi3-64/post-build.sh.
+   b. Add these lines to ./board/rapsberrypi4-64/post-build.sh.
 
 .. code-block:: bash
 

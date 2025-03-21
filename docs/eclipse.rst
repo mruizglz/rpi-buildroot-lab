@@ -192,7 +192,7 @@ uses the environment variables that are defined in the environment where the `ma
 .. code-block:: cpp
     :linenos:
     :name: maincpp
-    :caption: mainc.cpp
+    :caption: main.cpp
 
     
     #include "func.h"                                   
