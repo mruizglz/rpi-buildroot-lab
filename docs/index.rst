@@ -19,4 +19,4 @@ Building Embedded Linux for Raspberry PI
 Indices and tables
 ==================
 
-* :ref:`genindex`
+
