@@ -1,6 +1,11 @@
 # Universidad Politécnica de Madrid
-Documentation for the Embedded Systems Design using Raspberry PI
+ETS Ingeniería y Sistemas de Telecomunicación
+Documentation for the **Embedded Systems Design using Raspberry PI**
 
 
-https://mruizglz.github.io/rpi-buildroot-lab/
+
+Documentation in HTML format: https://mruizglz.github.io/rpi-buildroot-lab/
+
+Documentation if PDF format: https://github.com/mruizglz/rpi-buildroot-lab/releases/download/v2025/EmbeddedLinuxRPI.pdf
+
 
