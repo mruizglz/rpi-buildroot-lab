@@ -151,7 +151,7 @@ commands:
 
     $ mkdir build
     $ cd build
-    $ make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2024.08.1/ menuconfig
+    $ make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2025.02.9/ menuconfig
 
 
 .. important::
@@ -233,11 +233,14 @@ Cross Compiler, linker, and libraries to be  built to compile our embedded appli
    * - C library
      - glib
      - Library    containing the typical C  libraries used in  Linux    environments   (stdlib, stdio,   etc)
+   * - Kernel Headers
+     - Same as kernel being built
+     - Include files for kernel
    * - Kernel Header Options
      - 6.6.x kernel headers
      - 
    * - Binutils Version
-     - 2.41
+     - 2.43.1
      - Binutils contains  tools to manage    the binary files obtained in the   compilation of   the different     applications    
    * - GCC  compiler Version
      - gcc 13.x   
@@ -249,10 +252,10 @@ Cross Compiler, linker, and libraries to be  built to compile our embedded appli
      - Yes. 
      - Includes the  support for GDB.  
    * - Add Python support 
-     - 
+     - Yes
      -
    * - GDB debugger version
-     - gdb 14.x
+     - gdb 15.x
      -
 
 Build options
@@ -315,14 +318,14 @@ Here you can define the basic configuration of the embedded Linux to generate an
    * - Leave the default values for all others
      - 
      -
-   * - Custom scripts to run path **before** creatating filesystem images
-     - **your path**/buildroot-2024.08.1/board/raspberrypi4-64/post-build.sh 
-     -
+   * - Custom scripts to run path **before** creating filesystem images
+     - **your path**/buildroot-2025.02.9/board/raspberrypi4-64/post-build.sh 
+     - your path -> "/home/...." os where you have decompressed buildroot
    * - Custom scripts to run inside the fakeroot environment 
      - 
      -
    * - Custom scripts to run **after** creating filesystem images
-     - **your path**/buildroot-2024.08.1/board/raspberrypi4-64/post-image.sh 
+     - **your path**/buildroot-2025.02.9/board/raspberrypi4-64/post-image.sh 
      -                                                        
 
 
@@ -349,8 +352,8 @@ This is the configuration of the Linux kernel. The specific location and version
       -
     * - Kernel  compression format
       - gzip compression
-      -
-    * - Build aDevice Tree Blob (DTB)
+      - 
+    * - Build a Device Tree Blob (DTB)
       - Yes
       -
     * - Intree Device Tree Source file name 
@@ -503,14 +506,14 @@ In the Terminal Window executes the following command (:numref:`buildbuildroot`)
    :caption: Build Buildroot
    :name: buildbuildroot
 
-    $ make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2024.08.1/ 
+    $ make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2025.02.9/ 
 
 If everything is correct, you will see a final window similar to the one
 represented in :numref:`buildrootok`.
 
 .. warning::
 
-    In this step, buildroot will connect, using the internet, to different repositories. After downloading the code, Buildroot will compile the applications and generate a lot of files and folders. Depending on your internet speed access and the   configuration chosen, this step could take up to **one hour  and a half**. If you have errors in the buildroot configuration,  you could obtain errors in this compilation phase. Check your configuration correctly. Use “make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2024.08.1/ clean” to clean up  your partial compilation.
+    In this step, buildroot will connect, using the internet, to different repositories. After downloading the code, Buildroot will compile the applications and generate a lot of files and folders. Depending on your internet speed access and the   configuration chosen, this step could take up to **two hours**. If you have errors in the buildroot configuration,  you could obtain errors in this compilation phase. Check your configuration correctly. Use “make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2025.02.9/ clean” to clean up  your partial compilation.
 
 
 .. note::
@@ -523,9 +526,9 @@ represented in :numref:`buildrootok`.
    
    .. list-table:: actions
    
-       * - make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2024.08.1/ clean
+       * - make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2025.02.9/ clean
          - Build again buildroot
-       * - make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2024.08.1/ distclean
+       * - make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2025.02.9/ distclean
          - configure and build again buildroot
    
    
@@ -584,7 +587,7 @@ unless you have other removable devices connected to the system):
    tipically “b” or “c”.  **Never** use “a” because this is the operating system hardisk
 
 
-Remember to format again the microSDcard if you need to repeat this process otherwise you will have errors when Linux in booting.
+Remember to format again the microSDcard if you need to repeat this process otherwise you will have errors when Linux is booting.
 
 .. seealso::
     
@@ -871,7 +874,7 @@ utilities.
    cp <buildroot-folder>/board/raspberrypi4-64/wpa_supplicant.conf ${TARGET_DIR}/etc/wpa_supplicant.conf
 
 c. Create the file `*<buildroot-folder>*/board/raspberrypi4-64/interfaces`
-   with the highlighted content:
+   adding the highlighted content:
 
 .. code-block:: bash
    :emphasize-lines: 10,11,12,13,14
@@ -919,16 +922,16 @@ Execute the following command to configure the Linux Kernel in Buildroot
 
 .. code-block:: bash
    
-   $ make  O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2024.08.1/ linux-menuconfig
+   $ make  O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2025.02.9/ linux-menuconfig
    
 Using the different menus you can configure specific kernel features, add support for specific device drivers and multiple additional functionalities. The compilation of the Linux kernel package is done with this command:
 
 .. code-block:: bash
    
-   $ make  O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2024.08.1/ linux-rebuild
+   $ make  O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2025.02.9/ linux-rebuild
 
 In order to get the new sdcard.img file execute:
 
  .. code-block:: bash
    
-   $ make  O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2024.08.1/  
+   $ make  O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2025.02.9/  
