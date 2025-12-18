@@ -14,7 +14,7 @@ Building Embedded Linux for Raspberry PI
    eclipse
    virtualmachine
    
-   genindex
+  
    
 Indices and tables
 ==================
