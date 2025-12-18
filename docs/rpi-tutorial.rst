@@ -153,6 +153,10 @@ commands:
     $ cd build
     $ make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2025.02.9/ menuconfig
 
+.. important::
+    
+    The **build** folder will contain all the compilation of the embedded Linux generated. Remember to change to this folder before doing any operation with buildroot 
+    
 
 .. important::
     
