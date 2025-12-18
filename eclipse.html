@@ -1,0 +1,429 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4. Using the integrated development environment Eclipse/CDT &mdash; Design of Embedded Systems with RaspberryPI 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Preparing the VMware Ubuntu Virtual Machine." href="virtualmachine.html" />
+    <link rel="prev" title="3. Embedded Linux With RPI" href="rpi-tutorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Design of Embedded Systems with RaspberryPI
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="acronyms.html">1. Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingstartedrpi.html">2. Getting started with RPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpi-tutorial.html">3. Embedded Linux With RPI</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Using the integrated development environment Eclipse/CDT</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#eclipse-ide-for-c-c-developers">4.1. Eclipse IDE for C/C++ developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cross-compiling-applications-using-eclipse">4.2. Cross-Compiling applications using Eclipse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-a-project">4.3. Building a project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#moving-the-binary-to-the-target">4.4. Moving the binary to the target</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#executing-the-application">4.5. Executing the application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#automatic-debugging-using-gdb-and-gdbserver">4.6. Automatic debugging using gdb and gdbserver</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="virtualmachine.html">5. Preparing the VMware Ubuntu Virtual Machine.</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Design of Embedded Systems with RaspberryPI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4. </span>Using the integrated development environment Eclipse/CDT</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/eclipse.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-integrated-development-environment-eclipse-cdt">
+<h1><span class="section-number">4. </span>Using the integrated development environment Eclipse/CDT<a class="headerlink" href="#using-the-integrated-development-environment-eclipse-cdt" title="Link to this heading"></a></h1>
+<section id="eclipse-ide-for-c-c-developers">
+<h2><span class="section-number">4.1. </span>Eclipse IDE for C/C++ developers<a class="headerlink" href="#eclipse-ide-for-c-c-developers" title="Link to this heading"></a></h2>
+<p>The Eclipse IDE CDT is installed in the virtual machine. You can execute
+it running eclipse in a window terminal.</p>
+</section>
+<section id="cross-compiling-applications-using-eclipse">
+<h2><span class="section-number">4.2. </span>Cross-Compiling applications using Eclipse<a class="headerlink" href="#cross-compiling-applications-using-eclipse" title="Link to this heading"></a></h2>
+<p>How will a program be compiled and linked? Remember that we are developing cross
+applications. We are developing and compiling the code in a Linux x86_64
+architecture, and we are executing it on an ARM one (see <a class="reference internal" href="#crosstoolschain"><span class="std std-numref">Fig. 4.1</span></a>).</p>
+<figure class="align-center" id="crosstoolschain">
+<a class="reference internal image-reference" href="_images/cross-toolchain.jpg"><img alt="_images/cross-toolchain.jpg" src="_images/cross-toolchain.jpg" style="width: 5.90168in; height: 3.83333in;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Cross Toolchain. Figure copied from “Free Electrons” training materials (<a class="reference external" href="http://free-electrons.com/training/">http://free-electrons.com/training/</a>)</span><a class="headerlink" href="#crosstoolschain" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The first question is where the cross-compiler and other cross-tools are
+located. The answer is this: in the folder <cite>build/host/usr/bin</cite>. If you
+inspect this folder’s content, you can see the entire compiling,
+linking, and debugging tools (see <a class="reference internal" href="#crosstools"><span class="std std-numref">Fig. 4.2</span></a>). These programs are executed
+in your x86_64 computer, but they generate code for the ARM processor.</p>
+<figure class="align-center" id="crosstools">
+<a class="reference internal image-reference" href="_images/crosstools.png"><img alt="_images/crosstools.png" src="_images/crosstools.png" style="width: 5.90168in; height: 3.83333in;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 4.2 </span><span class="caption-text">Cross-compiling tools installed in the host computer</span><a class="headerlink" href="#crosstools" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>In a Terminal window execute the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># change the directory to the folder where `build` directory is</span>
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>./build/host
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>environment-setup
+<span class="c1"># run eclipse in the same terminal. In this case eclipse is available in your ubuntu user folder</span>
+$<span class="w"> </span>/home/ubuntu/eclipse/cpp-2024-09/eclipse/eclipse<span class="w"> </span><span class="p">&amp;</span>
+</pre></div>
+</div>
+<p>The <strong>environment-setup</strong> file contains the code listed below.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
+<span class="s"> _           _ _     _                 _</span>
+<span class="s">| |__  _   _(_) | __| |_ __ ___   ___ | |_</span>
+<span class="s">| &#39;_ \| | | | | |/ _` | &#39;__/ _ \ / _ \| __|</span>
+<span class="s">| |_) | |_| | | | (_| | | | (_) | (_) | |_</span>
+<span class="s">|_.__/ \__,_|_|_|\__,_|_|  \___/ \___/ \__|</span>
+
+<span class="s">       Making embedded Linux easy!</span>
+
+<span class="s">Some tips:</span>
+<span class="s">* PATH now contains the SDK utilities</span>
+<span class="s">* Standard autotools variables (CC, LD, CFLAGS) are exported</span>
+<span class="s">* Kernel compilation variables (ARCH, CROSS_COMPILE, KERNELDIR) are exported</span>
+<span class="s">* To configure do &quot;./configure $CONFIGURE_FLAGS&quot; or use</span>
+<span class="s">  the &quot;configure&quot; alias</span>
+<span class="s">* To build CMake-based projects, use the &quot;cmake&quot; alias</span>
+
+<span class="s">EOF</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>x<span class="s2">&quot;</span><span class="nv">$BASH_VERSION</span><span class="s2">&quot;</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span>x<span class="s2">&quot;&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">     </span><span class="nv">SDK_PATH</span><span class="o">=</span><span class="k">$(</span>dirname<span class="w"> </span><span class="k">$(</span>realpath<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">BASH_SOURCE</span><span class="p">[0]</span><span class="si">}</span><span class="s2">&quot;</span><span class="k">))</span>
+<span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>x<span class="s2">&quot;</span><span class="nv">$ZSH_VERSION</span><span class="s2">&quot;</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span>x<span class="s2">&quot;&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">     </span><span class="nv">SDK_PATH</span><span class="o">=</span><span class="k">$(</span>dirname<span class="w"> </span><span class="k">$(</span>realpath<span class="w"> </span><span class="nv">$0</span><span class="k">))</span>
+<span class="k">else</span>
+<span class="w">     </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;unsupported shell&quot;</span>
+<span class="k">fi</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;AR=aarch64-buildroot-linux-gnu-gcc-ar&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;AS=aarch64-buildroot-linux-gnu-as&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;LD=aarch64-buildroot-linux-gnu-ld&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;NM=aarch64-buildroot-linux-gnu-gcc-nm&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;CC=aarch64-buildroot-linux-gnu-gcc&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;GCC=aarch64-buildroot-linux-gnu-gcc&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;CPP=aarch64-buildroot-linux-gnu-cpp&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;CXX=aarch64-buildroot-linux-gnu-g++&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;FC=aarch64-buildroot-linux-gnu-gfortran&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;F77=aarch64-buildroot-linux-gnu-gfortran&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;RANLIB=aarch64-buildroot-linux-gnu-gcc-ranlib&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;READELF=aarch64-buildroot-linux-gnu-readelf&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;STRIP=aarch64-buildroot-linux-gnu-strip&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;OBJCOPY=aarch64-buildroot-linux-gnu-objcopy&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;OBJDUMP=aarch64-buildroot-linux-gnu-objdump&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;AR_FOR_BUILD=/usr/bin/ar&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;AS_FOR_BUILD=/usr/bin/as&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;CC_FOR_BUILD=/usr/bin/gcc&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;GCC_FOR_BUILD=/usr/bin/gcc&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;CXX_FOR_BUILD=/usr/bin/g++&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;LD_FOR_BUILD=/usr/bin/ld&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;CPPFLAGS_FOR_BUILD=-I</span><span class="nv">$SDK_PATH</span><span class="s2">/include&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;CFLAGS_FOR_BUILD=-O2 -I</span><span class="nv">$SDK_PATH</span><span class="s2">/include&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;CXXFLAGS_FOR_BUILD=-O2 -I</span><span class="nv">$SDK_PATH</span><span class="s2">/include&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;LDFLAGS_FOR_BUILD=-L</span><span class="nv">$SDK_PATH</span><span class="s2">/lib -Wl,-rpath,</span><span class="nv">$SDK_PATH</span><span class="s2">/lib&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;FCFLAGS_FOR_BUILD=&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;DEFAULT_ASSEMBLER=aarch64-buildroot-linux-gnu-as&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;DEFAULT_LINKER=aarch64-buildroot-linux-gnu-ld&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;CPPFLAGS=-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;CFLAGS=-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -Os -g0 -D_FORTIFY_SOURCE=1&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;CXXFLAGS=-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -Os -g0 -D_FORTIFY_SOURCE=1&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;LDFLAGS=&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;FCFLAGS= -Os -g0&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;FFLAGS= -Os -g0&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;PKG_CONFIG=pkg-config&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;STAGING_DIR=</span><span class="nv">$SDK_PATH</span><span class="s2">/aarch64-buildroot-linux-gnu/sysroot&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;INTLTOOL_PERL=/usr/bin/perl&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;ARCH=arm64&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;CROSS_COMPILE=aarch64-buildroot-linux-gnu-&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;CONFIGURE_FLAGS=--target=aarch64-buildroot-linux-gnu --host=aarch64-buildroot-linux-gnu --build=x86_64-pc-linux-gnu --prefix=/usr --exec-prefix=/usr --sysconfdir=/etc --localstatedir=/var --program-prefix=&quot;</span>
+<span class="nb">alias</span><span class="w"> </span><span class="nv">configure</span><span class="o">=</span><span class="s2">&quot;./configure </span><span class="si">${</span><span class="nv">CONFIGURE_FLAGS</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nb">alias</span><span class="w"> </span><span class="nv">cmake</span><span class="o">=</span><span class="s2">&quot;cmake -DCMAKE_TOOLCHAIN_FILE=</span><span class="nv">$SDK_PATH</span><span class="s2">/share/buildroot/toolchainfile.cmake -DCMAKE_INSTALL_PREFIX=/usr&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;PATH=</span><span class="nv">$SDK_PATH</span><span class="s2">/bin:</span><span class="nv">$SDK_PATH</span><span class="s2">/sbin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="s2">&quot;KERNELDIR=/home/ubuntu/Documents/rpi/build/build/linux-custom/&quot;</span>
+</pre></div>
+</div>
+<p>This script when is sourced in a terminal window sets all the environment
+variables needed to use the cross-compilation tools and adds the folder
+of cross-tools to the Linux <cite>PATH</cite> variable.</p>
+<p>The execution of eclipse popups a window inviting you to enter the
+workspace (see <a class="reference internal" href="#eclipsews"><span class="std std-numref">Fig. 4.3</span></a>). The workspace is the folder that contain
+eclipse projects created by the user. You can have as many workspaces as
+you want. Please specify a folder in your account.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The figures displayed in the following  paragraphs can be different depending on the Eclipse version  installed</p>
+</div>
+<figure class="align-center" id="eclipsews">
+<a class="reference internal image-reference" href="_images/eclipsews.png"><img alt="_images/eclipsews.png" src="_images/eclipsews.png" style="width: 5.19182in; height: 2.66458in;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 4.3 </span><span class="caption-text">Selection of the workspace for Eclipse. Use a folder in your account.</span><a class="headerlink" href="#eclipsews" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Select Ok, and the welcome window of Eclipse will be shown ( see <a class="reference internal" href="#welcome"><span class="std std-numref">Fig. 4.4</span></a> ).Next, close the welcome window and the main eclipse window will be displayed ( see <a class="reference internal" href="#main"><span class="std std-numref">Fig. 4.5</span></a> ).</p>
+<figure class="align-center" id="welcome">
+<a class="reference internal image-reference" href="_images/eclipsewelcome.png"><img alt="_images/eclipsewelcome.png" src="_images/eclipsewelcome.png" style="width: 5.17708in; height: 4.13683in;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 4.4 </span><span class="caption-text">Eclipse welcome window.</span><a class="headerlink" href="#welcome" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="main">
+<a class="reference internal image-reference" href="_images/eclipsemainw.png"><img alt="_images/eclipsemainw.png" src="_images/eclipsemainw.png" style="width: 5.78753in; height: 4.35417in;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 4.5 </span><span class="caption-text">Eclipse main window.</span><a class="headerlink" href="#main" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>In a terminal window create an empty folder. In this folder create the
+following files with the content described in <a class="reference internal" href="#makefile"><span class="std std-numref">Listing 4.1</span></a>, <a class="reference internal" href="#maincpp"><span class="std std-numref">Listing 4.2</span></a> , <a class="reference internal" href="#funch"><span class="std std-numref">Listing 4.3</span></a>, and <a class="reference internal" href="#funccpp"><span class="std std-numref">Listing 4.4</span></a>. The Makefile
+uses the environment variables that are defined in the environment where the <cite>makefile</cite> is run.</p>
+<div class="literal-block-wrapper docutils container" id="makefile">
+<div class="code-block-caption"><span class="caption-number">Listing 4.1 </span><span class="caption-text">Makefile</span><a class="headerlink" href="#makefile" title="Link to this code"></a></div>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nv">LIBS</span><span class="o">=</span><span class="w"> </span>-lpthread<span class="w"> </span>-lm<span class="w"> </span><span class="c1">#Libraries used if needed</span>
+<span class="linenos"> 2</span><span class="nv">SRCS</span><span class="o">=</span><span class="w"> </span>main.cpp<span class="w"> </span>func.cpp
+<span class="linenos"> 3</span><span class="nv">BIN</span><span class="o">=</span>app
+<span class="linenos"> 4</span><span class="nv">CFLAGS</span><span class="o">+=</span><span class="w"> </span>-g<span class="w"> </span>-O0
+<span class="linenos"> 5</span><span class="nv">OBJS</span><span class="o">=</span><span class="k">$(</span>subst<span class="w"> </span>.cpp,.o,<span class="k">$(</span>SRCS<span class="k">))</span>
+<span class="linenos"> 6</span><span class="nf">all </span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">BIN</span><span class="k">)</span>
+<span class="linenos"> 7</span><span class="nf">$(BIN)</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">OBJS</span><span class="k">)</span>
+<span class="linenos"> 8</span><span class="w">    </span>@echo<span class="w"> </span><span class="o">[</span>link<span class="o">]</span><span class="w"> </span><span class="nv">$@</span>
+<span class="linenos"> 9</span><span class="w">    </span><span class="k">$(</span>CXX<span class="k">)</span><span class="w"> </span>-o<span class="w"> </span><span class="nv">$@</span><span class="w"> </span><span class="k">$(</span>OBJS<span class="k">)</span><span class="w"> </span><span class="k">$(</span>LDFLAGS<span class="k">)</span><span class="w"> </span><span class="k">$(</span>LIBS<span class="k">)</span>
+<span class="linenos">10</span><span class="nf">%.o</span><span class="o">:</span><span class="w"> </span>%.<span class="n">cpp</span>
+<span class="linenos">11</span><span class="w">    </span>@echo<span class="w"> </span><span class="o">[</span>Compile<span class="o">]</span><span class="w"> </span>$&lt;
+<span class="linenos">12</span><span class="w">    </span><span class="k">$(</span>CXX<span class="k">)</span><span class="w"> </span>-c<span class="w"> </span><span class="k">$(</span>CFLAGS<span class="k">)</span><span class="w"> </span>$&lt;<span class="w"> </span>-o<span class="w"> </span><span class="nv">$@</span>
+<span class="linenos">13</span><span class="nf">clean</span><span class="o">:</span>
+<span class="linenos">14</span><span class="w">    </span>@rm<span class="w"> </span>-f<span class="w"> </span><span class="k">$(</span>OBJS<span class="k">)</span><span class="w"> </span><span class="k">$(</span>BIN<span class="k">)</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="maincpp">
+<div class="code-block-caption"><span class="caption-number">Listing 4.2 </span><span class="caption-text">main.cpp</span><a class="headerlink" href="#maincpp" title="Link to this code"></a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;func.h&quot;</span>
+<span class="linenos">2</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="linenos">3</span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+<span class="linenos">4</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
+<span class="linenos">5</span><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&quot;A is: &quot;</span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">fun</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="linenos">6</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="funch">
+<div class="code-block-caption"><span class="caption-number">Listing 4.3 </span><span class="caption-text">func.h</span><a class="headerlink" href="#funch" title="Link to this code"></a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="cp">#ifndef __FUNC_H</span>
+<span class="linenos">2</span><span class="cp">#define __FUNC_H</span>
+<span class="linenos">3</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span>
+<span class="linenos">4</span><span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="funccpp">
+<div class="code-block-caption"><span class="caption-number">Listing 4.4 </span><span class="caption-text">func.cpp</span><a class="headerlink" href="#funccpp" title="Link to this code"></a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">int</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">){</span>
+<span class="linenos">2</span><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="o">=</span><span class="n">b</span><span class="o">*</span><span class="mi">2</span><span class="p">;</span>
+<span class="linenos">3</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="linenos">4</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>In Eclipse select in the left part of the windows <cite>Import projects</cite>. A
+new window is popup, select then <em>C/C++</em> and the option <em>Existing Code
+as Makefile Project</em>. The window shown in <a class="reference internal" href="#import"><span class="std std-numref">Fig. 4.6</span></a> is displayed. Complete
+the name of the project, select the folder with the code and check
+<em>Cross GCC in Toolchain for Indexer Settings</em>.</p>
+<figure class="align-center" id="import">
+<a class="reference internal image-reference" href="_images/import.png"><img alt="_images/import.png" src="_images/import.png" style="width: 4.45148in; height: 4.95833in;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 4.6 </span><span class="caption-text">Importing the code.</span><a class="headerlink" href="#import" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="building-a-project">
+<h2><span class="section-number">4.3. </span>Building a project<a class="headerlink" href="#building-a-project" title="Link to this heading"></a></h2>
+<p>Once you have configured the cross-chain in Eclipse you can build your
+project using Project-&gt;Build Project. If everything is correct, you will
+see the eclipse project as represented in <a class="reference internal" href="#buildeclipse"><span class="std std-numref">Fig. 4.7</span></a> . You can clean the
+project (remove the executable and objects) with <em>Clean</em>.</p>
+<figure class="align-center" id="buildeclipse">
+<a class="reference internal image-reference" href="_images/eclipsebuild.png"><img alt="_images/eclipsebuild.png" src="_images/eclipsebuild.png" style="width: 6.69375in; height: 4.17014in;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 4.7 </span><span class="caption-text">Eclipse project compiled (Binaries has been generated)</span><a class="headerlink" href="#buildeclipse" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>[Console in Eclipse]:</strong> Have a look at the messages displayed in the Console. You will see how eclipse is calling the cross compiler with different parameters.</p>
+</div>
+</section>
+<section id="moving-the-binary-to-the-target">
+<h2><span class="section-number">4.4. </span>Moving the binary to the target<a class="headerlink" href="#moving-the-binary-to-the-target" title="Link to this heading"></a></h2>
+<p>In order to copy the executable to the target, you have different
+options. You can use the Linux application called <cite>scp</cite> or other similar
+applications. In our case, we are going to use the “Other Locations….”
+utility included in the nautilus explorer ( <a class="reference internal" href="#scp"><span class="std std-numref">Fig. 4.8</span></a> ). Specify in Server Address <cite>ssh://&lt;ip address&gt;</cite></p>
+<figure class="align-center" id="scp">
+<a class="reference internal image-reference" href="_images/nautilesssh.png"><img alt="_images/nautilesssh.png" src="_images/nautilesssh.png" style="width: 5.57399in; height: 2.93365in;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 4.8 </span><span class="caption-text">Connect to Server” option in Nautilus explorer</span><a class="headerlink" href="#scp" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="executing-the-application">
+<h2><span class="section-number">4.5. </span>Executing the application<a class="headerlink" href="#executing-the-application" title="Link to this heading"></a></h2>
+<p>You can run the Raspberry PI program using putty (remember that once you
+have a network connection available in the RPI you can also use putty to
+connect to it).</p>
+<figure class="align-center" id="putty">
+<a class="reference internal image-reference" href="_images/image29.png"><img alt="_images/image29.png" src="_images/image29.png" style="width: 4.45in; height: 2.90434in;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 4.9 </span><span class="caption-text">Run test program in Raspberry Pi</span><a class="headerlink" href="#putty" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Warning. If you experiment problems using ssh, delete the <cite>.ssh</cite> folder in your home directory.</p>
+</div>
+</section>
+<section id="automatic-debugging-using-gdb-and-gdbserver">
+<h2><span class="section-number">4.6. </span>Automatic debugging using gdb and gdbserver<a class="headerlink" href="#automatic-debugging-using-gdb-and-gdbserver" title="Link to this heading"></a></h2>
+<p>You can directly debug the program running in the RPI using Eclipse.
+There are two methods to do it: manually and automatically. In the
+manual method, firstly, you need to copy the executable program to the
+RPI, change the file permissions to “executable” and execute the program
+to be debugged using <em>gdbserver</em> utility. Of course, this is a
+time-consuming process and very inefficient. The alternative solution is
+to use automatic debugging. In order to debug your applications, we need
+to define a debug session and configure it. Firstly, <em>Select Run-&gt;Debug
+Configurations</em> and generate a new configuration under <em>C/C++ Remote
+Application</em>. You need to complete the different tabs available in this
+window. The first one is the main tab (see Fig. 33). You need to
+configure here the path to the C/C++ application to be debugged, the
+project name, the connection with the target (you will need to create a
+new one using the IP address of your RPI), the remote path where your
+executable file will be downloaded, and the mode for the debugging
+(Automatic Remote Debugging Launcher). Secondly, in the argument tab,
+you can specify the arguments of your executable program. It is very
+important here that you can also specify the working directory path
+where the executable will be copied and launched (you need to have
+rights in this folder).</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="_images/image30.png"><img alt="_images/image30.png" src="_images/image30.png" style="width: 6.69375in; height: 3.94931in;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 4.10 </span><span class="caption-text">Creating a Debug Configuration</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>In the debugger window you need to configure the path of your cross gdb
+application. Remember that we are working with a cross-compiler, cross
+debugging. Therefore, you need to provide here the correct path of your
+gdb. The GDB command file (.gdbinit) must be specified, providing a path
+with an empty file. In the Gdbserver settings tab, you need to provide
+the path to the gdbserver in the target and the TCP/IP port used (by
+default 2345).</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="_images/eclipsedebug.png"><img alt="_images/eclipsedebug.png" src="_images/eclipsedebug.png" style="width: 6.03905in; height: 3.56303in;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 4.11 </span><span class="caption-text">Debug configuration, including the path to locate the cross gdb tool.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Now, press Debug in Eclipse window, and you can debug your application
+remotely.</p>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="_images/image31.png"><img alt="_images/image31.png" src="_images/image31.png" style="width: 5.89423in; height: 3.67021in;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 4.12 </span><span class="caption-text">Debugging session on the RPI remotely</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="rpi-tutorial.html" class="btn btn-neutral float-left" title="3. Embedded Linux With RPI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="virtualmachine.html" class="btn btn-neutral float-right" title="5. Preparing the VMware Ubuntu Virtual Machine." accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Universidad Politécnica de Madrid.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

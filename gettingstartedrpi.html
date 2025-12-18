@@ -1,0 +1,416 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2. Getting started with RPI &mdash; Design of Embedded Systems with RaspberryPI 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3. Embedded Linux With RPI" href="rpi-tutorial.html" />
+    <link rel="prev" title="1. Acronyms" href="acronyms.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Design of Embedded Systems with RaspberryPI
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="acronyms.html">1. Acronyms</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Getting started with RPI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#reference-documentation">2.1. Reference Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#operating-system-installation">2.2. Operating System Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#downloading-and-installing-raspberry-pi-os">2.2.1. Downloading and installing Raspberry PI OS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-the-raspberry-pi">2.2.2. Setting up the Raspberry Pi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reviewing-the-sd-card-content">2.2.3. Reviewing the SD card content</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#booting-the-rpi">2.2.4. Booting the RPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#discovering-the-rpi-ip-address">2.2.5. Discovering the RPI IP address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raspberry-pi-os-update">2.2.6. Raspberry Pi OS Update</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#integration-of-a-3-axis-accelerometer-with-raspberry-pi">2.3. Integration of a 3-axis accelerometer with Raspberry-Pi</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#specifications">2.3.1. Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#suggested-improvements">2.3.2. Suggested Improvements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-python-script">2.3.3. Optional: Python Script</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#compiling-linking-c-program-in-linux">2.4. Compiling &amp; linking C program in Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#questions-to-be-reported-to-instructors">2.5. Questions to be reported to instructors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rpi-tutorial.html">3. Embedded Linux With RPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eclipse.html">4. Using the integrated development environment Eclipse/CDT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="virtualmachine.html">5. Preparing the VMware Ubuntu Virtual Machine.</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Design of Embedded Systems with RaspberryPI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2. </span>Getting started with RPI</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/gettingstartedrpi.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started-with-rpi">
+<h1><span class="section-number">2. </span>Getting started with RPI<a class="headerlink" href="#getting-started-with-rpi" title="Link to this heading"></a></h1>
+<p>This document describes the essential steps students have to follow to
+boot the Raspberry Pi with a Linux-based distribution such as Raspberry
+PI OS. After performing the operating system installation, the student
+must investigate the software tools installed and their potential.
+Finally, the student must implement a software application that measures
+3D acceleration using a transducer. The following variants of
+application are proposed to the student:</p>
+<ol class="arabic simple">
+<li><p>Develop a simple console program developed in the C language.</p></li>
+<li><p>(Optional) Develop an equivalent application using Python.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>[Time to complete the laboratory]:</strong> The time necessary to complete steps 1 to 3 in this tutorial is approximately 4 hours.</p>
+</div>
+<section id="reference-documentation">
+<h2><span class="section-number">2.1. </span>Reference Documentation<a class="headerlink" href="#reference-documentation" title="Link to this heading"></a></h2>
+<p>The following documentation has to be read and checked.</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="http://www.raspberrypi.org/help/">http://www.raspberrypi.org/help/</a>. This web contains some guides and
+documents covering a lot of topics</p></li>
+<li><p><a class="reference external" href="https://projects.raspberrypi.org/en">https://projects.raspberrypi.org/en</a> . RPI application examples</p></li>
+<li><p><a class="reference external" href="http://www.python.org">http://www.python.org</a>. Phyton resources, tutorial, and reference</p></li>
+<li><p><a class="reference external" href="https://www.raspberrypi.org/courses/learn-python">https://www.raspberrypi.org/courses/learn-python</a></p></li>
+<li><p><a class="reference external" href="http://i2c.info/i2c-bus-specification">http://i2c.info/i2c-bus-specification</a></p></li>
+</ol>
+</section>
+<section id="operating-system-installation">
+<h2><span class="section-number">2.2. </span>Operating System Installation<a class="headerlink" href="#operating-system-installation" title="Link to this heading"></a></h2>
+<section id="downloading-and-installing-raspberry-pi-os">
+<h3><span class="section-number">2.2.1. </span>Downloading and installing Raspberry PI OS<a class="headerlink" href="#downloading-and-installing-raspberry-pi-os" title="Link to this heading"></a></h3>
+<p>Several Linux and Android distributions can be installed on the
+Raspberry Pi platform. These Operating System distributions also include
+multiple software applications and tools such as text editors, music
+players, video editing and playing, games, development tools, etc.</p>
+<p>Follow the steps below to install the Raspbian Operating System:</p>
+<ol class="arabic simple">
+<li><p>Download the <a class="reference external" href="https://www.raspberrypi.com/software/">Raspberry PI Imager</a> tool for your specific OS.</p></li>
+<li><p>Execute the application, and a window will be displayed (see <a class="reference internal" href="#imagermain"><span class="std std-numref">Fig. 2.1</span></a>). First choose
+the Raspberry PI hardware (see <a class="reference internal" href="#imagerhw"><span class="std std-numref">Fig. 2.2</span></a>) and then, choose the Operating System (see <a class="reference internal" href="#imageros"><span class="std std-numref">Fig. 2.3</span></a>)
+and Storage options (CHOOSE STORAGE) to burn an SD card with the
+Raspberry PI OS 32 bits version. Click on the NEXT button and you
+will have the options (see <a class="reference internal" href="#imagersettings"><span class="std std-numref">Fig. 2.4</span></a>, <a class="reference internal" href="#imagergeneral"><span class="std std-numref">Fig. 2.5</span></a>, <a class="reference internal" href="#imagerservices"><span class="std std-numref">Fig. 2.6</span></a>, <a class="reference internal" href="#imageroptions"><span class="std std-numref">Fig. 2.7</span></a>) to apply your specific customization (<strong>enable
+SSH</strong>, Username (rpi-student) and Password (rpi) , WIFI SSID and passkey, and your
+keyboard language configuration). Save the configuration and continue to write
+the micro SD Card.</p></li>
+</ol>
+<figure class="align-center" id="imagermain">
+<a class="reference internal image-reference" href="_images/imagermain.png"><img alt="_images/imagermain.png" src="_images/imagermain.png" style="width: 10cm; height: 8cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">Raspberry Pi Imager main screen</span><a class="headerlink" href="#imagermain" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="imagerhw">
+<a class="reference internal image-reference" href="_images/imagerhwselect.png"><img alt="_images/imagerhwselect.png" src="_images/imagerhwselect.png" style="width: 10cm; height: 8cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.2 </span><span class="caption-text">Raspberry Pi Imager HW model</span><a class="headerlink" href="#imagerhw" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="imageros">
+<a class="reference internal image-reference" href="_images/imagerosselect.png"><img alt="_images/imagerosselect.png" src="_images/imagerosselect.png" style="width: 10cm; height: 8cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.3 </span><span class="caption-text">Raspberry Pi Imager OS selection</span><a class="headerlink" href="#imageros" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="imagersettings">
+<a class="reference internal image-reference" href="_images/imagersettings.png"><img alt="_images/imagersettings.png" src="_images/imagersettings.png" style="width: 10cm; height: 6cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.4 </span><span class="caption-text">Raspberry Pi Imager Settings (<a class="reference external" href="https://www.raspberrypi.com/documentation/computers/getting-started.html#install-using-imager">more info from RPI official documentation</a> )</span><a class="headerlink" href="#imagersettings" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="imagergeneral">
+<a class="reference internal image-reference" href="_images/imagergeneral.png"><img alt="_images/imagergeneral.png" src="_images/imagergeneral.png" style="width: 8cm; height: 6cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.5 </span><span class="caption-text">Raspberry Pi Imager General Settings</span><a class="headerlink" href="#imagergeneral" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="imagerservices">
+<a class="reference internal image-reference" href="_images/imagerservices.png"><img alt="_images/imagerservices.png" src="_images/imagerservices.png" style="width: 8cm; height: 6cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.6 </span><span class="caption-text">Raspberry Pi Imager OS Services</span><a class="headerlink" href="#imagerservices" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="imageroptions">
+<a class="reference internal image-reference" href="_images/imageroptions.png"><img alt="_images/imageroptions.png" src="_images/imageroptions.png" style="width: 8cm; height: 6cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.7 </span><span class="caption-text">Raspberry Pi Imager OS Options</span><a class="headerlink" href="#imageroptions" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>[VERY IMPORTANT]:</strong> Be careful in the destination device    where the image is burned because this information is not    recoverable</p>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Wait until the program ends writing the SD Card <strong>(this can take up
+to one hour depending on your SD card category and model)</strong>.</p></li>
+</ol>
+</section>
+<section id="setting-up-the-raspberry-pi">
+<h3><span class="section-number">2.2.2. </span>Setting up the Raspberry Pi<a class="headerlink" href="#setting-up-the-raspberry-pi" title="Link to this heading"></a></h3>
+<p>We need to interact with the Raspberry Pi for the activities described
+in this document. There are three ways to establish this interaction:</p>
+<ul class="simple">
+<li><p>The easiest one is connecting an HDMI monitor, a USB keyboard, and a
+USB mouse. This configuration allows us to use the Raspberry Pi as we
+would with a regular computer. Once the RPI is booted, we can set the
+WiFi connections and other settings such as enable the use of a
+serial line.</p></li>
+<li><p>Opening an SSH session between your computer and the Raspberry Pi
+without connecting additional peripherals. This kind of configuration
+is known as headless start (use the <cite>rpi-student</cite> login).</p></li>
+<li><p>Use the serial USB-TTL cable that you need to connect to the GPIO
+expansion connector. This requires first to enable the serial line in
+the Raspberry PI OS using the <a class="reference external" href="https://www.raspberrypi.com/documentation/computers/configuration.html#list-of-options">raspi-config</a> tool.
+The connection of the USB-TTL cable is depicted in <a class="reference internal" href="#rpiwithconnector"><span class="std std-numref">Fig. 2.8</span></a>.</p></li>
+</ul>
+<figure class="align-center" id="rpiwithconnector">
+<a class="reference internal image-reference" href="_images/rpi3withconnector.png"><img alt="_images/rpi3withconnector.png" src="_images/rpi3withconnector.png" style="width: 8cm; height: 8cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.8 </span><span class="caption-text">Detail of expansion connector highlighting the USB-TTL RS232</span><a class="headerlink" href="#rpiwithconnector" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="reviewing-the-sd-card-content">
+<h3><span class="section-number">2.2.3. </span>Reviewing the SD card content<a class="headerlink" href="#reviewing-the-sd-card-content" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Plug in the SD card into the computer.</p></li>
+<li><p>You should now see one new drive in the System Explorer (Windows)/Nautilus (Ubuntu)
+named “boot”. In Linux you will see two partitions mounted in your
+system. Open the partition/unit identified as “boot”.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>[VERY IMPORTANT]:</strong> This is the partition used by          Raspberry to make the necessary hardware configuration before starting the operating system. Beware of not    deleting or modifying files other than those described in this  manual, or the Raspberry may not boot.</p>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>List the content of the boot partition (FAT32) and identify the files
+as in <a class="reference internal" href="#usdcardfat"><span class="std std-numref">Fig. 2.9</span></a> (Ubuntu Linux).</p></li>
+</ol>
+<figure class="align-center" id="usdcardfat">
+<a class="reference internal image-reference" href="_images/usdcardfat.png"><img alt="_images/usdcardfat.png" src="_images/usdcardfat.png" style="width: 15cm; height: 10cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.9 </span><span class="caption-text">Files available in the FAT32 partition</span><a class="headerlink" href="#usdcardfat" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="booting-the-rpi">
+<h3><span class="section-number">2.2.4. </span>Booting the RPI<a class="headerlink" href="#booting-the-rpi" title="Link to this heading"></a></h3>
+<p>Insert the SD card and connect the power supply and all other cables
+needed. The first time you boot your RPI you will see how the RPI is
+configured (this information is only displayed in the HDMI monitor) and
+rebooted. Wait 1 or 2 minutes (this depends again on your SD card
+category) until the RPI is completely booted.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>[Security]:</strong> Having the default user and password supposes a security issue, more if the SSH sessions are enabled. You can always change the password by executing the command passwd once logged in.</p>
+</div>
+</section>
+<section id="discovering-the-rpi-ip-address">
+<h3><span class="section-number">2.2.5. </span>Discovering the RPI IP address<a class="headerlink" href="#discovering-the-rpi-ip-address" title="Link to this heading"></a></h3>
+<p>To open an SSH session from your computer to the Raspberry Pi you need
+to know its IP address. There are multiple ways to discover the
+Raspberry Pi IP address:</p>
+<ol class="loweralpha simple">
+<li><p>Use an <a class="reference external" href="https://www.softperfect.com/products/networkscanner">IP Scanner utility</a>,
+and scan in the range of your network. For example, you can quickly identify a
+Raspberry Pi as they use the hostname “raspberrypi.local” by default.
+This tool cannot be used at the UPM lab.</p></li>
+<li><p>If you know your Raspberry Pi MAC address, you can set the DHCP
+server to assign a static IP to the Raspberry Pi MAC. This is
+typically done in the router configuration. Please, consider that
+Ethernet and WiFi ports have different MAC addresses. In the
+laboratory, your Raspberry can have only a dynamically assigned IP in
+the WIFI network with SSID RPI (ask your instructor to verify the
+configuration).</p></li>
+<li><p>You could open an RS232 serial connection in the Raspberry Pi GPIO
+ports and use the command line (<cite>ifconfig</cite> command) to obtain the IP or
+set the desired IP and netmask.</p></li>
+</ol>
+</section>
+<section id="raspberry-pi-os-update">
+<h3><span class="section-number">2.2.6. </span>Raspberry Pi OS Update<a class="headerlink" href="#raspberry-pi-os-update" title="Link to this heading"></a></h3>
+<p>You can update and upgrade the OS if you have an internet connection.
+Please, do not update the OS during the classes, as this operation will
+require some time. You can update the OS by running the following
+commands:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 2.1 </span><span class="caption-text">RPI OS update</span><a class="headerlink" href="#id1" title="Link to this code"></a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="integration-of-a-3-axis-accelerometer-with-raspberry-pi">
+<h2><span class="section-number">2.3. </span>Integration of a 3-axis accelerometer with Raspberry-Pi<a class="headerlink" href="#integration-of-a-3-axis-accelerometer-with-raspberry-pi" title="Link to this heading"></a></h2>
+<section id="specifications">
+<h3><span class="section-number">2.3.1. </span>Specifications<a class="headerlink" href="#specifications" title="Link to this heading"></a></h3>
+<p>The student must investigate functions and commands and implement a C
+program to get the following requirements:</p>
+<ol class="arabic simple">
+<li><p>Show the values of the 3-axis acceleration obtained from the MPU-6000
+I2C sensor.</p></li>
+<li><p>The measurement readings are shown every 3 seconds.</p></li>
+</ol>
+</section>
+<section id="suggested-improvements">
+<h3><span class="section-number">2.3.2. </span>Suggested Improvements<a class="headerlink" href="#suggested-improvements" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Analyses the problem of offsets in the values returned. Define and
+implement a method to get corrected values</p></li>
+<li><p>Get stop the program if “CRTL-C” is typed.</p></li>
+</ul>
+</section>
+<section id="optional-python-script">
+<h3><span class="section-number">2.3.3. </span>Optional: Python Script<a class="headerlink" href="#optional-python-script" title="Link to this heading"></a></h3>
+<p>For advanced students, the implementation of this exercise in Python is
+proposed. For this, you can use any of the multiple Python modules that
+gain access to I2C interface in the Raspberry Pi.</p>
+</section>
+</section>
+<section id="compiling-linking-c-program-in-linux">
+<h2><span class="section-number">2.4. </span>Compiling &amp; linking C program in Linux<a class="headerlink" href="#compiling-linking-c-program-in-linux" title="Link to this heading"></a></h2>
+<p>In Linux, C/c++ programs are compiled and linked using the “make”
+command. This command searches a “Makefile”. A “Makefile” is a text file
+with the necessary information to compile and link and must be in the
+same directory of <em>myprogram.c</em>. The result will be <em>myprogram.o</em> and
+<em>myprogram</em> (executable).</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 2.2 </span><span class="caption-text">Detail Makefile</span><a class="headerlink" href="#id2" title="Link to this code"></a></div>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="nv">DEBUG</span><span class="o">=</span><span class="w"> </span>-O2<span class="w"> </span><span class="c1">#Debugging Level</span>
+
+<span class="nv">CC</span><span class="o">=</span><span class="w"> </span>gcc<span class="w"> </span><span class="c1">#Compiler command</span>
+<span class="nv">INCLUDE</span><span class="o">=</span><span class="w"> </span>-I/usr/local/include<span class="w"> </span><span class="c1">#Include directory</span>
+<span class="nv">CFLAGS</span><span class="o">=</span><span class="w"> </span><span class="k">$(</span>DEBUG<span class="k">)</span><span class="w"> </span>-Wall<span class="w"> </span><span class="k">$(</span>INCLUDE<span class="k">)</span><span class="w"> </span>-Winline<span class="w"> </span><span class="c1">#Compiler Flags</span>
+<span class="nv">LDFLAGS</span><span class="o">=</span><span class="w"> </span>-L/usr/local/lib<span class="w"> </span><span class="c1">#Linker Flags</span>
+
+<span class="nv">LIBS</span><span class="o">=</span><span class="w"> </span>-lpthread<span class="w"> </span>-lm<span class="w"> </span><span class="c1">#Libraries used if needed</span>
+
+<span class="nv">SRC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>myprogram.c
+
+<span class="nv">OBJ</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="k">$(</span>SRC:.c<span class="o">=</span>.o<span class="k">)</span>
+<span class="nv">BIN</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="k">$(</span>SRC:.c<span class="o">=</span><span class="k">)</span>
+
+<span class="nf">$(BIN)</span><span class="o">:</span><span class="w">       </span><span class="k">$(</span><span class="nv">OBJ</span><span class="k">)</span>
+<span class="w">     </span>@echo<span class="w"> </span><span class="o">[</span>link<span class="o">]</span><span class="w"> </span><span class="nv">$@</span>
+<span class="w">     </span><span class="k">$(</span>CC<span class="k">)</span><span class="w"> </span>-o<span class="w"> </span><span class="nv">$@</span><span class="w"> </span>$&lt;<span class="w"> </span><span class="k">$(</span>LDFLAGS<span class="k">)</span><span class="w"> </span><span class="k">$(</span>LIBS<span class="k">)</span>
+<span class="nf">.c.o</span><span class="o">:</span>
+<span class="w">     </span>@echo<span class="w"> </span><span class="o">[</span>Compile<span class="o">]</span><span class="w"> </span>$&lt;
+<span class="w">     </span><span class="k">$(</span>CC<span class="k">)</span><span class="w"> </span>-c<span class="w"> </span><span class="k">$(</span>CFLAGS<span class="k">)</span><span class="w"> </span>$&lt;<span class="w"> </span>-o<span class="w"> </span><span class="nv">$@</span>
+
+<span class="nf">clean</span><span class="o">:</span>
+<span class="w">     </span>@rm<span class="w"> </span>-f<span class="w"> </span><span class="k">$(</span>OBJ<span class="k">)</span><span class="w"> </span><span class="k">$(</span>BIN<span class="k">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="questions-to-be-reported-to-instructors">
+<h2><span class="section-number">2.5. </span>Questions to be reported to instructors<a class="headerlink" href="#questions-to-be-reported-to-instructors" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Explain the content of the <cite>config.txt</cite> file in the FAT32 partition of the uSDCARD of your RPI</p></li>
+<li><p>How the I2C interface is enabled? Is there any change in the
+config.txt file?</p></li>
+<li><p>Could you describe the commands used to compile a C/C++ program in
+Linux?</p></li>
+<li><p>What is a library? What is the difference between a static and a
+shared library?</p></li>
+<li><p>Summarize the utility of the <cite>makefile</cite> file and the make command.</p></li>
+<li><p>What is the preferred utility to debug a C program in Linux?</p></li>
+<li><p>How can you obtain the serial number of your Raspberry Pi? Is there
+any relation between the serial number and the MAC address?</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="acronyms.html" class="btn btn-neutral float-left" title="1. Acronyms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rpi-tutorial.html" class="btn btn-neutral float-right" title="3. Embedded Linux With RPI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Universidad Politécnica de Madrid.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

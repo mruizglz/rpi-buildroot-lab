@@ -1,0 +1,1076 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3. Embedded Linux With RPI &mdash; Design of Embedded Systems with RaspberryPI 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. Using the integrated development environment Eclipse/CDT" href="eclipse.html" />
+    <link rel="prev" title="2. Getting started with RPI" href="gettingstartedrpi.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Design of Embedded Systems with RaspberryPI
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="acronyms.html">1. Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingstartedrpi.html">2. Getting started with RPI</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Embedded Linux With RPI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#document-overview">3.1. Document Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">3.2. References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-linux-using-buildroot">3.3. Building Linux using buildroot</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#elements-needed-for-the-execution-of-these-labs">3.3.1. Elements needed for the execution of these LABS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#starting-the-vmware">3.4. Starting the VMware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-buildroot-for-rpi4">3.5. Configuring Buildroot for RPI4</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#target-options">3.5.1. Target Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#toolchain">3.5.2. Toolchain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-options">3.5.3. Build options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#system-configuration">3.5.4. System Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linux-kernel">3.5.5. Linux Kernel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#target-packages">3.5.6. Target Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-system-images">3.5.7. File System Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#boot-loaders">3.5.8. Boot-loaders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#host-utilities">3.5.9. Host Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#compiling-buildroot">3.6. Compiling buildroot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#buildroot-output">3.7. Buildroot Output.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#booting-the-raspberry-pi">3.8. Booting the Raspberry Pi.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#connecting-the-rpi-to-the-cabled-ethernet-network">3.9. Connecting the RPI to the cabled ethernet network</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#inspecting-the-configuration-of-the-network-interface-generated-automatically-by-buildroot">3.9.1. Inspecting the configuration of the network interface generated automatically by Buildroot</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-wifi-support">3.10. Adding WIFI support</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#adding-mdev-support-to-embedded-linux">3.10.1. Adding mdev support to Embedded Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-the-broadcom-firmware-support-for-wireless-hardware">3.10.2. Adding the Broadcom firmware support for Wireless hardware</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#customizing-the-linux-kernel">3.11. Customizing the Linux kernel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#kernel-configuration">3.11.1. Kernel configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eclipse.html">4. Using the integrated development environment Eclipse/CDT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="virtualmachine.html">5. Preparing the VMware Ubuntu Virtual Machine.</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Design of Embedded Systems with RaspberryPI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3. </span>Embedded Linux With RPI</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/rpi-tutorial.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <img alt="_images/image1.jpeg" src="_images/image1.jpeg" />
+<p><a class="reference internal" href="_images/image2.png"><img alt="image1" src="_images/image2.png" style="width: 0.91667in; height: 0.32292in;" /></a>Embedded Linux Systems: Using Buildroot for building Embedded
+Linux Systems on Raspberry Pi 4 and 3 Model B by Mariano Ruiz is licensed
+under a <a class="reference external" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International
+License</a>.</p>
+<section id="embedded-linux-with-rpi">
+<h1><span class="section-number">3. </span>Embedded Linux With RPI<a class="headerlink" href="#embedded-linux-with-rpi" title="Link to this heading"></a></h1>
+<section id="document-overview">
+<h2><span class="section-number">3.1. </span>Document Overview<a class="headerlink" href="#document-overview" title="Link to this heading"></a></h2>
+<p>This document describes the steps to develop an embedded Linux-based
+system using the Raspberry PI board. The document has been specifically
+written to use a Raspberry PI development system based on the BCM2837
+processor. All the software elements used have a GPL license.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The time necessary to  complete all the tutorial steps is approximately 8 hours.</p>
+</div>
+<p>Read all the instructions carefully before executing the practical part;
+Otherwise, you will find errors, which are probably unpredicted. In
+parallel, you need to review the slides available at the Moodle site or
+at [RD1]</p>
+</section>
+<section id="references">
+<h2><span class="section-number">3.2. </span>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Embedded Linux system development. <a class="reference external" href="https://moodle.upm.es/titulaciones/oficiales/course/view.php?id=1969">Slides</a></p></li>
+<li><p><a class="reference external" href="https://bootlin.com/training/embedded-linux/">https://bootlin.com/training/embedded-linux/</a></p></li>
+<li><p>Mastering Embedded Linux Programming - Second Edition. Packt.
+<a class="reference external" href="https://www.packtpub.com/product/mastering-embedded-linux-programming-second-edition/9781787283282">https://www.packtpub.com/product/mastering-embedded-linux-programming-second-edition/9781787283282</a></p></li>
+<li><p>Raspberry-Pi User Guide. Reference Manual.</p>
+<p><a class="reference external" href="http://www.myraspberry-pi.org/wp-content/.../Raspberry.Pi_.User_.Guide_.pdf‎">www.myraspberry-pi.org/wp-content/…/Raspberry.Pi_.User_.Guide_.pdf‎</a></p>
+</li>
+</ol>
+</section>
+<section id="building-linux-using-buildroot">
+<h2><span class="section-number">3.3. </span>Building Linux using buildroot<a class="headerlink" href="#building-linux-using-buildroot" title="Link to this heading"></a></h2>
+<section id="elements-needed-for-the-execution-of-these-labs">
+<h3><span class="section-number">3.3.1. </span>Elements needed for the execution of these LABS<a class="headerlink" href="#elements-needed-for-the-execution-of-these-labs" title="Link to this heading"></a></h3>
+<p>In order to execute this lab properly, you need the following elements:</p>
+<ol class="arabic simple">
+<li><p>The VMware player software version 17.6.1 or above. Available at
+<a class="reference external" href="https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware+Workstation+Pro">Broadcom website</a> (free download and use but you need to register).
+This software has already been installed on the laboratory desktop
+computer.</p></li>
+<li><p>A VMWare virtual machine with Ubuntu 24.04 and all the software
+packages installed is already available on the Desktop. This virtual
+machine is available for your personal use. If you want to set up
+your virtual machine by yourself, follow the instructions provided in
+<a class="reference external" href="#_annex_i:_Ubuntu">Annex I</a>.</p></li>
+<li><p>A Raspberry Pi, accessories and a USB cable are available at the
+laboratory.</p></li>
+<li><p>Basic knowledge of Linux commands.</p></li>
+</ol>
+</section>
+</section>
+<section id="starting-the-vmware">
+<h2><span class="section-number">3.4. </span>Starting the VMware<a class="headerlink" href="#starting-the-vmware" title="Link to this heading"></a></h2>
+<p>Start VMware Player and open the RPI Virtual Machine. Wait until the
+welcome screen is displayed (see <a class="reference internal" href="#vmplayer"><span class="std std-numref">Fig. 3.1</span></a> and <a class="reference internal" href="#vmplayer-ubuntu"><span class="std std-numref">Fig. 3.2</span></a>). Login as
+“<em>ubuntu”</em> user using the password “ubuntu”.</p>
+<figure class="align-center" id="vmplayer">
+<a class="reference internal image-reference" href="_images/image4.png"><img alt="_images/image4.png" src="_images/image4.png" style="width: 10cm; height: 8cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Main screen of VMware player with some VM available to be executed</span><a class="headerlink" href="#vmplayer" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="vmplayer-ubuntu">
+<a class="reference internal image-reference" href="_images/image5.png"><img alt="_images/image5.png" src="_images/image5.png" style="width: 15cm; height: 10cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.2 </span><span class="caption-text">Ubuntu Virtual Machine login screen.</span><a class="headerlink" href="#vmplayer-ubuntu" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Open the <strong>Firefox</strong> web browser and download from
+<a class="reference external" href="https://buildroot.org/">https://buildroot.org/</a>, the version identified as <strong>buidlroot2024-08-1</strong>
+(use the download link, see <a class="reference internal" href="#webbuildroot"><span class="std std-numref">Fig. 3.3</span></a>, and navigate searching for earlier
+releases if necessary, <a class="reference external" href="https://buildroot.org/downloads/">https://buildroot.org/downloads/</a> ). Save the file
+to the <strong>Documents</strong> folder in your account (<a class="reference internal" href="#download"><span class="std std-numref">Fig. 3.4</span></a>).</p>
+<figure class="align-center" id="webbuildroot">
+<a class="reference internal image-reference" href="_images/buildrootweb.png"><img alt="_images/buildrootweb.png" src="_images/buildrootweb.png" style="width: 10cm; height: 7cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.3 </span><span class="caption-text">Buildroot home page.</span><a class="headerlink" href="#webbuildroot" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Buildroot is a tool to generate embedded Linux systems in our PC, and
+then this Linux will be installed in the target.</p>
+<figure class="align-center" id="download">
+<a class="reference internal image-reference" href="_images/buildrootdownload.png"><img alt="_images/buildrootdownload.png" src="_images/buildrootdownload.png" style="width: 10cm; height: 7cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.4 </span><span class="caption-text">Example of Downloading Buildroot source code.</span><a class="headerlink" href="#download" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Create a folder “rpi” in “Documents”. Copy the file to the
+“Documents/rpi” folder and decompress the file (<a class="reference internal" href="#docfolder"><span class="std std-numref">Fig. 3.5</span></a>).</p>
+<figure class="align-center" id="docfolder">
+<a class="reference internal image-reference" href="_images/documentsfolder.png"><img alt="_images/documentsfolder.png" src="_images/documentsfolder.png" style="width: 6.69375in; height: 1.5in;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.5 </span><span class="caption-text">Buildroot folder (the folder name depends on the version downloaded).</span><a class="headerlink" href="#docfolder" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Right-click in the window and execute “Open in Terminal” or execute the
+Terminal application from Dash home as shown in <a class="reference internal" href="#terminal"><span class="std std-numref">Fig. 3.6</span></a> (if “Open in
+Terminal” is not available, search how to install it in Ubuntu).</p>
+<figure class="align-center" id="terminal">
+<a class="reference internal image-reference" href="_images/openaterminal.png"><img alt="_images/openaterminal.png" src="_images/openaterminal.png" style="width: 4.20139in; height: 2.0in;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.6 </span><span class="caption-text">Terminal application</span><a class="headerlink" href="#terminal" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>In some seconds, a command window is displayed. Then, execute these
+commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mkdir<span class="w"> </span>build
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
+$<span class="w"> </span>make<span class="w"> </span><span class="nv">O</span><span class="o">=</span><span class="nv">$PWD</span><span class="w"> </span>-C<span class="w"> </span>/home/ubuntu/Documents/rpi/buildroot-2025.02.9/<span class="w"> </span>menuconfig
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <strong>build</strong> folder will contain all the compilation of the embedded Linux generated. Remember to change to this folder before doing any operation with buildroot</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>For this course, you will need to become familiar with the Linux Terminal use. On the Moodle site of this course, you can find a cheat sheet with the basic Linux commands.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In a Linux terminal, the “TAB” key helps you to  autocomplete the commands, folders, and file names.</p>
+</div>
+<p>In some seconds, you will see a new window similar to <a class="reference internal" href="#buildrootsetup"><span class="std std-numref">Fig. 3.7</span></a>.</p>
+<figure class="align-center" id="buildrootsetup">
+<a class="reference internal image-reference" href="_images/image10.png"><img alt="_images/image10.png" src="_images/image10.png" style="width: 6.69375in; height: 3.20208in;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.7 </span><span class="caption-text">Buildroot setup screen.</span><a class="headerlink" href="#buildrootsetup" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="configuring-buildroot-for-rpi4">
+<h2><span class="section-number">3.5. </span>Configuring Buildroot for RPI4<a class="headerlink" href="#configuring-buildroot-for-rpi4" title="Link to this heading"></a></h2>
+<p>Once the <strong>Buildroot</strong> configuration is started, it is necessary to
+configure the different items. You need to navigate the different menus
+and select the installation elements. Table I contains the specific
+configuration of <strong>Buildroot</strong> for installing it in the Raspberry Pi.
+Depending on the downloaded version, the organization and the items
+displayed can differ. If an item of buildroot configuration does not
+appear in the Table I leaves it with its default value.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The Buildroot configuration is an iterative process. In order to set up your embedded Linux system, you  will need to execute the configuration several times.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The tables have three colums. Check that you understnad all the content shown.</p>
+</div>
+<section id="target-options">
+<h3><span class="section-number">3.5.1. </span>Target Options<a class="headerlink" href="#target-options" title="Link to this heading"></a></h3>
+<p>This is the  selection of the processor to use (<a class="reference internal" href="#id1"><span class="std std-numref">Table 3.1</span></a>).</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-number">Table 3.1 </span><span class="caption-text">Target Options</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<tbody>
+<tr class="row-odd"><td><p>Target Architecture</p></td>
+<td><p>AArch64 (little endian)</p></td>
+<td><p>ARM 64 bits</p></td>
+</tr>
+<tr class="row-even"><td><p>Target Architecture Variants.</p></td>
+<td><p>Cortex-A72</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Floating Point Strategy</p></td>
+<td><p>VFPv4</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>MMU  Page Size</p></td>
+<td><p>4KB</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Target Binary Format</p></td>
+<td><p>ELF</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="toolchain">
+<h3><span class="section-number">3.5.2. </span>Toolchain<a class="headerlink" href="#toolchain" title="Link to this heading"></a></h3>
+<p>Cross Compiler, linker, and libraries to be  built to compile our embedded application. Select the options shown in the following table (<a class="reference internal" href="#id2"><span class="std std-numref">Table 3.2</span></a>).</p>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-number">Table 3.2 </span><span class="caption-text">Toolchain</span><a class="headerlink" href="#id2" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Toolchain type</p></td>
+<td><p>Buildroot toolchain</p></td>
+<td><p>The Embedded Linux System will be compiled with tools integrated  into Buildroot</p></td>
+</tr>
+<tr class="row-even"><td><p>Custom toolchain vendor name.</p></td>
+<td><p>buildroot</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>C library</p></td>
+<td><p>glib</p></td>
+<td><p>Library    containing the typical C  libraries used in  Linux    environments   (stdlib, stdio,   etc)</p></td>
+</tr>
+<tr class="row-even"><td><p>Kernel Headers</p></td>
+<td><p>Same as kernel being built</p></td>
+<td><p>Include files for kernel</p></td>
+</tr>
+<tr class="row-odd"><td><p>Kernel Header Options</p></td>
+<td><p>6.6.x kernel headers</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Binutils Version</p></td>
+<td><p>2.43.1</p></td>
+<td><p>Binutils contains  tools to manage    the binary files obtained in the   compilation of   the different     applications</p></td>
+</tr>
+<tr class="row-odd"><td><p>GCC  compiler Version</p></td>
+<td><p>gcc 13.x</p></td>
+<td><p>GCC tools version to be installed</p></td>
+</tr>
+<tr class="row-even"><td><p>Enable C++ support</p></td>
+<td><p>Yes.</p></td>
+<td><p>Including support for C++ programming, compiling, and    linking.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Build cross gdb for the host</p></td>
+<td><p>Yes.</p></td>
+<td><p>Includes the  support for GDB.</p></td>
+</tr>
+<tr class="row-even"><td><p>Add Python support</p></td>
+<td><p>Yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>GDB debugger version</p></td>
+<td><p>gdb 15.x</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="build-options">
+<h3><span class="section-number">3.5.3. </span>Build options<a class="headerlink" href="#build-options" title="Link to this heading"></a></h3>
+<p>How Buidlroot will build the code. Leave the default values.</p>
+</section>
+<section id="system-configuration">
+<h3><span class="section-number">3.5.4. </span>System Configuration<a class="headerlink" href="#system-configuration" title="Link to this heading"></a></h3>
+<p>Here you can define the basic configuration of the embedded Linux to generate and specific scripts to add additional functionality ( <a class="reference internal" href="#sysconf"><span class="std std-numref">Table 3.3</span></a>).</p>
+<table class="docutils align-default" id="sysconf">
+<caption><span class="caption-number">Table 3.3 </span><span class="caption-text">System-configuration</span><a class="headerlink" href="#sysconf" title="Link to this table"></a></caption>
+<tbody>
+<tr class="row-odd"><td><p>Root FS skeleton</p></td>
+<td><p>Default target skeleton.</p></td>
+<td><p>Linux folder filesystem organization for skeleton the embedded system</p></td>
+</tr>
+<tr class="row-even"><td><p>System hostname</p></td>
+<td><p><strong>buildroot</strong></p></td>
+<td><p>Name of the embedded system</p></td>
+</tr>
+<tr class="row-odd"><td><p>System Banner</p></td>
+<td><p><strong>Linux RPI 4</strong></p></td>
+<td><p>Banner.</p></td>
+</tr>
+<tr class="row-even"><td><p>Passwords encoding</p></td>
+<td><p>sha 256</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Init System</p></td>
+<td><p>Busybox</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>/dev management</p></td>
+<td><p>Dynamic using devtmpfs + mdev</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Path to permissions for table</p></td>
+<td><p><strong>system/device_table.txt</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Enable root login with password</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Root password</p></td>
+<td><p>rpi</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Busybox’ default shell</p></td>
+<td><p>/bin/sh</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Run a getty after boot</p></td>
+<td><p>tty PORT: <strong>console</strong>. Baudrate: keep kernel default. TERM environment variable: vt100</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>remount root filesystem read write during boot</p></td>
+<td><p>Yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Network interface to configure through DHCP</p></td>
+<td><p>eth0</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Set the system’s default PATH</p></td>
+<td><p>/bin:/sbin:/usr/bin:/usr/sbin</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Purge unwanted locales</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Leave the default values for all others</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Custom scripts to run path <strong>before</strong> creating filesystem images</p></td>
+<td><p><strong>your path</strong>/buildroot-2025.02.9/board/raspberrypi4-64/post-build.sh</p></td>
+<td><p>your path -&gt; “/home/….” os where you have decompressed buildroot</p></td>
+</tr>
+<tr class="row-even"><td><p>Custom scripts to run inside the fakeroot environment</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Custom scripts to run <strong>after</strong> creating filesystem images</p></td>
+<td><p><strong>your path</strong>/buildroot-2025.02.9/board/raspberrypi4-64/post-image.sh</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="linux-kernel">
+<h3><span class="section-number">3.5.5. </span>Linux Kernel<a class="headerlink" href="#linux-kernel" title="Link to this heading"></a></h3>
+<p>This is the configuration of the Linux kernel. The specific location and version is specified among other parameters (<a class="reference internal" href="#kernel"><span class="std std-numref">Table 3.4</span></a>). See thrird column for details of git repor to use.</p>
+<table class="docutils align-default" id="kernel">
+<caption><span class="caption-number">Table 3.4 </span><span class="caption-text">kernel-configuration</span><a class="headerlink" href="#kernel" title="Link to this table"></a></caption>
+<tbody>
+<tr class="row-odd"><td><p>Kernel Version</p></td>
+<td><p>Custom tarball.</p></td>
+<td><p>$(call github,raspberrypi,linux,576cc10e1ed50a9eacffc7a05c796051d7343ea4)/linux-576cc10e1ed50a9eacffc7a05c796051d7343ea4.tar.gz</p></td>
+</tr>
+<tr class="row-even"><td><p>Kernel configuration</p></td>
+<td><p>Using and intree defconfig file</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Defconfigname</p></td>
+<td><p>bcm2711</p></td>
+<td><p>This file contains the specific configuration of the kernel for the RPI</p></td>
+</tr>
+<tr class="row-even"><td><p>Kernel binary format</p></td>
+<td><p>Image</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Kernel  compression format</p></td>
+<td><p>gzip compression</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Build a Device Tree Blob (DTB)</p></td>
+<td><p>Yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Intree Device Tree Source file name</p></td>
+<td><p>broadcom/bcm2711-rpi-4-b broadcom/bcm2711-rpi-400 broadcom/bcm2711-rpi-cm4 broadcom/bcm2711-rpi-cm4s</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Need host OpenSSL</p></td>
+<td><p>Yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Linux kernel Extensions</p></td>
+<td><p>Nothing</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Linux Kernel Tools</p></td>
+<td><p>Nothing</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="target-packages">
+<h3><span class="section-number">3.5.6. </span>Target Packages<a class="headerlink" href="#target-packages" title="Link to this heading"></a></h3>
+<p>Target packages option allows to select the software elements that will be installed in the filesystem of the embedded Linux. Additionaly, this option install the busybox package that contains the basic Linux commands (<a class="reference internal" href="#busybox"><span class="std std-numref">Table 3.5</span></a>). Buildroot creates the filesystem hierarchy following the Linux standard organization.</p>
+<table class="docutils align-default" id="busybox">
+<caption><span class="caption-number">Table 3.5 </span><span class="caption-text">Busybox and target packages</span><a class="headerlink" href="#busybox" title="Link to this table"></a></caption>
+<tbody>
+<tr class="row-odd"><td><p>Busybox</p></td>
+<td><p>yes</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Busybox configuration file to use</p></td>
+<td><p>package/busybox/busybox.config</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Show packages that are also provided by busybox</p></td>
+<td><p>Yes</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Audio and video applications</p></td>
+<td><p>Default values</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Compresssors and decompressors</p></td>
+<td><p>xz-utils</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Debugging, profiling and benchmark</p></td>
+<td><p><strong>gdb, gdbserver, full debugger</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Developments tools</p></td>
+<td><p>Default values</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Filesystem  and flash utilities</p></td>
+<td><p>Default values</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Games</p></td>
+<td><p>Default values</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Graphic libraries and applications (graphic/text)</p></td>
+<td><p>Default values</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Hardware handling</p></td>
+<td><p><strong>Firmware&gt;rpifirmware</strong> <strong>rpi4 (default)</strong></p></td>
+<td><p>Path to a file stores as boot/config.txt: <strong>your path</strong>/board/raspberrypi4-64/config_4_64bit.txt</p></td>
+</tr>
+<tr class="row-even"><td><p>Hardware handling</p></td>
+<td><p><strong>Firmware&gt;rpifirmware</strong></p></td>
+<td><p>Path to a file stored as boot/cmdline.txt: <strong>your path</strong>/board/raspberrypi4-64/cmdline.txt</p></td>
+</tr>
+<tr class="row-odd"><td><p>Hardware handling</p></td>
+<td><p><strong>Firmware&gt;rpifirmware</strong></p></td>
+<td><p><strong>install DTB  overlays</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Interpreters language and  scripting Libraries</p></td>
+<td><p>Python3</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Miscellaneous</p></td>
+<td><p>Default Values</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Libraries</p></td>
+<td><p>Default Values</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Networking applications</p></td>
+<td><p><strong>ifupdown scripts</strong>, <strong>openssh</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Package Managers</p></td>
+<td><p>Default values</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Real Time, Shell and  utilities</p></td>
+<td><p>Default Values</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>System Tools</p></td>
+<td><p>kmod, kmod utilities</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Text Editor and Viewers</p></td>
+<td><p>Default Values</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="file-system-images">
+<h3><span class="section-number">3.5.7. </span>File System Images<a class="headerlink" href="#file-system-images" title="Link to this heading"></a></h3>
+<p>This option selects the format of the root filesystem and the size (<a class="reference internal" href="#filesystemimage"><span class="std std-numref">Table 3.6</span></a>).</p>
+<table class="docutils align-default" id="filesystemimage">
+<caption><span class="caption-number">Table 3.6 </span><span class="caption-text">Filesystem images</span><a class="headerlink" href="#filesystemimage" title="Link to this table"></a></caption>
+<tbody>
+<tr class="row-odd"><td><p>ext2/3/4 root filesystem</p></td>
+<td><p>ext4</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>filesystem label</p></td>
+<td><p>rootfs</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>exact size</p></td>
+<td><p><strong>400M</strong> Leave the other default values</p></td>
+<td><p>Update this value with your specific needs</p></td>
+</tr>
+<tr class="row-even"><td><p>Compression method</p></td>
+<td><p>No compression</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="boot-loaders">
+<h3><span class="section-number">3.5.8. </span>Boot-loaders<a class="headerlink" href="#boot-loaders" title="Link to this heading"></a></h3>
+<p>The Raspberry PI does not need an specific bootloader becuase it is incorporated in the firmware provided by Broadcom.</p>
+</section>
+<section id="host-utilities">
+<h3><span class="section-number">3.5.9. </span>Host Utilities<a class="headerlink" href="#host-utilities" title="Link to this heading"></a></h3>
+<p>Additional tools needed for ubuntu to create all the embedded images (<a class="reference internal" href="#hostutils"><span class="std std-numref">Table 3.7</span></a>).</p>
+<table class="docutils align-default" id="hostutils">
+<caption><span class="caption-number">Table 3.7 </span><span class="caption-text">Host utilities</span><a class="headerlink" href="#hostutils" title="Link to this table"></a></caption>
+<tbody>
+<tr class="row-odd"><td><p>host environment setup</p></td>
+<td><p>Yes</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>host genimage</p></td>
+<td><p>Yes</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>host dosfstools</p></td>
+<td><p>Yes</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>host kmod</p></td>
+<td><p>Yes, support <strong>xz-compressed modules</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>host mtools</p></td>
+<td><p>Yes</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Once you have configured all the menus, you need to exit, saving the
+values (File-&gt;Quit).</p>
+</section>
+</section>
+<section id="compiling-buildroot">
+<h2><span class="section-number">3.6. </span>Compiling buildroot<a class="headerlink" href="#compiling-buildroot" title="Link to this heading"></a></h2>
+<p>In the Terminal Window executes the following command (<a class="reference internal" href="#buildbuildroot"><span class="std std-numref">Listing 3.1</span></a>):</p>
+<div class="literal-block-wrapper docutils container" id="buildbuildroot">
+<div class="code-block-caption"><span class="caption-number">Listing 3.1 </span><span class="caption-text">Build Buildroot</span><a class="headerlink" href="#buildbuildroot" title="Link to this code"></a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>$<span class="w"> </span>make<span class="w"> </span><span class="nv">O</span><span class="o">=</span><span class="nv">$PWD</span><span class="w"> </span>-C<span class="w"> </span>/home/ubuntu/Documents/rpi/buildroot-2025.02.9/
+</pre></div>
+</div>
+</div>
+<p>If everything is correct, you will see a final window similar to the one
+represented in <a class="reference internal" href="#buildrootok"><span class="std std-numref">Fig. 3.8</span></a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In this step, buildroot will connect, using the internet, to different repositories. After downloading the code, Buildroot will compile the applications and generate a lot of files and folders. Depending on your internet speed access and the   configuration chosen, this step could take up to <strong>two hours</strong>. If you have errors in the buildroot configuration,  you could obtain errors in this compilation phase. Check your configuration correctly. Use “make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2025.02.9/ clean” to clean up  your partial compilation.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><cite>dl</cite> subfolder in your buildroot folder contains all  the packages downloaded for the internet. If you want to  move your buildroot configuration from one computer to another, avoiding the copy of the virtual machine, you can copy this folder.                                            |</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If your building process fails different reasons could be the origin. consider to use the following actions. Make a copy of your <cite>.config</cite> file (hidden file in Linux) to save your configuration.</p>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-number">Table 3.8 </span><span class="caption-text">actions</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
+<tbody>
+<tr class="row-odd"><td><p>make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2025.02.9/ clean</p></td>
+<td><p>Build again buildroot</p></td>
+</tr>
+<tr class="row-even"><td><p>make O=$PWD -C /home/ubuntu/Documents/rpi/buildroot-2025.02.9/ distclean</p></td>
+<td><p>configure and build again buildroot</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="align-center" id="buildrootok">
+<a class="reference internal image-reference" href="_images/buildrootok.png"><img alt="_images/buildrootok.png" src="_images/buildrootok.png" style="width: 6.68125in; height: 4.46389in;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.8 </span><span class="caption-text">Successful compilation and installation of Buildroot</span><a class="headerlink" href="#buildrootok" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><strong>Buildroot</strong> has generated some folders with different files and
+subfolders containing the tools for generating your Embedded Linux
+System. The next paragraph explains the main outputs obtained,</p>
+</section>
+<section id="buildroot-output">
+<h2><span class="section-number">3.7. </span>Buildroot Output.<a class="headerlink" href="#buildroot-output" title="Link to this heading"></a></h2>
+<p>The main output files of the execution of the previous steps can be
+located in the folder “build/images”. <a class="reference internal" href="#operations"><span class="std std-numref">Fig. 3.9</span></a> summarizes the use of
+<strong>Buildroot</strong>. Buildroot generates a bootloader, a kernel image, and a
+file system.</p>
+<figure class="align-center" id="operations">
+<a class="reference internal image-reference" href="_images/buildroot.png"><img alt="Buildroot tool basic operation" src="_images/buildroot.png" style="width: 5.98081in; height: 2.5in;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.9 </span><span class="caption-text">Schematic representation of the Buildroot tool. Buildroot generates the root file system, the kernel image, the bootloader, and
+the toolchain. Figure copied from “Bootlin” training materials
+(<a class="reference external" href="http://bootlins.com/training/">http://bootlin.com/training/</a>)</span><a class="headerlink" href="#operations" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>In our specific case, the folder content is shown in <a class="reference internal" href="#outbuidlroot"><span class="std std-numref">Fig. 3.10</span></a></p>
+<figure class="align-center" id="outbuidlroot">
+<a class="reference internal image-reference" href="_images/buildimages.png"><img alt="_images/buildimages.png" src="_images/buildimages.png" style="width: 5.98081in; height: 4.0in;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.10 </span><span class="caption-text">The images folder contains the binary files for our embedded system.</span><a class="headerlink" href="#outbuidlroot" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Copy the <cite>sdcard.img</cite> file to your SDcard using this Linux command in the
+Buildroot folder (<cite>sdb</cite> is typically the device assigned to the sdcard,
+unless you have other removable devices connected to the system):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>./images/sdcard.img<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/dev/sd&lt;x&gt;<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>10M
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>&lt;x&gt; is the identification used by Linux for your microSD card,
+tipically “b” or “c”.  <strong>Never</strong> use “a” because this is the operating system hardisk</p>
+</div>
+<p>Remember to format again the microSDcard if you need to repeat this process otherwise you will have errors when Linux is booting.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Linux <cite>gparted</cite> is an excellent tool for partitioning and formatting the SD card.</p>
+</div>
+</section>
+<section id="booting-the-raspberry-pi">
+<h2><span class="section-number">3.8. </span>Booting the Raspberry Pi.<a class="headerlink" href="#booting-the-raspberry-pi" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="#rpi4b"><span class="std std-numref">Fig. 3.11</span></a> displays a Raspberry Pi. The description of this card, its
+functionalities, interfaces, and connectors are explained in the ref
+[RD2]. The fundamental connection requires:</p>
+<ol class="loweralpha simple">
+<li><p>To connect a USB to RS232 adapter (provided) to the raspberry-pi
+expansion header (see  <a class="reference internal" href="#conn"><span class="std std-numref">Fig. 3.12</span></a>, and <a class="reference internal" href="#fdti"><span class="std std-numref">Fig. 3.13</span></a>). This adapter provides the
+serial line interface as a console in the Linux host operating
+system.</p></li>
+<li><p>To connect the power supply with the micro-USB connector provided (5
+v).</p></li>
+<li><p>To connect the Ethernet cable to the RJ45 port if it is available
+(at home, not the case of UPM’s Lab).</p></li>
+</ol>
+<figure class="align-center" id="rpi4b">
+<a class="reference internal image-reference" href="_images/rpi4b.png"><img alt="_images/rpi4b.png" src="_images/rpi4b.png" style="width: 7.0cm; height: 5.0cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.11 </span><span class="caption-text">RaspBerry-Pi 4 Model B hardware with main elements identified</span><a class="headerlink" href="#rpi4b" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="conn">
+<a class="reference internal image-reference" href="_images/rpiconnector.png"><img alt="_images/rpiconnector.png" src="_images/rpiconnector.png" style="width: 3.0cm; height: 10.0cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.12 </span><span class="caption-text">Raspberry-PI 4 header terminal identification.</span><a class="headerlink" href="#conn" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="fdti">
+<a class="reference internal image-reference" href="_images/fdticable.png"><img alt="_images/fdticable.png" src="_images/fdticable.png" style="width: 5cm; height: 10.0cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.13 </span><span class="caption-text">Identification of the terminals in the USB-RS232 adapter</span><a class="headerlink" href="#fdti" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<table class="docutils align-center" id="id4">
+<caption><span class="caption-number">Table 3.9 </span><span class="caption-text">FDTI Terminals</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>RPI connector</p></th>
+<th class="head"><p>FDTI Terminal</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RXD UART (GPIO16) Pin 10</p></td>
+<td><p>Terminal 4 (Orange)</p></td>
+</tr>
+<tr class="row-odd"><td><p>TXD UART (GPIO15) Pin 8</p></td>
+<td><p>Terminal 5 (Yellow)</p></td>
+</tr>
+<tr class="row-even"><td><p>Ground (GND) Pin 6</p></td>
+<td><p>Pin 1</p></td>
+</tr>
+</tbody>
+</table>
+<p>The booting process of the Raspberry Pi BCM2711 <a class="reference external" href="https://www.raspberrypi.com/documentation/computers/processors.html#bcm2711">BCM2711</a> processor is depicted
+in <a class="reference internal" href="#rpiboot"><span class="std std-numref">Fig. 3.14</span></a>. Take into account that this System On Chip (SoC), the
+BCM2711, contains two different processors: a <a class="reference internal" href="acronyms.html#term-GPU"><span class="xref std std-term">GPU</span></a> and an ARM
+CPU. The programs <em>bootcode.bin</em> and <em>start.elf</em> are written
+explicitly for the GPU, and the source code is unavailable. Broadcom
+only provides details of this to customers who sign a commercial
+agreement. The last executable (<em>start.elf</em>) boots the ARM processor and
+allows the execution of ARM programs such as Linux OS kernel or other
+binaries such as u-boot bootloader.</p>
+<figure class="align-center" id="rpiboot">
+<a class="reference internal image-reference" href="_images/bcm2711boting.png"><img alt="RPI booting process" src="_images/bcm2711boting.png" style="width: 4.90093in; height: 4.28723in;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.14 </span><span class="caption-text">Booting process for BCM2711 processor in the raspberry-pi.</span><a class="headerlink" href="#rpiboot" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The config.txt file contains essential information to boot the Linux OS
+and perform the configuration of different hardware elements (look at
+<a class="reference external" href="http://elinux.org/RPiconfig">http://elinux.org/RPiconfig</a> and check the meaning of the different
+configuration parameters). Verify the content of the config.txt file
+generated by buildroot and complete it as depicted below ( <a class="reference internal" href="#aa"><span class="std std-numref">Listing 3.2</span></a> ).</p>
+<div class="literal-block-wrapper docutils container" id="aa">
+<div class="code-block-caption"><span class="caption-number">Listing 3.2 </span><span class="caption-text">config.txt file</span><a class="headerlink" href="#aa" title="Link to this code"></a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Please note that this is only a sample, we recommend you to change it to fit</span>
+<span class="c1"># your needs.# You should override this file using BR2_PACKAGE_RPI_FIRMWARE_CONFIG_FILE.</span>
+<span class="c1"># See http://buildroot.org/manual.html#rootfs-custom</span>
+<span class="c1"># and http://elinux.org/RPiconfig for a description of config.txt syntax</span>
+
+<span class="nv">start_file</span><span class="o">=</span>start4.elf
+<span class="nv">fixup_file</span><span class="o">=</span>fixup4.dat
+
+<span class="nv">kernel</span><span class="o">=</span>**Image**
+
+<span class="c1"># To use an external initramfs file</span>
+<span class="c1">#initramfs rootfs.cpio.gz</span>
+<span class="c1"># Disable overscan assuming the display supports displaying the full resolution</span>
+<span class="c1"># If the text shown on the screen disappears off the edge, comment this out</span>
+
+<span class="nv">disable_overscan</span><span class="o">=</span><span class="m">1</span>
+
+<span class="c1"># How much memory in MB to assign to the GPU on Pi models having</span>
+<span class="c1"># 256, 512 or 1024 MB total memory</span>
+<span class="nv">gpu_mem_256</span><span class="o">=</span><span class="m">100</span>
+<span class="nv">gpu_mem_512</span><span class="o">=</span><span class="m">100</span>
+<span class="nv">gpu_mem_1024</span><span class="o">=</span><span class="m">100</span>
+
+<span class="c1"># Enable UART0 for serial console on ttyAMA0</span>
+<span class="nv">dtoverlay</span><span class="o">=</span>miniuart-bt
+
+<span class="c1"># enable autoprobing of Bluetooth driver without need of hciattach/btattach</span>
+<span class="nv">dtparam</span><span class="o">=</span><span class="nv">krnbt</span><span class="o">=</span>on
+</pre></div>
+</div>
+</div>
+<p>In this example, once the ARM is released from reset, it executes the
+Image application. This binary application is the Linux Kernel in Image
+format. The parameters passed to the application specified in the
+<cite>kernel=&lt;….&gt;</cite> are detailed in the <cite>cmdline.txt</cite> file. For instance, by
+default, Buildroot generates this one (<a class="reference internal" href="#cmdline"><span class="std std-numref">Listing 3.3</span></a>):</p>
+<div class="literal-block-wrapper docutils container" id="cmdline">
+<div class="code-block-caption"><span class="caption-number">Listing 3.3 </span><span class="caption-text">cmdline.txt file</span><a class="headerlink" href="#cmdline" title="Link to this code"></a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">root</span><span class="o">=</span>/dev/mmcblk0p2<span class="w"> </span>rootwait<span class="w"> </span><span class="nv">console</span><span class="o">=</span>tty1<span class="w"> </span><span class="nv">console</span><span class="o">=</span>ttyAMA0,115200
+</pre></div>
+</div>
+</div>
+<p>In the Linux machine, open a Terminal and execute the program <cite>sudo putty</cite> with
+<strong>sudo rights</strong> (sudo putty), in a second a window appears. Configure the
+parameters using the information displayed in <a class="reference internal" href="#putty"><span class="std std-numref">Fig. 3.15</span></a> (for the specific
+case of <cite>putty</cite>), and then press “Open”. <strong>Apply the power to the
+Raspberry PI,</strong> and you will see the booting messages.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>[Serial interface identification in Linux]:</strong> In Linux the  serial devices are identified typically with the names       /dev/ttyS0, /dev/ttyS1, etc. In the figure, the example has   been checked with a serial port implemented with a USB-RS232 converter. This is the reason why the name is <strong>/dev/ttyUSB0</strong>.   In your computer, you need to find the identification of   your serial port. Use Linux <strong>dmesg</strong> command to do this.</p>
+</div>
+<figure class="align-center" id="putty">
+<a class="reference internal image-reference" href="_images/image19.png"><img alt="Putty serial line" src="_images/image19.png" style="width: 4.90093in; height: 4.28723in;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.15 </span><span class="caption-text">Putty program main window.</span><a class="headerlink" href="#putty" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>After a few seconds, you will see a lot of messages displayed on the
+terminal. Linux kernel is booting, and the operating system is running
+its configuration and initial daemons. If the system boots correctly,
+you will see an output like the one represented in <a class="reference internal" href="#linuxboot"><span class="std std-numref">Fig. 3.16</span></a>. Introduce
+the username <em>root</em> (password in case you have configured it), and the Linux shell will be available for you.</p>
+<figure class="align-center" id="linuxboot">
+<a class="reference internal image-reference" href="_images/image20.png"><img alt="_images/image20.png" src="_images/image20.png" style="width: 6.69514in; height: 2.58472in;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.16 </span><span class="caption-text">Linux Running in the RaspBerry Pi</span><a class="headerlink" href="#linuxboot" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>[DHCP Server]:</strong> The DHCP server providing the IP address  to the RPI should be active in your network. In the UPM ETSIST labs, there is no cabled network, only WIFI. If you are using the RPI at home, the DHCP server is running in your router. The method used to assing IP addresses is different from one manufactures to others. If you want to know the IP address assigned, you have two options: use a serial cable connected to the RPI (<cite>ifconfig</cite> command) or check the router status web page and display the table of the DHCP clients connected. Looking for the MAC in the list, you will obtain the IP address.</p>
+</div>
+</section>
+<section id="connecting-the-rpi-to-the-cabled-ethernet-network">
+<h2><span class="section-number">3.9. </span>Connecting the RPI to the cabled ethernet network<a class="headerlink" href="#connecting-the-rpi-to-the-cabled-ethernet-network" title="Link to this heading"></a></h2>
+<section id="inspecting-the-configuration-of-the-network-interface-generated-automatically-by-buildroot">
+<h3><span class="section-number">3.9.1. </span>Inspecting the configuration of the network interface generated automatically by Buildroot<a class="headerlink" href="#inspecting-the-configuration-of-the-network-interface-generated-automatically-by-buildroot" title="Link to this heading"></a></h3>
+<p>Inspect the content of <cite>/etc/network/interfaces</cite> and <cite>/etc/init.d/S40network</cite>. You will see content similar to this in the
+<cite>interfaces</cite> file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># interface file auto-generated by buildroot</span>
+
+auto<span class="w"> </span>lo
+iface<span class="w"> </span>lo<span class="w"> </span>inet<span class="w"> </span>loopback
+
+auto<span class="w"> </span>eth0
+iface<span class="w"> </span>eth0<span class="w"> </span>inet<span class="w"> </span>dhcp
+<span class="w">     </span>pre-up<span class="w"> </span>/etc/network/nfs_check
+<span class="w">     </span>wait-delay<span class="w"> </span><span class="m">15</span>
+<span class="w">     </span>hostname<span class="w"> </span><span class="k">$(</span>hostname<span class="k">)</span>
+</pre></div>
+</div>
+<p>This configuration activates the use of eth0 with DHCP support. Test the
+connectivity, trying to connect to another computer in the laboratory.
+Use the ping command.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>[Help]:</strong> If you run the ping command in the Raspberry   trying to connect with a computer in the laboratory, you      probably obtain a connection timeout. Consider that   computers running Windows could have the firewall activated. You can also try to run the ping on a windows computer or on Linux virtual machine. In this case, the RPI does not have a  firewall running, and the connection should be successful.</p>
+</div>
+<div class="admonition-question admonition">
+<p class="admonition-title">Question</p>
+<p>What is the MAC address of your RPI interface? Use the <cite>dmesg</cite> command to see the kernel boot parameters and identify the method used to get the MAC address from the hardware.</p>
+</div>
+</section>
+</section>
+<section id="adding-wifi-support">
+<h2><span class="section-number">3.10. </span>Adding WIFI support<a class="headerlink" href="#adding-wifi-support" title="Link to this heading"></a></h2>
+<section id="adding-mdev-support-to-embedded-linux">
+<h3><span class="section-number">3.10.1. </span>Adding mdev support to Embedded Linux<a class="headerlink" href="#adding-mdev-support-to-embedded-linux" title="Link to this heading"></a></h3>
+<p>The folder &lt;buildroot-folder&gt;<em>/package/busybox</em> contains two files
+named S10mdev and mdev.conf. These files have to be added to the target
+filesystem. This step is done by adding these commands to the
+<em>&lt;buildroot-folder&gt;/board/raspberrypi4-64/post-build.sh</em> script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>&lt;buildroot-folder&gt;/package/busybox/S10mdev<span class="w"> </span><span class="si">${</span><span class="nv">TARGET_DIR</span><span class="si">}</span>/etc/init.d/S10mdev
+chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span><span class="si">${</span><span class="nv">TARGET_DIR</span><span class="si">}</span>/etc/init.d/S10mdev
+cp<span class="w"> </span>&lt;buildroot-folder&gt;/package/busybox/mdev.conf<span class="w"> </span><span class="si">${</span><span class="nv">TARGET_DIR</span><span class="si">}</span>/etc/mdev.conf
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[mdev] mdev provides a method to add or remove hotplug devices in Linux.</p>
+</div>
+</section>
+<section id="adding-the-broadcom-firmware-support-for-wireless-hardware">
+<h3><span class="section-number">3.10.2. </span>Adding the Broadcom firmware support for Wireless hardware<a class="headerlink" href="#adding-the-broadcom-firmware-support-for-wireless-hardware" title="Link to this heading"></a></h3>
+<p>The hardware element included in the RPI-4 for the Wireless
+communication is implemented with the BCM43438 chip. It is needed to
+include the software packages with the firmware’s chip and the wireless
+utilities.</p>
+<ol class="arabic simple">
+<li><p>Execute “make ……. menuconfig”. Navigate to “Target Packages-&gt;Hardware
+Handling-&gt;Firmware-&gt; bcrmfmac-sdio-firmware-rpi” and select the
+“bcrmfmac-sdio-firmware-rpi-wifi”.</p></li>
+<li><p>Before compiling Buildroot we need to add more software supporting
+the configuration of the WIFI.</p>
+<ol class="loweralpha simple">
+<li><p>Navigate to “Target Packages-&gt;Networking Applications” and select</p>
+<ul class="simple">
+<li><p>“crda”</p></li>
+<li><p>“ifupdown scripts”</p></li>
+<li><p>“iw”</p></li>
+<li><p>“wireless-regdb”</p></li>
+<li><p>“wireless tools”</p></li>
+<li><p>“wpa_supplicant”</p>
+<ol class="arabic simple">
+<li><p>“Enable EAP”</p></li>
+<li><p>“Enable WPS”</p></li>
+<li><p>“Install wpa_cli binary”</p></li>
+<li><p>“Install wpa_client shared library”</p></li>
+<li><p>“Instal wpa_passphrase binary”</p></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>Add these lines to ./board/rapsberrypi4-64/post-build.sh.</p></li>
+</ol>
+</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>&lt;buildroot-folder&gt;/board/raspberrypi4-64/interfaces<span class="w"> </span><span class="si">${</span><span class="nv">TARGET_DIR</span><span class="si">}</span>/etc/network/interfaces
+cp<span class="w"> </span>&lt;buildroot-folder&gt;/board/raspberrypi4-64/wpa_supplicant.conf<span class="w"> </span><span class="si">${</span><span class="nv">TARGET_DIR</span><span class="si">}</span>/etc/wpa_supplicant.conf
+</pre></div>
+</div>
+<ol class="loweralpha simple" start="3">
+<li><p>Create the file <cite>*&lt;buildroot-folder&gt;*/board/raspberrypi4-64/interfaces</cite>
+adding the highlighted content:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>auto<span class="w"> </span>lo
+iface<span class="w"> </span>lo<span class="w"> </span>inet<span class="w"> </span>loopback
+
+auto<span class="w"> </span>eth0
+iface<span class="w"> </span>eth0<span class="w"> </span>inet<span class="w"> </span>dhcp
+<span class="w">     </span>pre-up<span class="w"> </span>/etc/network/nfs_check
+<span class="w">     </span>wait-delay<span class="w"> </span><span class="m">15</span>
+<span class="w">     </span>hostname<span class="w"> </span><span class="k">$(</span>hostname<span class="k">)</span>
+
+<span class="hll">auto<span class="w"> </span>wlan0
+</span><span class="hll">iface<span class="w"> </span>wlan0<span class="w"> </span>inet<span class="w"> </span>dhcp
+</span><span class="hll"><span class="w">       </span>pre-up<span class="w"> </span>wpa_supplicant<span class="w"> </span>-B<span class="w"> </span>-iwlan0<span class="w"> </span>-c/etc/wpa_supplicant.conf
+</span><span class="hll"><span class="w">       </span>post-down<span class="w"> </span>killall<span class="w"> </span>-q<span class="w"> </span>wpa_supplicant
+</span><span class="hll"><span class="w">       </span>wait-delay<span class="w"> </span><span class="m">15</span>
+</span></pre></div>
+</div>
+<ol class="loweralpha simple" start="4">
+<li><p>Create the file
+<cite>*&lt;buildroot-folder&gt;*/board/raspberrypi4-64/wpa_supplicant.conf</cite> with this
+content (ask professors about the values to be provided as SSID and
+Key-passwd). You can define as many WIFIs as you want.</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">network</span><span class="o">={</span>
+<span class="w">    </span><span class="nv">ssid</span><span class="o">=</span><span class="s2">&quot;SSID&quot;</span>
+<span class="w">    </span><span class="nv">key_mgmt</span><span class="o">=</span>WPA-PSK
+<span class="w">    </span><span class="nv">psk</span><span class="o">=</span><span class="s2">&quot;PASSWORD&quot;</span>
+<span class="w">    </span><span class="nv">priority</span><span class="o">=</span><span class="m">9</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Perform a <cite>*make*</cite> and burn again the new image in the micro SDcard. Boot the
+Raspberry and check that you can connect to the wireless network.</p></li>
+</ol>
+</section>
+</section>
+<section id="customizing-the-linux-kernel">
+<h2><span class="section-number">3.11. </span>Customizing the Linux kernel<a class="headerlink" href="#customizing-the-linux-kernel" title="Link to this heading"></a></h2>
+<section id="kernel-configuration">
+<h3><span class="section-number">3.11.1. </span>Kernel configuration<a class="headerlink" href="#kernel-configuration" title="Link to this heading"></a></h3>
+<p>Execute the following command to configure the Linux Kernel in Buildroot</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>make<span class="w">  </span><span class="nv">O</span><span class="o">=</span><span class="nv">$PWD</span><span class="w"> </span>-C<span class="w"> </span>/home/ubuntu/Documents/rpi/buildroot-2025.02.9/<span class="w"> </span>linux-menuconfig
+</pre></div>
+</div>
+<p>Using the different menus you can configure specific kernel features, add support for specific device drivers and multiple additional functionalities. The compilation of the Linux kernel package is done with this command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>make<span class="w">  </span><span class="nv">O</span><span class="o">=</span><span class="nv">$PWD</span><span class="w"> </span>-C<span class="w"> </span>/home/ubuntu/Documents/rpi/buildroot-2025.02.9/<span class="w"> </span>linux-rebuild
+</pre></div>
+</div>
+<p>In order to get the new sdcard.img file execute:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>make<span class="w">  </span><span class="nv">O</span><span class="o">=</span><span class="nv">$PWD</span><span class="w"> </span>-C<span class="w"> </span>/home/ubuntu/Documents/rpi/buildroot-2025.02.9/
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gettingstartedrpi.html" class="btn btn-neutral float-left" title="2. Getting started with RPI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="eclipse.html" class="btn btn-neutral float-right" title="4. Using the integrated development environment Eclipse/CDT" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Universidad Politécnica de Madrid.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,197 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building Embedded Linux for Raspberry PI &mdash; Design of Embedded Systems with RaspberryPI 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1. Acronyms" href="acronyms.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            Design of Embedded Systems with RaspberryPI
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="acronyms.html">1. Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingstartedrpi.html">2. Getting started with RPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpi-tutorial.html">3. Embedded Linux With RPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eclipse.html">4. Using the integrated development environment Eclipse/CDT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="virtualmachine.html">5. Preparing the VMware Ubuntu Virtual Machine.</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Design of Embedded Systems with RaspberryPI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Building Embedded Linux for Raspberry PI</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="building-embedded-linux-for-raspberry-pi">
+<h1>Building Embedded Linux for Raspberry PI<a class="headerlink" href="#building-embedded-linux-for-raspberry-pi" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="acronyms.html">1. Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingstartedrpi.html">2. Getting started with RPI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gettingstartedrpi.html#reference-documentation">2.1. Reference Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gettingstartedrpi.html#operating-system-installation">2.2. Operating System Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gettingstartedrpi.html#downloading-and-installing-raspberry-pi-os">2.2.1. Downloading and installing Raspberry PI OS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gettingstartedrpi.html#setting-up-the-raspberry-pi">2.2.2. Setting up the Raspberry Pi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gettingstartedrpi.html#reviewing-the-sd-card-content">2.2.3. Reviewing the SD card content</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gettingstartedrpi.html#booting-the-rpi">2.2.4. Booting the RPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gettingstartedrpi.html#discovering-the-rpi-ip-address">2.2.5. Discovering the RPI IP address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gettingstartedrpi.html#raspberry-pi-os-update">2.2.6. Raspberry Pi OS Update</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gettingstartedrpi.html#integration-of-a-3-axis-accelerometer-with-raspberry-pi">2.3. Integration of a 3-axis accelerometer with Raspberry-Pi</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gettingstartedrpi.html#specifications">2.3.1. Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gettingstartedrpi.html#suggested-improvements">2.3.2. Suggested Improvements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gettingstartedrpi.html#optional-python-script">2.3.3. Optional: Python Script</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gettingstartedrpi.html#compiling-linking-c-program-in-linux">2.4. Compiling &amp; linking C program in Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gettingstartedrpi.html#questions-to-be-reported-to-instructors">2.5. Questions to be reported to instructors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rpi-tutorial.html">3. Embedded Linux With RPI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rpi-tutorial.html#document-overview">3.1. Document Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpi-tutorial.html#references">3.2. References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpi-tutorial.html#building-linux-using-buildroot">3.3. Building Linux using buildroot</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rpi-tutorial.html#elements-needed-for-the-execution-of-these-labs">3.3.1. Elements needed for the execution of these LABS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rpi-tutorial.html#starting-the-vmware">3.4. Starting the VMware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpi-tutorial.html#configuring-buildroot-for-rpi4">3.5. Configuring Buildroot for RPI4</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rpi-tutorial.html#target-options">3.5.1. Target Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpi-tutorial.html#toolchain">3.5.2. Toolchain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpi-tutorial.html#build-options">3.5.3. Build options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpi-tutorial.html#system-configuration">3.5.4. System Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpi-tutorial.html#linux-kernel">3.5.5. Linux Kernel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpi-tutorial.html#target-packages">3.5.6. Target Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpi-tutorial.html#file-system-images">3.5.7. File System Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpi-tutorial.html#boot-loaders">3.5.8. Boot-loaders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpi-tutorial.html#host-utilities">3.5.9. Host Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rpi-tutorial.html#compiling-buildroot">3.6. Compiling buildroot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpi-tutorial.html#buildroot-output">3.7. Buildroot Output.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpi-tutorial.html#booting-the-raspberry-pi">3.8. Booting the Raspberry Pi.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rpi-tutorial.html#connecting-the-rpi-to-the-cabled-ethernet-network">3.9. Connecting the RPI to the cabled ethernet network</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rpi-tutorial.html#inspecting-the-configuration-of-the-network-interface-generated-automatically-by-buildroot">3.9.1. Inspecting the configuration of the network interface generated automatically by Buildroot</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rpi-tutorial.html#adding-wifi-support">3.10. Adding WIFI support</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rpi-tutorial.html#adding-mdev-support-to-embedded-linux">3.10.1. Adding mdev support to Embedded Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rpi-tutorial.html#adding-the-broadcom-firmware-support-for-wireless-hardware">3.10.2. Adding the Broadcom firmware support for Wireless hardware</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rpi-tutorial.html#customizing-the-linux-kernel">3.11. Customizing the Linux kernel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rpi-tutorial.html#kernel-configuration">3.11.1. Kernel configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eclipse.html">4. Using the integrated development environment Eclipse/CDT</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eclipse.html#eclipse-ide-for-c-c-developers">4.1. Eclipse IDE for C/C++ developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eclipse.html#cross-compiling-applications-using-eclipse">4.2. Cross-Compiling applications using Eclipse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eclipse.html#building-a-project">4.3. Building a project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eclipse.html#moving-the-binary-to-the-target">4.4. Moving the binary to the target</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eclipse.html#executing-the-application">4.5. Executing the application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eclipse.html#automatic-debugging-using-gdb-and-gdbserver">4.6. Automatic debugging using gdb and gdbserver</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="virtualmachine.html">5. Preparing the VMware Ubuntu Virtual Machine.</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="virtualmachine.html#download-vmware-workstation-player">5.1. Download VMware Workstation Player.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtualmachine.html#installing-ubuntu-24-04-01-lts-as-a-virtual-machine">5.2. Installing Ubuntu 24.04.01 LTS as a virtual machine.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtualmachine.html#installing-synaptic">5.3. Installing synaptic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtualmachine.html#installing-putty">5.4. Installing putty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtualmachine.html#installing-packages-for-supporting-buildroot">5.5. Installing packages for supporting Buildroot.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtualmachine.html#installing-packages-supporting-eclipse">5.6. Installing packages supporting Eclipse</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h1>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="acronyms.html" class="btn btn-neutral float-right" title="1. Acronyms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Universidad Politécnica de Madrid.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
