@@ -51,23 +51,25 @@ Follow the steps below to install the Raspbian Operating System:
 
 1) Download the `Raspberry PI Imager <https://www.raspberrypi.com/software/>`_ tool for your specific OS.
 
-2) Execute the application, and a window will be displayed (see :numref:`imagermain`). First choose
-   the Raspberry PI hardware (see :numref:`imagerhw`) and then, choose the Operating System (see :numref:`imageros`) 
-   and Storage options (CHOOSE STORAGE) to burn an SD card with the
-   Raspberry PI OS 32 bits version. Click on the NEXT button and you
-   will have the options (see :numref:`imagersettings`, :numref:`imagergeneral`, :numref:`imagerservices`, :numref:`imageroptions`) to apply your specific customization (**enable
-   SSH**, Username (rpi-student) and Password (rpi) , WIFI SSID and passkey, and your
-   keyboard language configuration). Save the configuration and continue to write
-   the micro SD Card.
+2) Execute the application, and a window will be displayed. 
 
+   1) First, choose the Raspberry PI hardware, in this case, **Raspberry PI 4 Model B** (see :numref:`imagerhw`).
+   2) Choose the Operating System (see :numref:`imageros`) and **Raspberry PI OS 64 bits version**.
+   3) Next, choose the storage device where the OS image will be written (see :numref:`imagerstorage`).
+   4) Now, set the device hostname (see :numref:`imagerhostname`).
+   5) Then, set the localisation options (see :numref:`imagerlocalisation`). Set the keyboard to your language.
+   6) Next, set the user configuration (see :numref:`imageruser`). Set the username to **rpi-student** and the password to **rpi**.
+   7) Now, set the WiFi configuration (see :numref:`imagerwifi`). Set the SSID to **RPI** and the password to **UPMRPI2024**.
+   8) Enable SSH so you can connect remotely to the RPI (see :numref:`imagerssh`).
+   9) Finally, write the image to the SD card (see :numref:`imagerwrite`).
 
-.. figure:: rpi/media/imagermain.png
-   :name: imagermain
-   :width: 10cm
-   :height: 8cm
-   :align: center
+.. warning::
+   **[VERY IMPORTANT]:** Confirm the destination device where the image is burned because this information is not recoverable.
+3) Wait until the program ends writing the SD Card **(this can take up to one hour depending on your SD card category and model)**.
 
-   Raspberry Pi Imager main screen
+.. note::
+   You can find more information about the Raspberry Pi Imager tool in the `official documentation <https://www.raspberrypi.com/documentation/computers/getting-started.html#install-using-imager>`_
+
 
 .. figure:: rpi/media/imagerhwselect.png
    :name: imagerhw
@@ -85,46 +87,62 @@ Follow the steps below to install the Raspbian Operating System:
 
    Raspberry Pi Imager OS selection
 
-
-.. figure:: rpi/media/imagersettings.png
-   :name: imagersettings
+.. figure:: rpi/media/imagerstorage.png
+   :name: imagerstorage
    :width: 10cm
-   :height: 6cm
+   :height: 8cm
    :align: center
 
-   Raspberry Pi Imager Settings (`more info from RPI official documentation <https://www.raspberrypi.com/documentation/computers/getting-started.html#install-using-imager>`_ )
+   Raspberry Pi Imager Storage selection
 
-.. figure:: rpi/media/imagergeneral.png
-   :name: imagergeneral
-   :width: 8cm
-   :height: 6cm
+.. figure:: rpi/media/imagerhostname.png
+   :name: imagerhostname
+   :width: 10cm
+   :height: 8cm
    :align: center
 
-   Raspberry Pi Imager General Settings
-   
-.. figure:: rpi/media/imagerservices.png
-   :name: imagerservices
-   :width: 8cm
-   :height: 6cm
+   Raspberry Pi Imager device hostname
+
+.. figure:: rpi/media/imagerlocalisation.png
+   :name: imagerlocalisation
+   :width: 10cm
+   :height: 8cm
    :align: center
 
-   Raspberry Pi Imager OS Services
+   Raspberry Pi Imager localisation and keyboard settings
 
-.. figure:: rpi/media/imageroptions.png
-   :name: imageroptions
-   :width: 8cm
-   :height: 6cm
+.. figure:: rpi/media/imageruser.png
+   :name: imageruser
+   :width: 10cm
+   :height: 8cm
    :align: center
 
-   Raspberry Pi Imager OS Options
+   Raspberry Pi Imager user settings
 
+.. figure:: rpi/media/imagerwifi.png
+   :name: imagerwifi
+   :width: 10cm
+   :height: 8cm
+   :align: center
 
-.. warning::
+   Raspberry Pi Imager WiFi settings
 
-   **[VERY IMPORTANT]:** Be careful in the destination device    where the image is burned because this information is not    recoverable 
+.. figure:: rpi/media/imagerssh.png
+   :name: imagerssh
+   :width: 10cm
+   :height: 8cm
+   :align: center
 
-3) Wait until the program ends writing the SD Card **(this can take up
-   to one hour depending on your SD card category and model)**.
+   Raspberry Pi Imager SSH settings
+
+.. figure:: rpi/media/imagerwrite.png
+   :name: imagerwrite
+   :width: 10cm
+   :height: 8cm
+   :align: center
+
+   Raspberry Pi Imager write SD card
+
 
 Setting up the Raspberry Pi
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -140,7 +158,11 @@ in this document. There are three ways to establish this interaction:
 
 -  Opening an SSH session between your computer and the Raspberry Pi
    without connecting additional peripherals. This kind of configuration
-   is known as headless start (use the `rpi-student` login).
+   is known as headless start (use the `rpi-student` login). 
+
+   The Raspberry Pi must be connected to the same network as your
+   computer. First, you need to discover the Raspberry Pi IP address
+   (see the section `Discovering the RPI IP address`_).
 
 -  Use the serial USB-TTL cable that you need to connect to the GPIO
    expansion connector. This requires first to enable the serial line in
@@ -159,7 +181,7 @@ in this document. There are three ways to establish this interaction:
 
 .. note..
 
-   **[VERY IMPORTANT]:** In the UPM lab, there is no option to  connect the RPI to the ethernet cabled network; only a      
+   **[VERY IMPORTANT]:** In the UPM lab, there is no option to connect the RPI to the ethernet cabled network; only a      
    dedicated WIFI (with no internet connection) is available  (SSID: RPI)
 
 Reviewing the SD card content 
@@ -174,7 +196,7 @@ Reviewing the SD card content
 
 .. note::
 
-     **[VERY IMPORTANT]:** This is the partition used by          Raspberry to make the necessary hardware configuration before starting the operating system. Beware of not    deleting or modifying files other than those described in this  manual, or the Raspberry may not boot.  
+     **[VERY IMPORTANT]:** This is the partition used by Raspberry to make the necessary hardware configuration before starting the operating system. Beware of not    deleting or modifying files other than those described in this  manual, or the Raspberry may not boot.  
 
 
 3) List the content of the boot partition (FAT32) and identify the files
@@ -200,7 +222,7 @@ category) until the RPI is completely booted.
 
 .. note::
 
-    **[Security]:** Having the default user and password supposes a security issue, more if the SSH sessions are enabled. You can always change the password by executing the command passwd once logged in.  
+    **[Security]:** Having the default user and password supposes a security issue, more if the SSH sessions are enabled. You can always change the password by executing the command `passwd` once logged in.  
 
 Discovering the RPI IP address
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
