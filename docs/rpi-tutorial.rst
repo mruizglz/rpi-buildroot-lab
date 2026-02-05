@@ -97,7 +97,7 @@ welcome screen is displayed (see :numref:`vmplayer` and :numref:`vmplayer-ubuntu
    Ubuntu Virtual Machine login screen.
 
 Open the **Firefox** web browser and download from
-https://buildroot.org/, the version identified as **buidlroot2024-08-1**
+https://buildroot.org/, the version identified as **buildroot2025.02.9**
 (use the download link, see :numref:`webbuildroot`, and navigate searching for earlier
 releases if necessary, https://buildroot.org/downloads/ ). Save the file
 to the **Documents** folder in your account (:numref:`download`).
@@ -194,7 +194,7 @@ appear in the Table I leaves it with its default value.
     
 .. warning::
 
-   The tables have three colums. Check that you understnad all the content shown.
+   The tables have three columns. Check that you understand all the content shown.
 
 
 Target Options
@@ -235,7 +235,7 @@ Cross Compiler, linker, and libraries to be  built to compile our embedded appli
      - buildroot
      -
    * - C library
-     - glib
+     - glibc
      - Library    containing the typical C  libraries used in  Linux    environments   (stdlib, stdio,   etc)
    * - Kernel Headers
      - Same as kernel being built
@@ -264,7 +264,7 @@ Cross Compiler, linker, and libraries to be  built to compile our embedded appli
 
 Build options
 ^^^^^^^^^^^^^
-How Buidlroot will build the code. Leave the default values.
+How Buildroot will build the code. Leave the default values.
 
 
 System Configuration 
@@ -336,7 +336,7 @@ Here you can define the basic configuration of the embedded Linux to generate an
 Linux Kernel
 ^^^^^^^^^^^^
 
-This is the configuration of the Linux kernel. The specific location and version is specified among other parameters (:numref:`kernel`). See thrird column for details of git repor to use.
+This is the configuration of the Linux kernel. The specific location and version is specified among other parameters (:numref:`kernel`). See third column for details of git repo to use.
 
 
 .. list-table:: kernel-configuration
@@ -376,7 +376,7 @@ This is the configuration of the Linux kernel. The specific location and version
 Target Packages
 ^^^^^^^^^^^^^^^
 
-Target packages option allows to select the software elements that will be installed in the filesystem of the embedded Linux. Additionaly, this option install the busybox package that contains the basic Linux commands (:numref:`busybox`). Buildroot creates the filesystem hierarchy following the Linux standard organization.
+Target packages option allows to select the software elements that will be installed in the filesystem of the embedded Linux. Additionally, this option installs the busybox package that contains the basic Linux commands (:numref:`busybox`). Buildroot creates the filesystem hierarchy following the Linux standard organization.
 
 
 .. list-table:: Busybox and target packages	
@@ -470,7 +470,7 @@ This option selects the format of the root filesystem and the size (:numref:`fil
 Boot-loaders
 ^^^^^^^^^^^^
 
-The Raspberry PI does not need an specific bootloader becuase it is incorporated in the firmware provided by Broadcom.
+The Raspberry PI does not need an specific bootloader because it is incorporated in the firmware provided by Broadcom.
 
       
 Host Utilities
@@ -504,7 +504,7 @@ values (File->Quit).
 Compiling buildroot
 -------------------
 
-In the Terminal Window executes the following command (:numref:`buildbuildroot`):
+In the Terminal Window execute the following command (:numref:`buildbuildroot`):
 
 .. code-block:: bash
    :caption: Build Buildroot
@@ -547,7 +547,7 @@ represented in :numref:`buildrootok`.
 
 **Buildroot** has generated some folders with different files and
 subfolders containing the tools for generating your Embedded Linux
-System. The next paragraph explains the main outputs obtained,
+System. The next paragraph explains the main outputs obtained.
 
 Buildroot Output.
 -----------------
@@ -625,7 +625,7 @@ c) To connect the Ethernet cable to the RJ45 port if it is available
 
 
 .. figure:: rpi/media/rpiconnector.png
-   :width: 3.0cm
+   :width: 5.0cm
    :height: 10.0cm
    :name: conn
    :align: center
@@ -658,7 +658,7 @@ c) To connect the Ethernet cable to the RJ45 port if it is available
 
 
 
-The booting process of the Raspberry Pi BCM2711 `BCM2711 <https://www.raspberrypi.com/documentation/computers/processors.html#bcm2711>`_ processor is depicted
+The booting process of the Raspberry Pi `BCM2711 <https://www.raspberrypi.com/documentation/computers/processors.html#bcm2711>`_ processor is depicted
 in :numref:`RPIBoot`. Take into account that this System On Chip (SoC), the
 BCM2711, contains two different processors: a :term:`GPU` and an ARM
 CPU. The programs *bootcode.bin* and *start.elf* are written
