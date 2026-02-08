@@ -13,6 +13,7 @@ Building Embedded Linux for Raspberry PI
    rpi-tutorial
    eclipse
    virtualmachine
+   vscode
    
   
    
