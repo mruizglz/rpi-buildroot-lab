@@ -449,7 +449,7 @@ Now, lets configure the tasks that tell VSCode how to build and deploy our appli
             {
                 "label": "Kill GDBServer on Target",
                 "type": "shell",
-                "command": "ssh root@${input:target_ip} 'killall -q gdbserver || true'",
+                "command": "ssh root@${config:target_ip} 'killall -q gdbserver || true'",
                 "problemMatcher": []
             }
         ]
