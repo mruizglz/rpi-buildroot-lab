@@ -1,0 +1,683 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6. Using Visual Studio Code for Raspberry Pi Development &mdash; Design of Embedded Systems with RaspberryPI 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="5. Preparing the VMware Ubuntu Virtual Machine." href="virtualmachine.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Design of Embedded Systems with RaspberryPI
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="acronyms.html">1. Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gettingstartedrpi.html">2. Getting started with RPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpi-tutorial.html">3. Embedded Linux With RPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eclipse.html">4. Using the integrated development environment Eclipse/CDT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="virtualmachine.html">5. Preparing the VMware Ubuntu Virtual Machine.</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Using Visual Studio Code for Raspberry Pi Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installing-vscode-in-ubuntu">6.1. Installing VSCode in Ubuntu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-vscode-for-remote-development">6.2. Setting up VSCode for Remote Development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-the-remote-ssh-extension">6.2.1. Installing the Remote - SSH Extension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-the-raspberry-pi-as-a-remote-host">6.2.2. Adding the Raspberry Pi as a Remote Host</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connecting-to-the-raspberry-pi">6.2.3. Connecting to the Raspberry Pi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-setting-up-ssh-key-based-authentication">6.2.4. (Optional) Setting up SSH Key-based Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compiling-c-c-applications-on-the-raspberry-pi">6.2.5. Compiling C/C++ Applications on the Raspberry Pi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-c-c-applications-on-the-raspberry-pi">6.2.6. Debugging C/C++ Applications on the Raspberry Pi</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-vscode-for-cross-compiling-applications">6.3. Setting up VSCode for Cross-Compiling Applications</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-the-vscode-project-for-cross-compilation">6.3.1. Configuring the VSCode project for Cross-Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-an-ssh-key">6.3.2. Setting up an SSH Key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cross-compiling-deploying-and-executing-the-application">6.3.3. Cross-Compiling, Deploying and Executing the Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-the-application">6.3.4. Debugging the Application</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Design of Embedded Systems with RaspberryPI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6. </span>Using Visual Studio Code for Raspberry Pi Development</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/vscode.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-visual-studio-code-for-raspberry-pi-development">
+<h1><span class="section-number">6. </span>Using Visual Studio Code for Raspberry Pi Development<a class="headerlink" href="#using-visual-studio-code-for-raspberry-pi-development" title="Link to this heading"></a></h1>
+<p>VSCode is one of the most popular code editors available today. This guide will help you set up VSCode
+for developing applications for Raspberry Pi. First, we will setup the IDE for remote development on the
+Raspberry Pi, and then we will configure it for cross-compiling applications for our custom embedded Linux
+system built with Buildroot.</p>
+<section id="installing-vscode-in-ubuntu">
+<h2><span class="section-number">6.1. </span>Installing VSCode in Ubuntu<a class="headerlink" href="#installing-vscode-in-ubuntu" title="Link to this heading"></a></h2>
+<p>First, we need to install VSCode on the host machine, that in our case is an Ubuntu virtual machine.
+You can get the latest version of VSCode from the <a class="reference external" href="https://code.visualstudio.com/download">official website</a>.
+Select the <strong>.deb package</strong> (see <a class="reference internal" href="#vscodedownload"><span class="std std-numref">Fig. 6.1</span></a>) for Debian-based distributions and once it is downloaded
+open a terminal in the download folder and run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>./code_*.deb
+</pre></div>
+</div>
+<p>Select <strong>Yes</strong> when prompted to add the Microsoft repository</p>
+<figure class="align-center" id="vscodedownload">
+<a class="reference internal image-reference" href="_images/codedownload.png"><img alt="_images/codedownload.png" src="_images/codedownload.png" style="width: 10cm; height: 6cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.1 </span><span class="caption-text">VSCode .deb download</span><a class="headerlink" href="#vscodedownload" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can also install VSCode using the snap package manager with the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> </span>--classic<span class="w"> </span>code
+</pre></div>
+</div>
+</div>
+<p>After the installation is completed, open a terminal and launch VSCode to check that it has been installed correctly:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code
+</pre></div>
+</div>
+<p>A window should pop up with the VSCode interface (see <a class="reference internal" href="#vscode"><span class="std std-numref">Fig. 6.2</span></a>).</p>
+<figure class="align-center" id="vscode">
+<a class="reference internal image-reference" href="_images/vscode.png"><img alt="_images/vscode.png" src="_images/vscode.png" style="width: 10cm; height: 6cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">VSCode interface</span><a class="headerlink" href="#vscode" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="setting-up-vscode-for-remote-development">
+<h2><span class="section-number">6.2. </span>Setting up VSCode for Remote Development<a class="headerlink" href="#setting-up-vscode-for-remote-development" title="Link to this heading"></a></h2>
+<p>Now we are going to set up VSCode for remote development on the Raspberry Pi. In this case we will be able to
+edit, compile and debug applications on the Raspberry Pi from the VSCode running on our host machine (Ubuntu Virtual Machine).
+In this use case, <strong>we will not be cross-compiling applications</strong>, but compiling then natively on the Raspberry Pi. This is possible
+because the Raspberry Pi OS that we installed on the Pi includes all the necessary development tools.</p>
+<section id="installing-the-remote-ssh-extension">
+<h3><span class="section-number">6.2.1. </span>Installing the Remote - SSH Extension<a class="headerlink" href="#installing-the-remote-ssh-extension" title="Link to this heading"></a></h3>
+<p>To enable remote development using VSCode, we need to install the <cite>Remote - SSH</cite> extension. To do this, open VSCode and on
+the left bar, click on the <em>Extensions</em> icon. Type “<em>remote ssh</em>” in the search bar and install the extension named <em>Remote - SSH</em>
+by Microsoft (see <a class="reference internal" href="#vscoderemotessh"><span class="std std-numref">Fig. 6.3</span></a>).</p>
+<figure class="align-center" id="vscoderemotessh">
+<a class="reference internal image-reference" href="_images/vscoderemotessh.png"><img alt="_images/vscoderemotessh.png" src="_images/vscoderemotessh.png" style="width: 10cm; height: 6cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.3 </span><span class="caption-text">Remote - SSH extension installation</span><a class="headerlink" href="#vscoderemotessh" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>This extension allows us to open remote folders and files on any remote machine with SSH access and work with them
+just as if they were on our local machine.</p>
+</section>
+<section id="adding-the-raspberry-pi-as-a-remote-host">
+<h3><span class="section-number">6.2.2. </span>Adding the Raspberry Pi as a Remote Host<a class="headerlink" href="#adding-the-raspberry-pi-as-a-remote-host" title="Link to this heading"></a></h3>
+<p>Now we need to add our Raspberry Pi as a remote host in VSCode. To do this, select click on the bottom left corner icon
+(see <a class="reference internal" href="#vscoderemote"><span class="std std-numref">Fig. 6.4</span></a>) and on the upper menu select <em>Connect to Host…</em>.</p>
+<figure class="align-center" id="vscoderemote">
+<a class="reference internal image-reference" href="_images/vscoderemote.png"><img alt="_images/vscoderemote.png" src="_images/vscoderemote.png" style="width: 10cm; height: 6cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.4 </span><span class="caption-text">Connect to Host option</span><a class="headerlink" href="#vscoderemote" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Next, select <em>Add New SSH Host…</em> and add the SSH connection command to connect to the Raspberry Pi.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>&lt;username&gt;@&lt;raspberry_pi_ip_address&gt;
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;</span></code> with the username (<strong>rpi-student</strong>) you use to log in to the Raspberry Pi and
+<code class="docutils literal notranslate"><span class="pre">&lt;raspberry_pi_ip_address&gt;</span></code> with the IP address of your Raspberry Pi.
+After adding the SSH command, you will be prompted to select the SSH configuration file to update. Select the default option
+(<em>~/.ssh/config</em>). This will add the Raspberry Pi connection details to the SSH configuration file.</p>
+</section>
+<section id="connecting-to-the-raspberry-pi">
+<h3><span class="section-number">6.2.3. </span>Connecting to the Raspberry Pi<a class="headerlink" href="#connecting-to-the-raspberry-pi" title="Link to this heading"></a></h3>
+<p>Now, to connect to the Raspberry Pi, click again on the bottom left corner icon and select <em>Connect to Host…</em>. This time
+select the connection that you just added (it should be named with your Raspberry Pi IP address). This will open a new
+VSCode window and you will be connected to the Raspberry Pi as shown in the bottom left (see <a class="reference internal" href="#vscoderemoteconnected"><span class="std std-numref">Fig. 6.5</span></a>).</p>
+<figure class="align-center" id="vscoderemoteconnected">
+<a class="reference internal image-reference" href="_images/vscoderemoteconnected.png"><img alt="_images/vscoderemoteconnected.png" src="_images/vscoderemoteconnected.png" style="width: 10cm; height: 4cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.5 </span><span class="caption-text">VSCode connected to Raspberry Pi</span><a class="headerlink" href="#vscoderemoteconnected" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Now you can open folders and files that are on the Raspberry Pi and edit them directly from VSCode running on your host machine.
+Take your time and explore the different features of VSCode for remote development, e.g. <strong>the integrated terminal</strong> that
+allows you to run commands directly on the Raspberry Pi or the Git integration.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is now a good idea to install VSCode extensions that can help during development, e.g. C/C++ and Python extensions.</p>
+</div>
+</section>
+<section id="optional-setting-up-ssh-key-based-authentication">
+<h3><span class="section-number">6.2.4. </span>(Optional) Setting up SSH Key-based Authentication<a class="headerlink" href="#optional-setting-up-ssh-key-based-authentication" title="Link to this heading"></a></h3>
+<p>With the configuration above, every time you connect to the Pi using VSCode, you will be prompted to enter the password
+for the <strong>rpi-student</strong> user. To avoid this, you can set up SSH key-based authentication. To do this, first we
+need to generate an SSH key pair (public and private) <strong>on the host machine (Ubuntu VM)</strong>. Open a terminal in the
+Ubuntu VM and run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>rsa<span class="w"> </span>-b<span class="w"> </span><span class="m">4096</span>
+</pre></div>
+</div>
+<p>Press Enter to accept the default values. After this a key pair will be generated in the <em>~/.ssh/</em> folder.
+Take a look at the generated files, and <strong>copy the content of the public key</strong> file (<em>id_rsa.pub</em>).</p>
+<p>Now, we need to add the public key to the Raspberry Pi to allow key-based authentication. <strong>Connect to the Raspberry Pi</strong>
+using VSCode or a terminal and open (or create) the <em>~/.ssh/authorized_keys</em> file. Then paste the content of the public
+key file at the end of the <em>authorized_keys</em> file and save it.</p>
+<p>Now you should be able to connect to the Raspberry Pi using VSCode without being prompted for a password.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have issues connecting to the Raspberry Pi, or keeps asking for a password, try adding the key to the SSH agent (on the Ubuntu VM):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>ssh-agent<span class="w"> </span>-s<span class="k">)</span><span class="s2">&quot;</span>
+ssh-add<span class="w"> </span>~/.ssh/id_rsa
+</pre></div>
+</div>
+</div>
+</section>
+<section id="compiling-c-c-applications-on-the-raspberry-pi">
+<h3><span class="section-number">6.2.5. </span>Compiling C/C++ Applications on the Raspberry Pi<a class="headerlink" href="#compiling-c-c-applications-on-the-raspberry-pi" title="Link to this heading"></a></h3>
+<p>Now that we have set up VSCode for remote development on the Raspberry Pi, we can compile and debug C/C++ applications
+directly on the Pi.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Make sure that VSCode is connected to the Raspberry Pi as explained in the previous section.</p>
+</div>
+<p>First, lets create a new folder on the Raspberry Pi to create an example C application, we will be using the Makefile-based
+build system.
+Open the integrated terminal in VSCode (View -&gt; Terminal) and run the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>hello-world
+</pre></div>
+</div>
+<p>Now, in VSCode, open the <em>hello-world</em> folder that we just created on the Raspberry Pi (File -&gt; Open Folder…).
+The folder is currently empty, create a new file named <em>main.c</em> and add the following code:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello world from Raspberry Pi</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Next, create a new file named <em>Makefile</em> in the same folder and add the following content:</p>
+<blockquote>
+<div><div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="nv">TARGET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>main
+<span class="nv">SRCS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>main.c
+<span class="nv">OBJS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">$(</span>SRCS:.c<span class="o">=</span>.o<span class="k">)</span>
+
+<span class="nv">INCLUDE</span><span class="w"> </span><span class="o">=</span>
+<span class="nv">LIBS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-lm<span class="w"> </span>-lpthread
+
+<span class="nv">CC</span><span class="w"> </span><span class="o">?=</span><span class="w"> </span>gcc
+<span class="nv">CFLAGS</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>-Wall<span class="w"> </span>-g<span class="w"> </span><span class="k">$(</span>INCLUDE<span class="k">)</span>
+<span class="nv">LDFLAGS</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="k">$(</span>LIBS<span class="k">)</span>
+
+<span class="nf">all</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">TARGET</span><span class="k">)</span>
+
+<span class="nf">$(TARGET)</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">OBJS</span><span class="k">)</span>
+<span class="w">    </span>@echo<span class="w"> </span><span class="s2">&quot;[link] </span>$<span class="s2">^&quot;</span>
+<span class="w">    </span><span class="k">$(</span>CC<span class="k">)</span><span class="w"> </span>-o<span class="w"> </span><span class="nv">$@</span><span class="w"> </span>$^<span class="w"> </span><span class="k">$(</span>LDFLAGS<span class="k">)</span>
+
+<span class="nf">%.o</span><span class="o">:</span><span class="w"> </span>%.<span class="n">c</span>
+<span class="w">    </span>@echo<span class="w"> </span><span class="s2">&quot;[compile] </span>$<span class="s2">&lt;&quot;</span>
+<span class="w">    </span><span class="k">$(</span>CC<span class="k">)</span><span class="w"> </span><span class="k">$(</span>CFLAGS<span class="k">)</span><span class="w"> </span>-c<span class="w"> </span>$&lt;<span class="w"> </span>-o<span class="w"> </span><span class="nv">$@</span>
+
+<span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">clean</span>
+<span class="nf">clean</span><span class="o">:</span>
+<span class="w">    </span>rm<span class="w"> </span>-f<span class="w"> </span><span class="k">$(</span>TARGET<span class="k">)</span><span class="w"> </span><span class="k">$(</span>OBJS<span class="k">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check the flags used in the Makefile and note that the debug flag (-g) is enabled to allow debugging the application later.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can use this Makefile as a template for your future C applications.</p>
+</div>
+<p>Your file explorer should look like shown in figure <a class="reference internal" href="#vscodehellofolder"><span class="std std-numref">Fig. 6.6</span></a>.</p>
+<figure class="align-center" id="vscodehellofolder">
+<a class="reference internal image-reference" href="_images/vscodehellofolder.png"><img alt="_images/vscodehellofolder.png" src="_images/vscodehellofolder.png" style="width: 10cm; height: 4cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.6 </span><span class="caption-text">Hello World project folder structure</span><a class="headerlink" href="#vscodehellofolder" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Now, to compile the application, open the integrated terminal in VSCode and run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make
+</pre></div>
+</div>
+<p>And run the application with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./main
+</pre></div>
+</div>
+<p>You should see something like shown in figure <a class="reference internal" href="#vscodehello"><span class="std std-numref">Fig. 6.7</span></a>.</p>
+<figure class="align-center" id="vscodehello">
+<a class="reference internal image-reference" href="_images/vscodehello.png"><img alt="_images/vscodehello.png" src="_images/vscodehello.png" style="width: 12cm; height: 4cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.7 </span><span class="caption-text">Hello World application running on Raspberry Pi</span><a class="headerlink" href="#vscodehello" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>In VSCode we can automate this process by creating tasks for building and running the application. In the file explorer,
+create a new folder named <em>.vscode</em> inside the <em>hello-world</em> folder. Then, inside the <em>.vscode</em> folder, create a new file
+named <em>tasks.json</em> and add the following content:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tasks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;build&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;make&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;build and run&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;make &amp;&amp; ./main&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;clean&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;make clean&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Your file explorer should look like shown in figure <a class="reference internal" href="#vscodetasks"><span class="std std-numref">Fig. 6.8</span></a>.</p>
+<figure class="align-center" id="vscodetasks">
+<a class="reference internal image-reference" href="_images/vscodetasks.png"><img alt="_images/vscodetasks.png" src="_images/vscodetasks.png" style="width: 12cm; height: 6cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.8 </span><span class="caption-text">VSCode tasks configuration</span><a class="headerlink" href="#vscodetasks" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Now, you can use the “<em>build</em>” and “<em>build and run</em>” tasks to compile and run the application. To do this, in VSCode
+select <em>Terminal -&gt; Run Task…</em> and select the desired task.</p>
+</section>
+<section id="debugging-c-c-applications-on-the-raspberry-pi">
+<h3><span class="section-number">6.2.6. </span>Debugging C/C++ Applications on the Raspberry Pi<a class="headerlink" href="#debugging-c-c-applications-on-the-raspberry-pi" title="Link to this heading"></a></h3>
+<p>VSCode also allows us to debug C/C++ applications running on the Raspberry Pi. To do this, we need to create a debug configuration.
+In the file explorer, inside the <em>.vscode</em> folder, create a new file named <em>launch.json</em> and add the following content:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;configurations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Debug Raspberry Pi&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cppdbg&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;launch&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;program&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}/main&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">            </span><span class="nt">&quot;stopAtEntry&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;cwd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;environment&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">            </span><span class="nt">&quot;externalConsole&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;MIMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gdb&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;setupCommands&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enable pretty-printing for gdb&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-enable-pretty-printing&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;ignoreFailures&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;preLaunchTask&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;build&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;miDebuggerPath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/usr/bin/gdb&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Take your time to investigate the different options available in the debug configuration file so you can
+customize it to your projects.</p>
+</div>
+<p>Your file explorer should now look like shown in figure <a class="reference internal" href="#vscodelaunch"><span class="std std-numref">Fig. 6.9</span></a>.</p>
+<figure class="align-center" id="vscodelaunch">
+<a class="reference internal image-reference" href="_images/vscodelaunch.png"><img alt="_images/vscodelaunch.png" src="_images/vscodelaunch.png" style="width: 12cm; height: 6cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.9 </span><span class="caption-text">VSCode debug configuration</span><a class="headerlink" href="#vscodelaunch" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Now, to start debugging the application, set a breakpoint in the <em>main.c</em> file by clicking on the left margin
+next to the line number. Then, in VSCode select <em>Run -&gt; Start Debugging</em> (or press F5). The debug window will
+open and the application will stop at the breakpoint (see <a class="reference internal" href="#vscodedebug"><span class="std std-numref">Fig. 6.10</span></a>).</p>
+<figure class="align-center" id="vscodedebug">
+<a class="reference internal image-reference" href="_images/vscodedebug.png"><img alt="_images/vscodedebug.png" src="_images/vscodedebug.png" style="width: 12cm; height: 8cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.10 </span><span class="caption-text">VSCode debugging session</span><a class="headerlink" href="#vscodedebug" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Notice the debug toolbar that allows you to control the debugging session (continue, step over, step into, etc.)
+and the different debug panels (variables, watch, call stack, breakpoints, etc.) available.</p>
+</section>
+</section>
+<section id="setting-up-vscode-for-cross-compiling-applications">
+<h2><span class="section-number">6.3. </span>Setting up VSCode for Cross-Compiling Applications<a class="headerlink" href="#setting-up-vscode-for-cross-compiling-applications" title="Link to this heading"></a></h2>
+<p>We have seen how to set up VSCode for remote development, compiling and debugging applications natively on the Raspberry Pi.
+In this section we will see how to set up VSCode for cross-compiling applications for our custom embedded Linux system built with Buildroot.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This section assumes that you have already generated the custom embedded Linux image as well as the cross-compile toolchain.</p>
+</div>
+<p>In this case we will be running VSCode on the host machine (Ubuntu VM) and we will use the buildroot-generated cross-compile
+toolchain to compile applications for the Raspberry Pi. We will copy the compilated applications to the Raspberry Pi
+and run them there.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Make sure that you have installed the <strong>C/C++ extension by Microsoft</strong> in VSCode.</p>
+</div>
+<section id="configuring-the-vscode-project-for-cross-compilation">
+<h3><span class="section-number">6.3.1. </span>Configuring the VSCode project for Cross-Compilation<a class="headerlink" href="#configuring-the-vscode-project-for-cross-compilation" title="Link to this heading"></a></h3>
+<p>Start by creating a new folder for your project <strong>on the host machine</strong> and open it with VSCode (File -&gt; Open Folder…).</p>
+<p>Now, add the source files for your application to the project folder. For example, create a file named <strong>main.c</strong> with the basic <em>Hello World</em> shown in the previous section.
+Also, create a <strong>Makefile</strong> for your project. You can use the same Makefile shown in the previous section.</p>
+<p>VSCode does not have built-in support for cross-compilation, but we can configure it to use the Buildroot-generated toolchain.
+To do so, create a folder named <em>.vscode</em> inside your project folder. Here is where we will add the configuration files for building and debugging our application.</p>
+<p>Create inside the <em>.vscode</em> folder a file named <em>settings.json</em>. Add the following content to the file:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;buildroot_build_dir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;path_to_buildroot_build_directory&gt;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;target_ip&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;rpi_ip_address&gt;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;executable_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;executable_file_name&gt;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;buildroot_env&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${config:buildroot_build_dir}/host/environment-setup&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;host_gdb&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${config:buildroot_build_dir}/host/bin/aarch64-linux-gdb&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Replace the values of the different fields with the appropriate values for your setup:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;path_to_buildroot_build_directory&gt;</span></code>: The path to the Buildroot build directory where the toolchain and sysroot are located, e.g. <em>/home/ubuntu/Documents/rpi/build</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;rpi_ip_address&gt;</span></code>: The IP address of your Raspberry Pi.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;executable_file_name&gt;</span></code>: The name of the executable file that you want to compile and run on the Raspberry Pi, e.g. <em>main</em>.</p></li>
+</ul>
+<p>Now, lets configure the tasks that tell VSCode how to build and deploy our application. Create a file named <em>tasks.json</em> inside the <em>.vscode</em> folder and add the following content:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tasks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Build&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/bin/bash&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;-c&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;source ${config:buildroot_env} &amp;&amp; make clean all&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;group&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;build&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;isDefault&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Deploy&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ssh root@${config:target_ip} &#39;rm -f /root/${config:executable_file}&#39; &amp;&amp; scp ${config:executable_file} root@${config:target_ip}:/root/&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;dependsOn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Build&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Start GDBServer&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ssh root@${config:target_ip} &#39;killall -q gdbserver; gdbserver :2345 /root/${config:executable_file}&#39;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;isBackground&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;problemMatcher&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;regexp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;background&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;activeOnStart&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;beginsPattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Process /root/.* created&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;endsPattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Listening on port 2345&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;dependsOn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;Deploy&quot;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kill GDBServer on Target&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ssh root@${config:target_ip} &#39;killall -q gdbserver || true&#39;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;problemMatcher&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This configuration defines the following tasks:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Build</span></code>: This task builds the application using the Buildroot-generated toolchain. First, it <strong>sources the Buildroot environment setup script to set up the necessary environment variables for cross-compilation</strong>, and then it uses the Makefile to build the application.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Deploy</span></code>: This task deploys the compiled application to the Raspberry Pi. It does so by first removing any existing executable with the same name on the Raspberry Pi and then copying the new executable using SCP (using the SSH protocol).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">GDBServer</span></code>: This task starts a GDB server on the Raspberry Pi to allow remote debugging.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Kill</span> <span class="pre">GDBServer</span> <span class="pre">on</span> <span class="pre">Target</span></code>: This task kills any running GDB server on the Raspberry Pi.</p></li>
+</ul>
+<p>Now, we need to configure the debug configuration to allow debugging the application running on the Raspberry Pi. Create a file named <em>launch.json</em> inside the <em>.vscode</em> folder and add the following content:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;configurations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Debug on Target&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cppdbg&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;launch&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;program&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${config:executable_file}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">            </span><span class="nt">&quot;stopAtEntry&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;cwd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;environment&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">            </span><span class="nt">&quot;externalConsole&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;MIMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gdb&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;miDebuggerPath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${config:host_gdb}&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;miDebuggerServerAddress&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${config:target_ip}:2345&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;preLaunchTask&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Start GDBServer&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;postDebugTask&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kill GDBServer on Target&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;setupCommands&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enable pretty-printing for gdb&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-enable-pretty-printing&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;ignoreFailures&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This defines a debug configuration named <strong>Debug on Target</strong> that uses the GDB server running on the Raspberry Pi to debug the application.
+Some important fields in this configuration are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">program</span></code>: The name of the executable file to debug.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">miDebuggerPath</span></code>: The path to the GDB executable on the host machine (the Buildroot-generated GDB). Remember that we are debugging from an x86_64 machine an application running on an ARM machine, so we need to use the Buildroot-generated GDB that supports cross-debugging.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">miDebuggerServerAddress</span></code>: The address of the GDB server running on the Raspberry Pi (IP address and port).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">preLaunchTask</span></code>: The task to run before starting the debug session (in this case, we start the GDB server, which also builds and deploys the application).</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can customize this debug configuration to fit your needs, e.g. by adding arguments to the application (use the “args” field), setting environment variables (“environment” field), etc.</p>
+</div>
+<p>This is enough configuration to allow us to build, deploy and debug our application. However, you may have noticed that
+VSCode reports errors in the source code because it cannot find the header files and libraries for our target system.
+To fix this, and get proper code completion and error checking, we need to configure the C/C++ extension to use the Buildroot sysroot.
+To do this, create a file named <em>c_cpp_properties.json</em> inside the <em>.vscode</em> folder and add the following content:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;configurations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Buildroot-RPI&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;includePath&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;${workspaceFolder}/**&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;${config:buildroot_build_dir}/host/aarch64-buildroot-linux-gnu/sysroot/usr/include&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;defines&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">            </span><span class="nt">&quot;compilerPath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${config:buildroot_build_dir}/host/bin/aarch64-linux-gcc&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;cStandard&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c11&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;cppStandard&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c++17&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;intelliSenseMode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;linux-gcc-arm&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;compilerArgs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;--sysroot=${config:buildroot_build_dir}/host/arm-buildroot-linux-gnueabihf/sysroot&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;browse&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="s2">&quot;${workspaceFolder}&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s2">&quot;${config:buildroot_build_dir}/host/aarch64-buildroot-linux-gnu/sysroot/usr/include&quot;</span>
+<span class="w">                </span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;limitSymbolsToIncludedHeaders&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This tells the C/C++ extension to use the Buildroot sysroot for code completion and error checking. The most important fields are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">includePath</span></code>: This field specifies the include paths for header files. We add the Buildroot sysroot include directory to the include path.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">compilerPath</span></code>: This field specifies the path to the compiler to use for code analysis. We set it to the Buildroot-generated cross-compiler.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">compilerArgs</span></code>: This field allows us to specify additional arguments to pass to the compiler for code analysis. We use it to specify the sysroot to use for code analysis.</p></li>
+</ul>
+<p>At this point your VSCode project should look like shown in figure <a class="reference internal" href="#vscodecrossproject"><span class="std std-numref">Fig. 6.11</span></a>.</p>
+<figure class="align-center" id="vscodecrossproject">
+<a class="reference internal image-reference" href="_images/vscodecrossproject.png"><img alt="_images/vscodecrossproject.png" src="_images/vscodecrossproject.png" style="width: 8cm; height: 6cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.11 </span><span class="caption-text">VSCode project structure for cross-compilation</span><a class="headerlink" href="#vscodecrossproject" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>This is enough to allow you to build, deploy and debug your application for the Raspberry Pi using VSCode.</p>
+</section>
+<section id="setting-up-an-ssh-key">
+<h3><span class="section-number">6.3.2. </span>Setting up an SSH Key<a class="headerlink" href="#setting-up-an-ssh-key" title="Link to this heading"></a></h3>
+<p>This compilation, deployment and debugging process uses SSH to connect to the Raspberry Pi. You might be asked several times to enter the password for the <strong>root</strong> user on the Raspberry Pi.
+It is now <strong>highly recommended</strong> to set up SSH key-based authentication to avoid this. The process is almost the same as explained in the previous section <a class="reference internal" href="#optional-setting-up-ssh-key-based-authentication">(Optional) Setting up SSH Key-based Authentication</a> :</p>
+<ol class="arabic simple">
+<li><p>Generate an SSH key pair on the host machine (Ubuntu VM) if you do not have one yet.</p></li>
+<li><p>Copy the content of the public key file (e.g. <em>id_rsa.pub</em>).</p></li>
+<li><p>Connect to the Raspberry Pi and add the public key to the <em>/root/.ssh/authorized_keys</em> file (create it if it does not exist).</p></li>
+</ol>
+<p>You should now be able to connect to the Raspberry Pi without being constantly prompted for a password.</p>
+</section>
+<section id="cross-compiling-deploying-and-executing-the-application">
+<h3><span class="section-number">6.3.3. </span>Cross-Compiling, Deploying and Executing the Application<a class="headerlink" href="#cross-compiling-deploying-and-executing-the-application" title="Link to this heading"></a></h3>
+<p>Now, use the defined tasks to build and deploy your application to the Raspberry Pi.
+To do this, in VSCode select <em>Terminal -&gt; Run Task…</em>. On the top you should see a list of the defined tasks as shown in figure <a class="reference internal" href="#vscodetasklist"><span class="std std-numref">Fig. 6.12</span></a>.</p>
+<figure class="align-center" id="vscodetasklist">
+<a class="reference internal image-reference" href="_images/vscodetasklist.png"><img alt="_images/vscodetasklist.png" src="_images/vscodetasklist.png" style="width: 12cm; height: 4cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.12 </span><span class="caption-text">List of defined tasks in VSCode</span><a class="headerlink" href="#vscodetasklist" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Select the <em>Deploy</em> task to build and deploy the application to the Raspberry Pi. You should see in the terminal output how the buildroot environment is sourced, the aplication is built, and then copied to the Raspberry Pi using SCP (see <a class="reference internal" href="#vscodedeploy"><span class="std std-numref">Fig. 6.13</span></a>).</p>
+<figure class="align-center" id="vscodedeploy">
+<a class="reference internal image-reference" href="_images/vscodedeploy.png"><img alt="_images/vscodedeploy.png" src="_images/vscodedeploy.png" style="width: 12cm; height: 6cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.13 </span><span class="caption-text">Build and deploy task output in VSCode terminal</span><a class="headerlink" href="#vscodedeploy" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>After the deployment is completed, you can connect to the Raspberry Pi using SSH and run the application executable, which can be found in the <em>/root/</em> directory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The recommended flow is to use the <em>Build</em> task to build the application until you have no compilation errors, and then use the <em>Deploy</em> task to deploy the application to the Raspberry Pi.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can create additional tasks to automate other processes, e.g. a task to run the application on the Raspberry Pi using SSH.</p>
+</div>
+</section>
+<section id="debugging-the-application">
+<h3><span class="section-number">6.3.4. </span>Debugging the Application<a class="headerlink" href="#debugging-the-application" title="Link to this heading"></a></h3>
+<p>If you want to debug the application, set a breakpoint in the source code (see <a class="reference internal" href="#vscodebreakpoint"><span class="std std-numref">Fig. 6.14</span></a>) and then start the debug session (Run -&gt; Start Debugging or F5).
+You will see in the terminal how the application is compiled, deployed and the GDB server is started on the Raspberry Pi. The debug view will open and you will be able to debug the application running on the Raspberry Pi (see <a class="reference internal" href="#vscodedebugcross"><span class="std std-numref">Fig. 6.15</span></a>).
+Then, you can use the debug toolbar to control the program execution, inspect variables…</p>
+<figure class="align-center" id="vscodebreakpoint">
+<a class="reference internal image-reference" href="_images/vscodebreakpoint.png"><img alt="_images/vscodebreakpoint.png" src="_images/vscodebreakpoint.png" style="width: 10cm; height: 3cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.14 </span><span class="caption-text">Setting a breakpoint in VSCode</span><a class="headerlink" href="#vscodebreakpoint" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="vscodedebugcross">
+<a class="reference internal image-reference" href="_images/vscodedebugcross.png"><img alt="_images/vscodedebugcross.png" src="_images/vscodedebugcross.png" style="width: 10cm; height: 3cm;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.15 </span><span class="caption-text">Debugging an application running on the Raspberry Pi from VSCode</span><a class="headerlink" href="#vscodedebugcross" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="virtualmachine.html" class="btn btn-neutral float-left" title="5. Preparing the VMware Ubuntu Virtual Machine." accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Universidad Politécnica de Madrid.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
